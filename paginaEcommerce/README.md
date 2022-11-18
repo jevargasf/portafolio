@@ -1,6 +1,4 @@
 # portafolio
-# portafolio
-# portafolio
 
 Página de e-commerce de tienda de música "Tienda de Música".
 
