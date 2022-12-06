@@ -7,6 +7,9 @@ let arrBoton = [];
 let cantidadProducto = 0;
 let total = 0;
 let cantidadTotal = 0;
+let arr = [];
+let arrMonto = [];
+
 for (const boton of botonAgregar) {
     boton.addEventListener('click', () => {
 //Número producto en lista
@@ -21,57 +24,98 @@ for (const boton of botonAgregar) {
         const precio = document.querySelector("#precio"+a).innerHTML;
         const precioSumable = Number(precio.replace(/[^\d,]/g,""));
         let cantidadProducto = boton.value++;
+        const footerTotal = document.getElementById("totalCarrito");
+//Agrega producto
         if (cuerpoCarrito.innerHTML.includes(descripcion)) {
-            true;
             document.getElementById("cantidadProducto"+a).innerHTML = cantidadProducto;
             let totalProducto = precioSumable*cantidadProducto;
             document.getElementById("totalProducto"+a).innerHTML = totalProducto;
+          /*  console.log(totalProducto);
+            footerTotal.innerHTML =`
+            <td colspan="2"></td>
+            <td>${cantidadProducto}</td>
+            <td>${totalProducto}</td>
+            ` */
         } else {
+            let totalProducto = precioSumable*cantidadProducto;
             filaNuevoProducto.innerHTML += `
             <td>${contador}</td>
             <td>${descripcion}</td>
-            <td id="cantidadProducto${a}">${cantidadProducto}</td>
-            <td class="total" id="totalProducto${a}">${precioSumable}</td>
+            <td class="cantidades" id="cantidadProducto${a}">${cantidadProducto}</td>
+            <td id="totalProducto${a}">${totalProducto}</td>
             `;
         }
+        let arr = []; 
+//Suma monto final
+        arrMonto.push(precioSumable);
+        let montoFinal = arrMonto.reduce((a,b) => a+b, 0);
+
+//Suma cantidad de productos total
+        for (const i of document.getElementsByClassName("cantidades")) {
+            let conteoProductos =+ i.innerHTML;
+            arr.push(conteoProductos);
+            let total = arr.reduce((a,b) => a+b, 0);
+            footerTotal.innerHTML =`
+            <td colspan="2"></td>
+            <td>${total}</td>
+            <td>${montoFinal}</td>
+            `;
+        }
+//Suma de monto total
+
+
+  /*      function total (a) {
+            if ()
+            Number(document.getElementById("cantidadProducto"+a).innerHTML);
+        }
+        let producto1 = Number(document.getElementById("cantidadProducto1").innerHTML);
+        let producto2 = Number(document.getElementById("cantidadProducto2").innerHTML);
+        let producto3 = Number(document.getElementById("cantidadProducto3").innerHTML);
+        let producto4 = Number(document.getElementById("cantidadProducto4").innerHTML);
+        
+        let total = producto1 + producto2 + producto3 + producto4;
+        if (producto1 === null || producto2 === null || producto3 === null || producto4 === null) {
+            true;
+         //   producto1 || producto2 || producto3 || producto4 = 0;
+        } else {
+            console.log(total);
+        }*/
+     //   console.log(total);
+  //      if (arr.includes(boton)) {
+  //         console.log(cantidadProducto);
+//
+  //      } else {
+  //          arr.push(boton);
+  //          console.log(true);
+    //    }
+ //  console.log(document.getElementById("cantidadProducto"+a).innerHTML);
+  // if ()
+ /* console.log(Number(document.getElementById("cantidadProducto1").innerHTML));
+  console.log(Number(document.getElementById("cantidadProducto2").innerHTML));
+  console.log(Number(document.getElementById("cantidadProducto3").innerHTML));
+  console.log(Number(document.getElementById("cantidadProducto4").innerHTML));*/
+    });
+
+
 
 //Total productos
+/*const cantidades = console.log(document.getElementsByClassName("cantidades"));
+for (const cant of cantidades) {
+    btn.addEventListener('click', () => {
+    console.log(cantidades)})
+};*/
+/*
+for (const boton of botonAgregar) {
+boton.addEventListener('click', () => {
 
-
-
-//Total
-/*const totales = document.getElementsByClassName("total");
-for (const a of totales) {
-    let totalProducto = a.innerHTML;
-    let totalFinal = totalProducto
-}
-
-
-
-   /*     arrBoton.push(boton.id);
-        console.log(arrBoton);
-        let contar = 0;
-        for (let i of arrBoton) {
-            if (boton.id === arrBoton[i]) {
-                cantidad++;
-                }
-            }*/
-        
-   //     if (descripcion == ) {
-     //       cantidad++;
-       // }
-
-//Producto repetido
- //       arrBoton.push(boton.id);
-   //     for (let i of arrBoton) {
-   //         if (arrBoton[i] == boton.id) {
-   //             cantidad++;
-  //          }
-  //      }
-    })};
-    console.log(document.getElementById("producto1").innerHTML);
-  /*  total += Number(document.querySelector("#totalProducto"+a).innerHTML);
-    cantidadTotal += Number(document.querySelector("#cantidadProducto"+a).innerHTML);
+        cantidadTotal += cantidadProducto;
+    console.log(cantidadTotal);
+/*
+        let a = boton.id;
+    total = Number($(precioSumable));
+    cantidadTotal = Number($(cantidadProducto));
+        console.log(total);
+        console.log(cantidadTotal);
     const totalCarrito = document.getElementById("totalCarrito");
     if (cantidadTotal !== 0) {
         totalCarrito.innerHTML = `
@@ -80,6 +124,17 @@ for (const a of totales) {
         <td>${total}</td>
         `
     }
+
+})} */
+    
+};
+/*
+botonAgregar.addEventListener('click', () => {
+    console.log(Number(document.getElementById("cantidadProducto"));
+//    cantidadTotal += Number(document.getElementById("cantidadProducto"+boton.id).innerHTML);
+
+    });
+/*  
 // Intento 2. Añadir escuchadores de evento para cada proceso
 
 /*
