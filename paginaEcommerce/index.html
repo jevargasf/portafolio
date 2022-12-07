@@ -52,7 +52,7 @@
         </form>
   <!-- Botón carrito -->
         <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">
-          <span class="material-symbols-outlined">shopping_cart</span>
+          <p><span class="material-symbols-outlined">shopping_cart</span>0</p>
         </button>
         <div class="offcanvas offcanvas-end overflow-scroll" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
           <div class="offcanvas-header d-block text-center">
@@ -64,6 +64,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Producto</th>
                     <th scope="col">Cantidad</th>
+                    <th></th>
                     <th scope="col">Total</th>
                   </tr>
                 </thead>
@@ -71,7 +72,7 @@
                 </tbody>
                 <tfoot>
                   <tr id="totalCarrito">
-                    <td colspan="4">Tu carrito está vacío.</td>
+                    <td colspan="5">Tu carrito está vacío.</td>
                   </tr>
                 </tfoot>
               </table>
