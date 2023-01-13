@@ -42,10 +42,18 @@ for (const boton of botonAgregar) {
                <td class="cantidades p-auto" id="cantidadProducto${a}">${selecCantidades[a]}</td>
                <td><button type="button" class="btn btn-danger botonQuitar p-1" id="Q${a}">-</button>
                <button type="button" class="btn btn-info p-1 botonAgregar" id="A${a}" value="1">+</button></td>
-               <td id="totalProducto${a}">${totalProducto}</td>
+               <td id="totalProducto${a}">${precioSumable}</td>
                `;   
                 
                 boton.disabled = true;
+
+                footerTotal.innerHTML = `
+                <td>Total</td>
+                <td>${selecCantidades[a]}</td>
+                <td></td>
+                <td>${precioSumable}</td>
+                `;
+                
             }
 
 
@@ -57,6 +65,9 @@ document.getElementById("Q"+a).addEventListener('click', () => {
         if (selecCantidades[a] === 0) {
             filaNuevoProducto.remove()
             boton.disabled = false
+            footerTotal.innerHTML = `
+            <td colspan="4">Tu carrito está vacío.</td>
+            `;
         }
 })
        
@@ -68,32 +79,26 @@ document.getElementById("Q"+a).addEventListener('click', () => {
             document.getElementById("totalProducto"+a).innerHTML = selecCantidades[a]*precioSumable;
  });
     });
+
+       //Suma monto final
+       arrMonto.push(precioSumable);
+       let montoFinal = arrMonto.reduce((a,b) => a+b, 0);
+
+//Suma cantidad de productos total
+       for (const i of document.getElementsByClassName("cantidades")) {
+        console.log(i)
+           let conteoProductos =+ i.innerHTML;
+           arr.push(conteoProductos);
+           let cantidadTotal = arr.reduce((a,b) => a+b, 0);
+           footerTotal.innerHTML = `
+           <td colspan="2"></td>
+           <td">${cantidadTotal}</td>
+           <td></td>
+           <td>${montoFinal}</td>
+           `;
+       }
 };
-    
-   /*
-   //Suma monto final
-           arrMonto.push(precioSumable);
-           let montoFinal = arrMonto.reduce((a,b) => a+b, 0);
-   
-   //Suma cantidad de productos total
-           for (const i of document.getElementsByClassName("cantidades")) {
-               let conteoProductos =+ i.innerHTML;
-               arr.push(conteoProductos);
-               let cantidadTotal = arr.reduce((a,b) => a+b, 0);
-               footerTotal.innerHTML = `
-               <td colspan="2"></td>
-               <td">${cantidadTotal}</td>
-               <td></td>
-               <td>${montoFinal}</td>
-               `;
-           }
-   
-   
-      
-       })
+
+
    
    //Medalla carrito (cantidad total productos)
-   
-       
-   
-   };*/
