@@ -1,7 +1,7 @@
 //Recuperar info producto del DOM
 const botonAgregar = document.getElementsByClassName("botonAgregar");
 
-//Contador de clicks
+//Contador de lista productos
 let contador = 0;
 
 let totalProducto = 0;
@@ -20,10 +20,7 @@ let selecCantidades = {
 
 for (const boton of botonAgregar) {
        //Acceder info productos
-       let a = boton.id;
-       let selecProducto = selecCantidades[a];
- //      console.log(a);
-       
+       let a = boton.id;       
        const descripcion = document.querySelector("#producto"+a).innerHTML;
        const precio = document.querySelector("#precio"+a).innerHTML;
        const precioSumable = Number(precio.replace(/[^\d,]/g,""));
@@ -31,8 +28,6 @@ for (const boton of botonAgregar) {
 
        boton.addEventListener('click', () => {
    //Número producto en lista
-  // console.log(boton);
-
            contador++;
            selecCantidades[a] += 1; //aquí ya almacenó +1
    // Nueva fila 
@@ -40,11 +35,9 @@ for (const boton of botonAgregar) {
            const filaNuevoProducto = document.createElement("tr");
            cuerpoCarrito.appendChild(filaNuevoProducto);
 
-   //Agrega producto
+   //Agrega producto a offcanvas
            if (selecCantidades[a] === 1) { //aquí veo si tengo que agregarlo a la lista o no
-             //  console.log(selecCantidades[a]);
                filaNuevoProducto.innerHTML += ` 
-               <td>${contador}</td>
                <td>${descripcion}</td>
                <td class="cantidades p-auto" id="cantidadProducto${a}">${selecCantidades[a]}</td>
                <td><button type="button" class="btn btn-danger botonQuitar p-1" id="Q${a}">-</button>
@@ -56,81 +49,26 @@ for (const boton of botonAgregar) {
             }
 
 
-    //Botón quitar offcanvas
+    //Botón restar cantidad y quitar producto en offcanvas
 document.getElementById("Q"+a).addEventListener('click', () => {
     selecCantidades[a]--;
-    document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a]; 
+    document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a];
+    document.getElementById("totalProducto"+a).innerHTML = selecCantidades[a]*precioSumable;
         if (selecCantidades[a] === 0) {
-            
+            filaNuevoProducto.remove()
+            boton.disabled = false
         }
-         //  console.log(selecCantidades[a]);
-          // console.log(contador);
-     //  if (cantidadProducto < 1) {
-      //     console.log(true);
-             //  filaNuevoProducto.remove();
-          //     footerTotal.innerHTML = `                    
-          //     <td colspan="5">Tu carrito está vacío.</td>
-          //     `;
-          //     contador = 0;
-          //     cantidadProducto = 0;
-         //  }
-   
-//       }
 })
        
-// Boton agregar offcanvas
+// Boton sumar +1 cantidad offcanvas
 
         document.getElementById("A"+a).addEventListener('click', () => {
-            console.log(document.getElementById("A"+a));
-            console.log(botonAgregar);
-            selecCantidades[a]++;
-    
-            console.log(selecCantidades);
-            document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a]; 
- })  
- ;
-        
-       //Boton quitar
-       //const botonQuitar = document.querySelector(".botonQuitar");
-       //console.log(botonQuitar);
-       //for (const quitar of botonQuitar) {
-       //    quitar.addEventListener('click', () => {
-       //        console.log(quitar);
-           
-   // })
-   
+            selecCantidades[a]++;  
+            document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a];
+            document.getElementById("totalProducto"+a).innerHTML = selecCantidades[a]*precioSumable;
+ });
     });
-
-
-
 };
-   //Boton Quitar
-       //  console.log(document.getElementsByClassName("botonQuitar"));
-     //  const botonQuitar = document.querySelector("#1");
-     //  for(const botQuitar of botonQuitar) {
-    //       botonQuitar.addEventListener('click', () => {
-    //           console.log(selecCantidades);
-    //           a = btn-danger.id;
-    //           selecCantidades[a]--;
-   //            contador--;
-    //           document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a];
-              // cantidadProducto--;
-              // contador--;
-             //  console.log(selecCantidades[a]);
-              // console.log(contador);
-         //  if (cantidadProducto < 1) {
-          //     console.log(true);
-             //      filaNuevoProducto.remove();
-             //      footerTotal.innerHTML = `                    
-             //      <td colspan="5">Tu carrito está vacío.</td>
-             //      `;
-           //        contador = 0;
-            //       cantidadProducto = 0;
-           //    }
-       
-   //  }
-    //})
-   //}
     
    /*
    //Suma monto final
@@ -154,7 +92,7 @@ document.getElementById("Q"+a).addEventListener('click', () => {
       
        })
    
-   //Medalla carrito
+   //Medalla carrito (cantidad total productos)
    
        
    
