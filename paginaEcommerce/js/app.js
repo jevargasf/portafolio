@@ -26,6 +26,9 @@ for (const boton of botonAgregar) {
        const precioSumable = Number(precio.replace(/[^\d,]/g,""));
        const footerTotal = document.getElementById("totalCarrito");
 
+       //Suma monto final
+       let montoFinal = arrMonto.reduce((a,b) => a+b, 0);
+
        boton.addEventListener('click', () => {
    //Número producto en lista
            contador++;
@@ -36,7 +39,9 @@ for (const boton of botonAgregar) {
            cuerpoCarrito.appendChild(filaNuevoProducto);
 
    //Agrega producto a offcanvas
-           if (selecCantidades[a] === 1) { //aquí veo si tengo que agregarlo a la lista o no
+           if (selecCantidades[a] === 1) {
+            infoProductos(selecCantidades[a], precioSumable);
+            console.log(arrMonto, 'agrega producto');
                filaNuevoProducto.innerHTML += ` 
                <td>${descripcion}</td>
                <td class="cantidades p-auto" id="cantidadProducto${a}">${selecCantidades[a]}</td>
@@ -53,13 +58,14 @@ for (const boton of botonAgregar) {
                 <td></td>
                 <td>${precioSumable}</td>
                 `;
-                
             }
 
 
-    //Botón restar cantidad y quitar producto en offcanvas
+//Botón restar cantidad y quitar producto en offcanvas
 document.getElementById("Q"+a).addEventListener('click', () => {
     selecCantidades[a]--;
+    infoProductos(selecCantidades[a], precioSumable);
+    console.log(arrMonto, 'quita producto');
     document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a];
     document.getElementById("totalProducto"+a).innerHTML = selecCantidades[a]*precioSumable;
         if (selecCantidades[a] === 0) {
@@ -75,14 +81,36 @@ document.getElementById("Q"+a).addEventListener('click', () => {
 
         document.getElementById("A"+a).addEventListener('click', () => {
             selecCantidades[a]++;  
+            infoProductos(selecCantidades[a], precioSumable);
+            console.log(arrMonto, 'suma producto');
             document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a];
             document.getElementById("totalProducto"+a).innerHTML = selecCantidades[a]*precioSumable;
  });
     });
 
-       //Suma monto final
-       arrMonto.push(precioSumable);
-       let montoFinal = arrMonto.reduce((a,b) => a+b, 0);
+    //Función arreglo productos para suma monto final
+    function infoProductos (cantidad, precio) {
+        if (arrMonto.includes(precio) === false) {  
+            console.log('no lo incluye')
+            let arrProducto = [];
+            arrProducto.push(cantidad, precio);
+            arrMonto.push(arrProducto);
+        } else {
+            console.log('síp')
+            for(i=0; i < arrMonto.length; i++) {
+                if (arrMonto[i][1] === precio ) {
+                    arrMonto[i][0] = cantidad;
+                }
+            }
+        }
+    }
+
+/*function buscaProducto (arr, precio) {
+    if(arr.some(fila => fila.includes(precio)) === true) {
+        console.log(arr.indexOf(precio));
+    }
+    return arr.indexOf(precio);
+}*/
 
 //Suma cantidad de productos total
        for (const i of document.getElementsByClassName("cantidades")) {
