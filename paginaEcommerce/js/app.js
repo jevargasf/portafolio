@@ -90,7 +90,7 @@ document.getElementById("Q"+a).addEventListener('click', () => {
 
     //Función arreglo productos para suma monto final
     function infoProductos (cantidad, precio) {
-        if (arrMonto.includes(precio) === false) {  
+        if (arrMonto.some(fila => fila.includes(precio)) === false) {  
             console.log('no lo incluye')
             let arrProducto = [];
             arrProducto.push(cantidad, precio);
