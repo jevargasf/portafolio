@@ -91,14 +91,14 @@ document.getElementById("Q"+a).addEventListener('click', () => {
     //Función arreglo productos para suma monto final
     function infoProductos (cantidad, precio) {
         if (arrMonto.some(fila => fila.includes(precio)) === false) {  
-            console.log('no lo incluye')
             let arrProducto = [];
             arrProducto.push(cantidad, precio);
             arrMonto.push(arrProducto);
         } else {
-            console.log('síp')
             for(i=0; i < arrMonto.length; i++) {
-                if (arrMonto[i][1] === precio ) {
+                if (cantidad === 0) {
+                    arrMonto.splice(i, 1);
+                } else if (arrMonto[i][1] === precio ) {
                     arrMonto[i][0] = cantidad;
                 }
             }
