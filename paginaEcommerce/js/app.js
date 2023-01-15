@@ -58,6 +58,8 @@ for (const boton of botonAgregar) {
                 <td></td>
                 <td>${precioSumable}</td>
                 `;
+            sumaProductos(arrMonto);
+            sumaTotal(arrMonto);
             }
 
 
@@ -75,6 +77,8 @@ document.getElementById("Q"+a).addEventListener('click', () => {
             <td colspan="4">Tu carrito está vacío.</td>
             `;
         }
+    sumaProductos(arrMonto);
+    sumaTotal(arrMonto);
 })
        
 // Boton sumar +1 cantidad offcanvas
@@ -85,6 +89,8 @@ document.getElementById("Q"+a).addEventListener('click', () => {
             console.log(arrMonto, 'suma producto');
             document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a];
             document.getElementById("totalProducto"+a).innerHTML = selecCantidades[a]*precioSumable;
+            sumaProductos(arrMonto);
+            sumaTotal(arrMonto);
  });
     });
 
@@ -103,16 +109,28 @@ document.getElementById("Q"+a).addEventListener('click', () => {
                 }
             }
         }
-    }
-
-/*function buscaProducto (arr, precio) {
-    if(arr.some(fila => fila.includes(precio)) === true) {
-        console.log(arr.indexOf(precio));
-    }
-    return arr.indexOf(precio);
-}*/
+    };
 
 //Suma cantidad de productos total
+    function sumaProductos (arr) {
+        let cantidades = [];
+        for (i=0; i < arr.length; i++) {
+            cantidades.push(arr[i][0]);
+        }
+        let sumaCantidades = cantidades.reduce((a,b) => a+b, 0);
+        return console.log(sumaCantidades);
+    }
+    
+    function sumaTotal (arr) {
+        let sumaParcial = [];
+        for (i=0; i < arr.length; i++) {
+            let parcialProducto = arr[i][0]*arr[i][1];
+            sumaParcial.push(parcialProducto);
+        }
+        let sumaProductos = sumaParcial.reduce((a,b) => a+b, 0);
+        return console.log(sumaProductos);
+    }
+    /*
        for (const i of document.getElementsByClassName("cantidades")) {
         console.log(i)
            let conteoProductos =+ i.innerHTML;
@@ -124,7 +142,7 @@ document.getElementById("Q"+a).addEventListener('click', () => {
            <td></td>
            <td>${montoFinal}</td>
            `;
-       }
+       }*/
 };
 
 
