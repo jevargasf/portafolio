@@ -54,12 +54,11 @@ for (const boton of botonAgregar) {
 
                 footerTotal.innerHTML = `
                 <td>Total</td>
-                <td>${selecCantidades[a]}</td>
+                <td>${sumaCantidades(arrMonto)}</td>
                 <td></td>
-                <td>${precioSumable}</td>
+                <td>${sumaTotal(arrMonto)}</td>
                 `;
-            sumaProductos(arrMonto);
-            sumaTotal(arrMonto);
+
             }
 
 
@@ -70,15 +69,20 @@ document.getElementById("Q"+a).addEventListener('click', () => {
     console.log(selecCantidades[a], arrMonto, 'quita producto');
     document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a];
     document.getElementById("totalProducto"+a).innerHTML = selecCantidades[a]*precioSumable;
-        if (selecCantidades[a] === 0) {
+    footerTotal.innerHTML = `
+    <td>Total</td>
+    <td>${sumaCantidades(arrMonto)}</td>
+    <td></td>
+    <td>${sumaTotal(arrMonto)}</td>
+    `;
+
+        if (selecCantidades[a] === 0) {//no cantidad de producto vacía, arreglo carrito vacío
             filaNuevoProducto.remove()
             boton.disabled = false
             footerTotal.innerHTML = `
             <td colspan="4">Tu carrito está vacío.</td>
             `;
         }
-    sumaProductos(arrMonto);
-    sumaTotal(arrMonto);
 })
        
 // Boton sumar +1 cantidad offcanvas
@@ -89,12 +93,16 @@ document.getElementById("Q"+a).addEventListener('click', () => {
             console.log(arrMonto, 'suma producto');
             document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a];
             document.getElementById("totalProducto"+a).innerHTML = selecCantidades[a]*precioSumable;
-            sumaProductos(arrMonto);
-            sumaTotal(arrMonto);
+            footerTotal.innerHTML = `
+            <td>Total</td>
+            <td>${sumaCantidades(arrMonto)}</td>
+            <td></td>
+            <td>${sumaTotal(arrMonto)}</td>
+            `;
  });
     });
 
-    //Separa infoProductos en tres funciones
+    //Operaciones de manipulación arreglo carrito
     function agregaProducto (cantidad, precio) {
         if (arrMonto.some(fila => fila.includes(precio)) === false) {  
             let arrProducto = [];
@@ -122,13 +130,13 @@ document.getElementById("Q"+a).addEventListener('click', () => {
 
 
 //Suma cantidad de productos total
-    function sumaProductos (arr) {
+    function sumaCantidades (arr) {
         let cantidades = [];
         for (i=0; i < arr.length; i++) {
             cantidades.push(arr[i][0]);
         }
         let sumaCantidades = cantidades.reduce((a,b) => a+b, 0);
-        return console.log(sumaCantidades);
+        return sumaCantidades;
     }
     
     function sumaTotal (arr) {
@@ -138,21 +146,8 @@ document.getElementById("Q"+a).addEventListener('click', () => {
             sumaParcial.push(parcialProducto);
         }
         let sumaProductos = sumaParcial.reduce((a,b) => a+b, 0);
-        return console.log(sumaProductos);
+        return sumaProductos;
     }
-    /*
-       for (const i of document.getElementsByClassName("cantidades")) {
-        console.log(i)
-           let conteoProductos =+ i.innerHTML;
-           arr.push(conteoProductos);
-           let cantidadTotal = arr.reduce((a,b) => a+b, 0);
-           footerTotal.innerHTML = `
-           <td colspan="2"></td>
-           <td">${cantidadTotal}</td>
-           <td></td>
-           <td>${montoFinal}</td>
-           `;
-       }*/
 };
 
    //Medalla carrito (cantidad total productos)
