@@ -25,9 +25,8 @@ for (const boton of botonAgregar) {
        const precio = document.querySelector("#precio"+a).innerHTML;
        const precioSumable = Number(precio.replace(/[^\d,]/g,""));
        const footerTotal = document.getElementById("totalCarrito");
+       const medalla = document.getElementById("medalla");
 
-       //Suma monto final
-       let montoFinal = arrMonto.reduce((a,b) => a+b, 0);
 
        boton.addEventListener('click', () => {
    //Número producto en lista
@@ -41,7 +40,6 @@ for (const boton of botonAgregar) {
    //Agrega producto a offcanvas
            if (selecCantidades[a] === 1) {
             agregaProducto(selecCantidades[a], precioSumable);
-            console.log(arrMonto, 'agrega producto');
                filaNuevoProducto.innerHTML += ` 
                <td>${descripcion}</td>
                <td class="cantidades p-auto" id="cantidadProducto${a}">${selecCantidades[a]}</td>
@@ -58,7 +56,9 @@ for (const boton of botonAgregar) {
                 <td></td>
                 <td>${sumaTotal(arrMonto)}</td>
                 `;
-
+                medalla.innerHTML = `
+                <span class="material-symbols-outlined">shopping_cart</span>${sumaCantidades(arrMonto)}
+                `;
             }
 
 
@@ -66,7 +66,6 @@ for (const boton of botonAgregar) {
 document.getElementById("Q"+a).addEventListener('click', () => {
     selecCantidades[a]--;
     quitaProducto(selecCantidades[a], precioSumable);
-    console.log(selecCantidades[a], arrMonto, 'quita producto');
     document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a];
     document.getElementById("totalProducto"+a).innerHTML = selecCantidades[a]*precioSumable;
     footerTotal.innerHTML = `
@@ -75,22 +74,31 @@ document.getElementById("Q"+a).addEventListener('click', () => {
     <td></td>
     <td>${sumaTotal(arrMonto)}</td>
     `;
+    medalla.innerHTML = `
+    <span class="material-symbols-outlined">shopping_cart</span>${sumaCantidades(arrMonto)}
+    `;
 
-        if (selecCantidades[a] === 0) {//no cantidad de producto vacía, arreglo carrito vacío
+        if (selecCantidades[a] === 0) {
             filaNuevoProducto.remove()
             boton.disabled = false
-            footerTotal.innerHTML = `
-            <td colspan="4">Tu carrito está vacío.</td>
-            `;
+             }
+        if (arrMonto.length === 0) {
+                footerTotal.innerHTML = `
+                <td colspan="4">Tu carrito está vacío.</td>
+                `;
+                medalla.innerHTML = `
+                <span class="material-symbols-outlined">shopping_cart</span>
+                `;
+            }
+
         }
-})
+);
        
 // Boton sumar +1 cantidad offcanvas
 
         document.getElementById("A"+a).addEventListener('click', () => {
             selecCantidades[a]++;  
             sumaProducto(selecCantidades[a], precioSumable);
-            console.log(arrMonto, 'suma producto');
             document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a];
             document.getElementById("totalProducto"+a).innerHTML = selecCantidades[a]*precioSumable;
             footerTotal.innerHTML = `
@@ -98,6 +106,9 @@ document.getElementById("Q"+a).addEventListener('click', () => {
             <td>${sumaCantidades(arrMonto)}</td>
             <td></td>
             <td>${sumaTotal(arrMonto)}</td>
+            `;
+            medalla.innerHTML = `
+            <span class="material-symbols-outlined">shopping_cart</span>${sumaCantidades(arrMonto)}
             `;
  });
     });
@@ -149,5 +160,3 @@ document.getElementById("Q"+a).addEventListener('click', () => {
         return sumaProductos;
     }
 };
-
-   //Medalla carrito (cantidad total productos)
