@@ -25,13 +25,12 @@ for (const boton of botonAgregar) {
        const precio = document.querySelector("#precio"+a).innerHTML;
        const precioSumable = Number(precio.replace(/[^\d,]/g,""));
        const footerTotal = document.getElementById("totalCarrito");
-       const medalla = document.getElementById("medalla");
-
+       const medalla = document.getElementById("medalla"); 
 
        boton.addEventListener('click', () => {
    //Número producto en lista
            contador++;
-           selecCantidades[a] += 1; //aquí ya almacenó +1
+           selecCantidades[a] += 1;
    // Nueva fila 
            const cuerpoCarrito = document.getElementById("cuerpoCarrito"); 
            const filaNuevoProducto = document.createElement("tr");
@@ -51,16 +50,24 @@ for (const boton of botonAgregar) {
                 boton.disabled = true;
 
                 footerTotal.innerHTML = `
+                <tr>
                 <td>Total</td>
                 <td>${sumaCantidades(arrMonto)}</td>
                 <td></td>
                 <td>${sumaTotal(arrMonto)}</td>
+                </tr>
                 `;
                 medalla.innerHTML = `
                 <span class="material-symbols-outlined">shopping_cart</span>${sumaCantidades(arrMonto)}
                 `;
             }
 
+           /* <tr>
+            <td colspan="4">
+            <label for="formControlInput" class="form-label"></label>
+            <input type="email" class="form-control" id="formControlInput" placeholder="Ingresa código descuento">
+            </td>
+            </tr>*/
 
 //Botón restar cantidad y quitar producto en offcanvas
 document.getElementById("Q"+a).addEventListener('click', () => {
