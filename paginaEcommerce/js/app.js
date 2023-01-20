@@ -26,6 +26,8 @@ for (const boton of botonAgregar) {
        const precioSumable = Number(precio.replace(/[^\d,]/g,""));
        const footerTotal = document.getElementById("totalCarrito");
        const medalla = document.getElementById("medalla"); 
+       const inputDcto = document.getElementById("inputDescuento");
+
 
        boton.addEventListener('click', () => {
    //Número producto en lista
@@ -49,25 +51,29 @@ for (const boton of botonAgregar) {
                 
                 boton.disabled = true;
 
-                footerTotal.innerHTML = `
+                footerTotal.innerHTML = 
+                `
                 <tr>
                 <td>Total</td>
                 <td>${sumaCantidades(arrMonto)}</td>
                 <td></td>
                 <td>${sumaTotal(arrMonto)}</td>
                 </tr>
-                `;
+                `            
+                ;
                 medalla.innerHTML = `
                 <span class="material-symbols-outlined">shopping_cart</span>${sumaCantidades(arrMonto)}
                 `;
             }
+            if (inputDcto.innerHTML === "") {
+                // llamada al DOM
+                inputDcto.innerHTML =
+                `<td colspan="4">
+                <label for="formControlInput" class="form-label"></label>
+                <input type="email" class="form-control" id="formControlInput" placeholder="Ingresa código descuento">
+                </td>`
+            }
 
-           /* <tr>
-            <td colspan="4">
-            <label for="formControlInput" class="form-label"></label>
-            <input type="email" class="form-control" id="formControlInput" placeholder="Ingresa código descuento">
-            </td>
-            </tr>*/
 
 //Botón restar cantidad y quitar producto en offcanvas
 document.getElementById("Q"+a).addEventListener('click', () => {
@@ -96,9 +102,8 @@ document.getElementById("Q"+a).addEventListener('click', () => {
                 medalla.innerHTML = `
                 <span class="material-symbols-outlined">shopping_cart</span>
                 `;
-            }
-
-        }
+                inputDcto.innerHTML = ``;
+            }    }
 );
        
 // Boton sumar +1 cantidad offcanvas
@@ -166,4 +171,22 @@ document.getElementById("Q"+a).addEventListener('click', () => {
         let sumaProductos = sumaParcial.reduce((a,b) => a+b, 0);
         return sumaProductos;
     }
+
+    //Agregar input descuento
+    function botonDescuento (arr) {
+    let inputDcto = document.getElementById("inputDescuento").innerHTML;
+    if (inputDcto === "") {
+            // llamada al DOM
+            inputDcto =
+            `<td colspan="4">
+            <label for="formControlInput" class="form-label"></label>
+            <input type="email" class="form-control" id="formControlInput" placeholder="Ingresa código descuento">
+            </td>`
+        }         else if (arr.length === 0) {
+            // .remove variable de llamada al DOM
+            inputDcto.remove()
+        }
+    }
+    
 };
+
