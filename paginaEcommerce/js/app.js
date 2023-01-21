@@ -68,10 +68,19 @@ for (const boton of botonAgregar) {
             if (inputDcto.innerHTML === "") {
                 // llamada al DOM
                 inputDcto.innerHTML =
-                `<td colspan="4">
-                <label for="formControlInput" class="form-label"></label>
-                <input type="email" class="form-control" id="formControlInput" placeholder="Ingresa código descuento">
-                </td>`
+                `
+                <div class="input-group mb-2">
+                <button type="button" class="btn btn-outline-secondary botonAgregar" id="input-group-button-left">Button</button>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="input-group-button-left">
+                </div>
+                `
+                /*`
+                <td colspan="3">
+                <input type="text" class="form-control" id="inputDescuento" placeholder="Ingresa código descuento">
+                </td>
+                <td colspan="1">
+                <button type="button" class="btn btn-primary" id="botonDescuento">Aplicar</button>
+                </td>`*/
             }
 
 
@@ -172,21 +181,18 @@ document.getElementById("Q"+a).addEventListener('click', () => {
         return sumaProductos;
     }
 
-    //Agregar input descuento
-    function botonDescuento (arr) {
-    let inputDcto = document.getElementById("inputDescuento").innerHTML;
-    if (inputDcto === "") {
-            // llamada al DOM
-            inputDcto =
-            `<td colspan="4">
-            <label for="formControlInput" class="form-label"></label>
-            <input type="email" class="form-control" id="formControlInput" placeholder="Ingresa código descuento">
-            </td>`
-        }         else if (arr.length === 0) {
-            // .remove variable de llamada al DOM
-            inputDcto.remove()
-        }
-    }
-    
+    document.getElementById("input-group-button-left").addEventListener('click',
+    console.log("aplicaDescuento(arrMonto)")
+)
+
 };
+
+//Función aplica descuento
+/*function aplicaDescuento (arr) {
+    sumaTotal(arr);
+    let codigoDescuento = document.getElementById("inputDescuento").value;
+    let descuento = parseInt(codigoDescuento.slice(8, 10));
+    let precioDescuento = sumaProductos-(sumaProductos*descuento/100);
+    return precioDescuento
+    }*/
 
