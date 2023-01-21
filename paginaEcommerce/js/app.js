@@ -69,10 +69,12 @@ for (const boton of botonAgregar) {
                 // llamada al DOM
                 inputDcto.innerHTML =
                 `
-                <div class="input-group mb-2">
-                <button type="button" class="btn btn-outline-secondary botonAgregar" id="input-group-button-left">Button</button>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="input-group-button-left">
+                <td colspan="4">
+                <div class="input-group">
+                <input type="text" class="form-control" placeholder="Ingresa código descuento" aria-label="Username" aria-describedby="input-group-button-right" id="textoDescuento">
+                <button type="button" class="btn btn-outline-secondary" id="input-group-button-right">Aplicar</button>
                 </div>
+                </td>
                 `
                 /*`
                 <td colspan="3">
@@ -82,7 +84,14 @@ for (const boton of botonAgregar) {
                 <button type="button" class="btn btn-primary" id="botonDescuento">Aplicar</button>
                 </td>`*/
             }
+    //Botón aplica descuento 
+            document.getElementById("input-group-button-right")?.addEventListener('click', () => {
+                //console.log("aplicaDescuento(arrMonto)")
+                //aplicaDescuento(arrMonto)
+                console.log(document.getElementById("textoDescuento").value);
 
+            }
+           );
 
 //Botón restar cantidad y quitar producto en offcanvas
 document.getElementById("Q"+a).addEventListener('click', () => {
@@ -132,7 +141,22 @@ document.getElementById("Q"+a).addEventListener('click', () => {
             <span class="material-symbols-outlined">shopping_cart</span>${sumaCantidades(arrMonto)}
             `;
  });
+
+
+
+//Función aplica descuento
+//function aplicaDescuento (arr) {
+   // let codigoDescuento = document.getElementById("inputDescuento").value;
+   // let descuento = parseInt(codigoDescuento.slice(8, 10));
+   // let precioDescuento = sumaTotal(arr)-(sumaTotal(arr)*descuento/100);
+  //  return console.log(precioDescuento)
+   // }
+
     });
+
+
+
+
 
     //Operaciones de manipulación arreglo carrito
     function agregaProducto (cantidad, precio) {
@@ -181,18 +205,7 @@ document.getElementById("Q"+a).addEventListener('click', () => {
         return sumaProductos;
     }
 
-    document.getElementById("input-group-button-left").addEventListener('click',
-    console.log("aplicaDescuento(arrMonto)")
-)
 
 };
 
-//Función aplica descuento
-/*function aplicaDescuento (arr) {
-    sumaTotal(arr);
-    let codigoDescuento = document.getElementById("inputDescuento").value;
-    let descuento = parseInt(codigoDescuento.slice(8, 10));
-    let precioDescuento = sumaProductos-(sumaProductos*descuento/100);
-    return precioDescuento
-    }*/
 
