@@ -1,14 +1,16 @@
-//Recuperar info producto del DOM
+//Recuperar botones Agregar Carrito en el DOM
 const botonAgregar = document.getElementsByClassName("botonAgregar");
 
 //Contador de lista productos
 let contador = 0;
 
+//Variables iniciales
 let totalProducto = 0;
 let total = 0;
 let cantidadTotal = 0;
 let arrMonto = [];
 
+//Objeto con cantidades iniciales de cada producto en el carrito
 let selecCantidades = {
     1:0,
     2:0,
@@ -17,9 +19,8 @@ let selecCantidades = {
 };
 
 
-
 for (const boton of botonAgregar) {
-       //Acceder info productos
+       //Acceder info productos y objetos DOM
        let a = boton.id;       
        const descripcion = document.querySelector("#producto"+a).innerHTML;
        const precio = document.querySelector("#precio"+a).innerHTML;
@@ -28,12 +29,12 @@ for (const boton of botonAgregar) {
        const medalla = document.getElementById("medalla"); 
        const inputDcto = document.getElementById("inputDescuento");
 
-
+//Evento click botón Agregar Carrito
        boton.addEventListener('click', () => {
-   //Número producto en lista
+   //Suma producto en lista
            contador++;
            selecCantidades[a] += 1;
-   // Nueva fila 
+   // Nueva fila en carrito
            const cuerpoCarrito = document.getElementById("cuerpoCarrito"); 
            const filaNuevoProducto = document.createElement("tr");
            cuerpoCarrito.appendChild(filaNuevoProducto);
@@ -66,7 +67,6 @@ for (const boton of botonAgregar) {
                 `;
             }
             if (inputDcto.innerHTML === "") {
-                // llamada al DOM
                 inputDcto.innerHTML =
                 `
                 <td colspan="4">
@@ -76,51 +76,44 @@ for (const boton of botonAgregar) {
                 </div>
                 </td>
                 `
-                /*`
-                <td colspan="3">
-                <input type="text" class="form-control" id="inputDescuento" placeholder="Ingresa código descuento">
-                </td>
-                <td colspan="1">
-                <button type="button" class="btn btn-primary" id="botonDescuento">Aplicar</button>
-                </td>`*/
             }
     //Botón aplica descuento 
         document.getElementById("input-group-button-right")?.addEventListener('click', () => {
             aplicaDescuento(arrMonto);
             });
 
-//Botón restar cantidad y quitar producto en offcanvas
-document.getElementById("Q"+a).addEventListener('click', () => {
-    selecCantidades[a]--;
-    quitaProducto(selecCantidades[a], precioSumable);
-    document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a];
-    document.getElementById("totalProducto"+a).innerHTML = selecCantidades[a]*precioSumable;
-    footerTotal.innerHTML = `
-    <td>Total</td>
-    <td>${sumaCantidades(arrMonto)}</td>
-    <td></td>
-    <td id="sumaTotal">${sumaTotal(arrMonto)}</td>
-    `;
-    medalla.innerHTML = `
-    <span class="material-symbols-outlined">shopping_cart</span>${sumaCantidades(arrMonto)}
-    `;
+    //Botón restar cantidad y quitar producto en offcanvas
+    document.getElementById("Q"+a).addEventListener('click', () => {
+        selecCantidades[a]--;
+        quitaProducto(selecCantidades[a], precioSumable);
+        document.getElementById("cantidadProducto"+a).innerHTML = selecCantidades[a];
+        document.getElementById("totalProducto"+a).innerHTML = selecCantidades[a]*precioSumable;
+        footerTotal.innerHTML = `
+        <td>Total</td>
+        <td>${sumaCantidades(arrMonto)}</td>
+        <td></td>
+        <td id="sumaTotal">${sumaTotal(arrMonto)}</td>
+        `;
+        medalla.innerHTML = `
+        <span class="material-symbols-outlined">shopping_cart</span>${sumaCantidades(arrMonto)}
+        `;
 
-        if (selecCantidades[a] === 0) {
-            filaNuevoProducto.remove()
-            boton.disabled = false
-             }
-        if (arrMonto.length === 0) {
-                footerTotal.innerHTML = `
-                <td colspan="4">Tu carrito está vacío.</td>
-                `;
-                medalla.innerHTML = `
-                <span class="material-symbols-outlined">shopping_cart</span>
-                `;
-                inputDcto.innerHTML = ``;
-            }    }
-);
+            if (selecCantidades[a] === 0) {
+                filaNuevoProducto.remove()
+                boton.disabled = false
+                }
+            if (arrMonto.length === 0) {
+                    footerTotal.innerHTML = `
+                    <td colspan="4">Tu carrito está vacío.</td>
+                    `;
+                    medalla.innerHTML = `
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    `;
+                    inputDcto.innerHTML = ``;
+                }    }
+    );
        
-// Boton sumar +1 cantidad offcanvas
+    // Boton sumar +1 cantidad offcanvas
 
         document.getElementById("A"+a).addEventListener('click', () => {
             selecCantidades[a]++;  
@@ -136,10 +129,7 @@ document.getElementById("Q"+a).addEventListener('click', () => {
             medalla.innerHTML = `
             <span class="material-symbols-outlined">shopping_cart</span>${sumaCantidades(arrMonto)}
             `;
- });
-
-
-
+        });
 
     //Operaciones de manipulación arreglo carrito
     function agregaProducto (cantidad, precio) {
@@ -195,7 +185,6 @@ function aplicaDescuento (arr) {
     let precioDescuento = sumaTotal(arr)-(sumaTotal(arr)*descuento/100);
     return document.getElementById("sumaTotal").innerHTML = precioDescuento
     }
-
     });
 };
 
