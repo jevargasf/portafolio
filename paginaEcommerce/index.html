@@ -52,7 +52,7 @@
         </form>
 
   <!-- Modal ingreso usuarios -->
-
+        <!-- Modal inicio sesión -->
   <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="modal-footer text-center">
-          <button type="submit" class="btn btn-primary">Ingresar</button>
+          <button type="submit" class="btn btn-success">Ingresar</button>
               <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">
               Registrarse
               </button>
@@ -79,6 +79,8 @@
       </div>
     </div>
   </div>
+
+      <!-- Modal registro -->
   <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -89,41 +91,24 @@
         <div class="modal-body">
 
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">@</span>
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1">
           </div>
           
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon2">@example.com</span>
-          </div>
-          
-          <label for="basic-url" class="form-label">Your vanity URL</label>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-          </div>
-          
-          <div class="input-group mb-3">
-            <span class="input-group-text">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-            <span class="input-group-text">.00</span>
-          </div>
-          
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-            <span class="input-group-text">@</span>
-            <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-          </div>
-          
-          <div class="input-group">
-            <span class="input-group-text">With textarea</span>
-            <textarea class="form-control" aria-label="With textarea"></textarea>
+            <input type="text" class="form-control" placeholder="RUT" aria-label="Username" aria-describedby="basic-addon1">
           </div>
 
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Correo electrónico" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          </div>
+          
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          </div>
+        
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Volver a inicio de sesión</button>
+          <button class="btn btn-secondary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Volver a inicio de sesión</button>
           <button class="btn btn-primary">Registrarse</button>
 
         </div>
@@ -175,7 +160,7 @@
           <h5 class="card-title producto1" id="producto1" >Guitarra Fender Stratocaster Traditional 50s Made In Japan</h5>
           <h4 class="card-title" id="precio1">$1.249.990</h4>
           <div class="d-grid gap-2 d-md-flex justify-content-around mt-auto">
-            <a class="btn btn-secondary" href="/paginaEcommerce/fichaProducto1.html" role="button">Ver más</a>
+            <a class="btn btn-secondary" data-bs-toggle="modal" href="#modalFicha1" role="button">Ver más</a>
             <button type="button" class="btn btn-primary botonAgregar" id="1" value="1">Agregar al carrito</button>
           </div>
         </div>
@@ -188,7 +173,7 @@
           <h5 class="card-title" id="producto2" >Pack de Studio Focusrite Scarlett Solo 3rd Gen</h5>
           <h4 class="card-title" id="precio2">$299.900</h4>
           <div class="d-grid gap-2 d-md-flex justify-content-around mt-auto">
-            <a class="btn btn-secondary" href="/paginaEcommerce/fichaProducto2.html" role="button">Ver más</a>
+            <a class="btn btn-secondary" data-bs-toggle="modal" href="#modalFicha2" role="button">Ver más</a>
             <button type="button" class="btn btn-primary botonAgregar" id="2" value="1">Agregar al carrito</button>
           </div>
         </div>
@@ -201,7 +186,7 @@
           <h5 class="card-title" id="producto3" >Amplificador de guitarra VOX AC30C2X - 30W</h5>
           <h4 class="card-title" id="precio3">$1.359.900</h4>
           <div class="d-grid gap-2 d-md-flex justify-content-around mt-auto">
-            <a class="btn btn-secondary" href="/paginaEcommerce/fichaProducto3.html" role="button">Ver más</a>
+            <a class="btn btn-secondary" data-bs-toggle="modal" href="#modalFicha3" role="button">Ver más</a>
             <button type="button" class="btn btn-primary botonAgregar" id="3" value="1">Agregar al carrito</button>
           </div>
         </div>
@@ -214,13 +199,223 @@
           <h5 class="card-title" id="producto4" >Pedal Ibanez TSMINI - Tube Screamer</h5>
           <h4 class="card-title" id="precio4">$59.990</h4>
           <div class="d-grid gap-2 d-md-flex justify-content-around mt-auto">
-            <a class="btn btn-secondary" href="/paginaEcommerce/fichaProducto4.html" role="button">Ver más</a>
+            <a class="btn btn-secondary" data-bs-toggle="modal" href="#modalFicha4" role="button">Ver más</a>
             <button type="button" class="btn btn-primary botonAgregar" id="4" value="1">Agregar al carrito</button>
           </div>
         </div>
       </div>
     </div>
 </div>
+
+<!-- Modal productos -->
+
+<div class="modal fade" id="modalFicha1" aria-hidden="true" aria-labelledby="modalFicha1" tabindex="-1">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tiendita de Música</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+<!--Ficha Producto -->
+   <!--Producto 1 -->
+<div class="row pt-5 pb-5 px-5">
+  <div class="col-8 d-flex align-items-lg-stretch">
+    <div class="card">
+      <div class="row g-0">
+        <div class="col-4 col-sm-4">
+          <img src="/paginaEcommerce/img/producto1_strato.webp" class="img-fluid w-100 p-3" alt="card-horizontal-image">
+        </div>
+        <div class="col-8 col-sm-8">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Guitarra Fender Stratocaster Traditional 50s Made In Japan</h5>
+            <h4 class="card-title">$1.249.990</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse dolorem alias praesentium quas? Accusantium numquam cupiditate, optio omnis dolorem quibusdam dignissimos incidunt ipsum, quia ex fugiat commodi id doloribus vitae.</p>
+                      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        Stock: Quedan 3 disponibles.
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Despacho a todo el país</h5>
+        <p class="card-text">Paga en hasta 12 cuotas sin interés.</p>
+      </div>
+      <div class="card-footer text-muted">
+        Devolución gratis. Tienes hasta 30 días desde que lo recibes.
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Producto 2 -->
+<div class="modal fade" id="modalFicha2" aria-hidden="true" aria-labelledby="modalFicha2" tabindex="-1">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="row pt-5 pb-5 px-5">
+          <div class="col-8 d-flex align-items-lg-stretch">
+            <div class="card">
+              <div class="row g-0">
+                <div class="col-4 col-sm-4">
+                  <img src="/paginaEcommerce/img/producto2_scarlett2i2.webp" class="img-fluid w-100 p-3" alt="card-horizontal-image">
+                </div>
+                <div class="col-8 col-sm-8">
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Pack de Studio Focusrite Scarlett Solo 3rd Gen</h5>
+                    <h4 class="card-title">$299.900</h4>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse dolorem alias praesentium quas? Accusantium numquam cupiditate, optio omnis dolorem quibusdam dignissimos incidunt ipsum, quia ex fugiat commodi id doloribus vitae.</p>
+                              </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-header">
+                Stock: Quedan 10 disponibles.
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Despacho a todo el país</h5>
+                <p class="card-text">Paga en hasta 12 cuotas sin interés.</p>
+              </div>
+              <div class="card-footer text-muted">
+                Devolución gratis. Tienes hasta 30 días desde que lo recibes.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Producto 3 -->
+<div class="modal fade" id="modalFicha3" aria-hidden="true" aria-labelledby="modalFicha3" tabindex="-1">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="row  pt-5 pb-5 px-5">
+          <div class="col-8 d-flex align-items-lg-stretch">
+            <div class="card">
+              <div class="row g-0">
+                <div class="col-4 col-sm-4">
+                  <img src="/paginaEcommerce/img/producto3_amplivox.webp" class="img-fluid w-100 p-3" alt="card-horizontal-image">
+                </div>
+                <div class="col-8 col-sm-8">
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Amplificador de guitarra VOX AC30C2X - 30W</h5>
+                    <h4 class="card-title">$1.359.900</h4>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse dolorem alias praesentium quas? Accusantium numquam cupiditate, optio omnis dolorem quibusdam dignissimos incidunt ipsum, quia ex fugiat commodi id doloribus vitae.</p>
+                              </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-header">
+                Stock: Quedan 2 disponibles.
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Despacho a todo el país</h5>
+                <p class="card-text">Paga en hasta 12 cuotas sin interés.</p>
+              </div>
+              <div class="card-footer text-muted">
+                Devolución gratis. Tienes hasta 30 días desde que lo recibes.
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Producto 4 -->
+<div class="modal fade" id="modalFicha4" aria-hidden="true" aria-labelledby="modalFicha4" tabindex="-1">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="row pt-5 pb-5 px-5">
+          <div class="col-8 d-flex align-items-lg-stretch">
+            <div class="card">
+              <div class="row g-0">
+                <div class="col-4 col-sm-4">
+                  <img src="/paginaEcommerce/img/producto4_tubescreamermini.webp" class="img-fluid w-100 p-3" alt="card-horizontal-image">
+                </div>
+                <div class="col-8 col-sm-8">
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Pedal Ibanez TSMINI - Tube Screamer</h5>
+                    <h4 class="card-title">$59.990</h4>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse dolorem alias praesentium quas? Accusantium numquam cupiditate, optio omnis dolorem quibusdam dignissimos incidunt ipsum, quia ex fugiat commodi id doloribus vitae.</p>
+                              </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-header">
+                Stock: Quedan 7 disponibles.
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Despacho a todo el país</h5>
+                <p class="card-text">Paga en hasta 12 cuotas sin interés.</p>
+              </div>
+              <div class="card-footer text-muted">
+                Devolución gratis. Tienes hasta 30 días desde que lo recibes.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Footer -->
 <footer>
   <div class="text-center p-4 text-secondary" style="background-color: rgba(0, 0, 0, 0.05);">
