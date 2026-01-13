@@ -140,9 +140,9 @@ CREATE TABLE IF NOT EXISTS `documentos_profesionales` (
   `es_foto_perfil` TINYINT(1) DEFAULT 0,
   `estado` INT DEFAULT 1,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_docs_proyecto`
-    FOREIGN KEY (`proyecto_id`)
-    REFERENCES `proyectos` (`id`)
+  CONSTRAINT `fk_docs_perfil`
+    FOREIGN KEY (`perfil_id`)
+    REFERENCES `perfil_profesional` (`id`)
     ON DELETE CASCADE
 );
 
@@ -180,6 +180,7 @@ CREATE TABLE IF NOT EXISTS `documentos_proyectos` (
     REFERENCES `proyectos` (`id`)
     ON DELETE CASCADE
 );
+
 
 -- -----------------------------------------------------
 -- 5. CATEGORIZACIÓN (Tecnologías vs Habilidades)
