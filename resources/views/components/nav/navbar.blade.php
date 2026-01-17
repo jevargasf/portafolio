@@ -24,9 +24,12 @@
                         <a class="nav-link" href="#">Perfil</a>
                     </li>
                 @else
+                    @if(Route::has('login'))
+                    @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
                     </li>
+                    @endif
                 @endauth
             </ul>
         </div>
