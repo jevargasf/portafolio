@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-color: #1E40AF; /* El azul de Bootstrap (o tu color favorito) */
+    --text-dark: #212529;
+    --success-color: #10B981;
+    --danger-color: #EF4444;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: var(--text-dark);
+}
+
+#formLogin{
+    width: 100%; 
+    max-width: 400px;
+    /* border: none;  */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+#formLogin .form-label {
+    display: block;
+    text-align: left;    
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+#formLogin .btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-weight: 600;
+    background-color: var(--primary-color);
+}
