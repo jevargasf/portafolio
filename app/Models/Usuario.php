@@ -15,6 +15,8 @@ class Usuario extends Authenticatable
     
     const CREATED_AT = 'fecha_creacion';
     const UPDATED_AT = 'ultima_actualizacion';
+    const ESTADO_ACTIVO = 1;
+    const ESTADO_ELIMINADO = 9;
     
     protected $fillable = [
         'run',

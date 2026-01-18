@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
 {
+    public function formCrearUsuario(Request $request){
+        return view('admin.usuarios.crear-usuario');
+    }
+
     public function crearUsuario(Request $request){
         $validated = $request->validate([
             'run' => ['required', 'unique:usuarios,run', 'regex:/^[0-9]{1,2}\.[0-9]{3}\.[0-9]{3}-[0-9kK]{1}$/'],
@@ -67,6 +70,20 @@ class UsuariosController extends Controller
         ], 200);
     }
 
+    public function formEditarUsuario(Request $request){
+        $request->validate(['id' => 'required|integer']);
+
+        $usuario = Usuario::find($request->id);
+
+        if (!$usuario) {
+            return redirect()->route('usuarios.listar')->with('error', 'Usuario no encontrado');
+        }
+
+        return view('admin.usuarios.editar-usuario', [
+            'usuario' => $usuario
+        ]);
+    }
+
     public function editarUsuario(Request $request){
         $usuario = Usuario::find($request->id);
 
@@ -118,7 +135,7 @@ class UsuariosController extends Controller
             return response()->json(['success' => false, 'message' => 'Usuario no encontrado'], 404);
         }
 
-        $usuario->estado = 9;
+        $usuario->estado = Usuario::ESTADO_ELIMINADO;
         $usuario->save();
         $mensaje = 'Usuario desactivado correctamente';
 
