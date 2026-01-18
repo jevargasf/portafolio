@@ -15,6 +15,10 @@ body{
     color: var(--text-dark);
 }
 
+/* -------------------------- */
+/* ---- PUBLIC: LOGIN ------  */
+/* -------------------------- */
+
 #formLogin{
     width: 100%; 
     max-width: 400px;
@@ -31,6 +35,33 @@ body{
 }
 
 #formLogin .btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-weight: 600;
+    background-color: var(--primary-color);
+}
+
+
+/* -------------------------- */
+/* ---- ADMIN: USUARIOS ----  */
+/* -------------------------- */
+
+.form-admin{
+    width: 100%; 
+    max-width: 600px;
+    /* border: none;  */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.form-admin .form-label {
+    display: block;
+    text-align: left;    
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.form-admin .btn-primary {
     width: 100%;
     padding: 10px;
     font-weight: 600;
