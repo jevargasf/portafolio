@@ -7,12 +7,12 @@
 
             <div class="mb-3">
                 <label for="correo" class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control" id="correo" placeholder="correo@ejemplo.com">
+                <input type="email" name="correo" class="form-control" id="correo" placeholder="correo@ejemplo.com">
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" name="password" class="form-control" id="password">
             </div>
 
             <button class="btn btn-primary" type="submit">Entrar</button>
