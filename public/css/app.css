@@ -2,6 +2,8 @@
 
 :root {
     --primary-color: #1E40AF; /* El azul de Bootstrap (o tu color favorito) */
+    --background-primary: #f8f9fa;
+    --background-secondary: #E9ECEF;
     --text-dark: #212529;
     --success-color: #10B981;
     --danger-color: #EF4444;
@@ -45,6 +47,15 @@ body{
 /* -------------------------- */
 /* ---- ADMIN: USUARIOS ----  */
 /* -------------------------- */
+
+#sidebar{
+    background-color: var(--background-secondary);
+    height: 100%;
+}
+
+#sidebar span, #sidebar a{
+    color: var(--text-dark);
+}
 
 .form-admin{
     width: 100%; 

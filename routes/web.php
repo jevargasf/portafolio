@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProyectosController;
@@ -10,12 +11,16 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
 });
 
-Route::middleware('auth')->group(function () {
+Route::get('/', function () {
+    return view('inicio');
+})->name('inicio');
+
+// Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     
-    Route::get('/inicio', function () {
-        return view('inicio');
-    })->name('inicio');
+    Route::controller(AdminController::class)->prefix('admin')->name('admin.')->group(function(){
+        Route::get('/', 'inicio')->name('inicio');          
+    });
 
     Route::controller(UsuariosController::class)->prefix('usuarios')->name('usuarios.')->group(function(){
         Route::get('/', 'listarUsuarios')->name('listar');          
@@ -33,4 +38,4 @@ Route::middleware('auth')->group(function () {
         Route::post('/', 'store')->name('store');      // Guardar en BD
         Route::get('/{id}/editar', 'edit')->name('edit');
     });
-});
+// });

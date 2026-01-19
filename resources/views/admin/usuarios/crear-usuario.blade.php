@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-layouts.dashboard>
     <h2 class="text-center mt-3">Crear Usuario</h2>
     <div class="card p-4 mx-auto my-5 text-center form-admin" id="formCrearUsuario">
         <form action="{{ route('usuarios.crear') }}" method="POST">
@@ -43,4 +43,4 @@
             <button class="btn btn-primary" type="submit">Crear Usuario</button>
         </form>
     </div>
-</x-layouts.app>
+</x-layouts.dashboard>
