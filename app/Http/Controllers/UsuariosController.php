@@ -4,17 +4,80 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class UsuariosController extends Controller
 {
+    private function formatearRun($run)
+    {
+        $run = preg_replace('/[^0-9kK]/', '', $run);
+        
+        if (strlen($run) < 2) return $run;
+
+        $dv = substr($run, -1);
+        $cuerpo = substr($run, 0, -1);
+
+        // $cuerpo = number_format($cuerpo, 0, '', '.');
+        return $cuerpo . '-' . strtoupper($dv);
+    }
+
+    private function validarRun($run)
+    {
+        if (!str_contains($run, '-')) return false;
+        
+        list($cuerpo, $dv) = explode('-', $run);
+        
+        if (!is_numeric($cuerpo)) return false;
+
+        $cuerpo = (int)$cuerpo;
+        $dv = strtoupper($dv);
+
+        $suma = 0;
+        $multiplo = 2;
+
+        while ($cuerpo > 0) {
+            $suma += ($cuerpo % 10) * $multiplo;
+            $cuerpo = (int)($cuerpo / 10);
+            $multiplo++;
+            if ($multiplo > 7) $multiplo = 2;
+        }
+
+        $resto = $suma % 11;
+        $dvCalculado = 11 - $resto;
+
+        if ($dvCalculado == 11) $dvCalculado = '0';
+        else if ($dvCalculado == 10) $dvCalculado = 'K';
+        else $dvCalculado = (string)$dvCalculado;
+
+        return $dv === $dvCalculado;
+    }
+
     public function formCrearUsuario(Request $request){
         return view('admin.usuarios.crear-usuario');
     }
 
     public function crearUsuario(Request $request){
+        if ($request->has('run')) {
+            $runFormateado = $this->formatearRun($request->run);
+            
+            $request->merge(['run' => $runFormateado]);
+        }
+        
         $validated = $request->validate([
-            'run' => ['required', 'unique:usuarios,run', 'regex:/^[0-9]{1,2}\.[0-9]{3}\.[0-9]{3}-[0-9kK]{1}$/'],
+            'run' => [
+                'required',
+                'string',
+                'max:10',
+                'unique:usuarios,run',
+                'regex:/^[0-9]+-[0-9kK]{1}$/',
+                function ($attribute, $value, $fail) {
+                    if (!$this->validarRun($value)) {
+                        $fail('El RUN ingresado no es válido (Dígito verificador incorrecto).');
+                    }
+                },
+            ],
             'correo' => 'required|unique:usuarios,correo|email',
             'password' => 'required|string|min:8|max:255',
             'password_rep' => 'required|same:password',
@@ -26,22 +89,34 @@ class UsuariosController extends Controller
             'run.regex' => 'El formato debe ser 12.345.678-K',
             'password_rep.same' => 'Las contraseñas no coinciden.'
         ]);
-
-        $usuario = Usuario::create([
-            'run' => $validated['run'],
-            'correo' => $validated['correo'],
-            'password' => Hash::make($validated['password']),
-            'nombres' => $validated['nombres'],
-            'apellido_paterno' => $validated['apellido_paterno'],
-            'apellido_materno' => $validated['apellido_materno'],
-            'rol_id' => 2,
-            'estado'  => 1
-        ]);
     
-        return response()->json([
-            'success' => true,
-            'message' => 'Usuario creado exitosamente'
-        ], 201);
+        try {
+                Usuario::create([
+                    'run' => $validated['run'],
+                    'correo' => $validated['correo'],
+                    'password' => Hash::make($validated['password']),
+                    'nombres' => $validated['nombres'],
+                    'apellido_paterno' => $validated['apellido_paterno'],
+                    'apellido_materno' => $validated['apellido_materno'],
+                    'rol_id' => 1,
+                    'estado'  => 1
+                ]);
+
+                return redirect()
+                    ->route('usuarios.listar')
+                    ->with('success', 'Usuario creado exitosamente.');
+
+            } catch (QueryException $e) {
+                Log::error($e->getMessage());
+
+                $mensajeError = 'Error al guardar en base de datos.';
+
+                if ($e->getCode() == '22001') {
+                    $mensajeError = 'Uno de los campos excede el largo máximo permitido.';
+                }
+
+                return back()->withInput()->withErrors(['general' => $mensajeError]);
+            }
     }
 
     public function obtenerUsuario(Request $request){
@@ -64,10 +139,7 @@ class UsuariosController extends Controller
     
         $usuarios = Usuario::orderBy('id', 'desc')->paginate($perPage);
 
-        return response()->json([
-            'success' => true,
-            'data' => $usuarios
-        ], 200);
+        return view('admin.usuarios.listar-usuarios', compact('usuarios'));
     }
 
     public function formEditarUsuario(Request $request){

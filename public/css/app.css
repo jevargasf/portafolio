@@ -64,6 +64,11 @@ body{
     box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
+.btn-action{
+    height: 40px;
+
+}
+
 .form-admin .form-label {
     display: block;
     text-align: left;    
@@ -77,4 +82,64 @@ body{
     padding: 10px;
     font-weight: 600;
     background-color: var(--primary-color);
+}
+
+/* 1. Personalizar la barra de búsqueda de DataTables */
+.dataTables_filter {
+    text-align: left !important; /* Alinear a la izquierda */
+    float: none !important;
+    width: 100%;
+}
+
+.dataTables_filter label {
+    width: 100%; /* El label envuelve al input */
+}
+
+.dataTables_filter input {
+    width: 100% !important;     /* Forzar ancho completo */
+    margin-left: 0 !important;  /* Quitar margen izquierdo por defecto */
+    padding: 10px 15px;         /* Más espacio interno (padding) */
+    border-radius: 8px;         /* Bordes redondeados modernos */
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02); /* Sombra muy sutil */
+    font-size: 1rem;
+}
+
+.dataTables_filter input:focus {
+    border-color: #2563EB;      /* Tu color primario al hacer click */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.dt-input{
+    width: 100%;
+}
+
+/* 2. Limpiar estilo de la Tabla */
+table.dataTable {
+    border-collapse: collapse !important; /* Quitar doble borde */
+    width: 100% !important;
+}
+
+table.dataTable thead th {
+    border-bottom: 2px solid #f3f4f6 !important; /* Línea suave abajo del header */
+    color: #6b7280; /* Texto gris suave (Slate 500) */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding-bottom: 12px;
+}
+
+/* Filas más altas para mejor lectura */
+table.dataTable tbody td {
+    padding: 16px 10px !important;
+    vertical-align: middle;
+    border-bottom: 1px solid #f3f4f6;
+    color: #1f2937;
+}
+
+/* Quitar bordes laterales si usas table-bordered */
+.table-bordered td, .table-bordered th {
+    border: none;
 }
