@@ -11,11 +11,11 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
 });
 
-Route::get('/', function () {
-    return view('inicio');
-})->name('inicio');
+// Route::get('/', function () {
+//     return view('inicio');
+// })->name('inicio');
 
-// Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     
     Route::controller(AdminController::class)->prefix('admin')->name('admin.')->group(function(){
@@ -38,4 +38,4 @@ Route::get('/', function () {
         Route::post('/', 'store')->name('store');      // Guardar en BD
         Route::get('/{id}/editar', 'edit')->name('edit');
     });
-// });
+});

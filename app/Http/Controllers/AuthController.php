@@ -14,14 +14,15 @@ class AuthController extends Controller
     public function login(Request $request){
         // VALIDAR
         $credentials = $request->validate([
-            'email' => 'required,email',
+            'correo' => 'required|email',
             'password' => 'required'
         ]);
 
         // AUTENTICAR
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended('inicio');
+            // return view('admin.inicio');
+            return redirect()->intended(route('admin.inicio'));
         }
 
         // FALLA
