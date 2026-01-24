@@ -21,14 +21,41 @@ class AuthController extends Controller
         // AUTENTICAR
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            // return view('admin.inicio');
-            return redirect()->intended(route('admin.inicio'));
+            $rol = Auth::user()->rol_id; 
+
+            $rutaDestino = match ($rol) {
+                1 => 'auth.form-seleccionar-perfil', // ID 1 = Admin
+                2 => 'panel.inicio', // ID 2 = Funcionario
+                default => 'panel.inicio',       // ID X = Usuario normal
+            };
+
+            return redirect()->intended(route($rutaDestino));
         }
 
         // FALLA
         return back()->withErrors([
             'email' => 'Las credenciales no coinciden'
         ]);
+    }
+
+    public function formSeleccionarPerfil(Request $request){
+        if (Auth::user()->rol_id !== 1) {
+            return redirect()->route('panel.inicio');
+        }
+        return view('auth.profile');
+    }
+
+    public function seleccionarPerfil(Request $request){
+        $validated = $request->validate([
+            'perfilId' => 'required|integer'
+        ]);
+        $rutaDestino = match ($validated['perfilId']) {
+            1 => 'admin.dashboard', // CORREGIDO: Debe coincidir con web.php
+            2 => 'panel.inicio',    
+            default => 'panel.inicio',
+        };
+
+        return redirect()->intended(route($rutaDestino));
     }
 
     public function logout(Request $request){

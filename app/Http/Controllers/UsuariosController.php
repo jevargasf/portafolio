@@ -103,7 +103,7 @@ class UsuariosController extends Controller
                 ]);
 
                 return redirect()
-                    ->route('usuarios.listar')
+                    ->route('admin.usuarios.listar')
                     ->with('success', 'Usuario creado exitosamente.');
 
             } catch (QueryException $e) {

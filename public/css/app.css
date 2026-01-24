@@ -43,6 +43,32 @@ body{
     background-color: var(--primary-color);
 }
 
+/* ---------------------------------- */
+/* ---- AUTH: SELECCIONAR PERFIL ----  */
+/* ----------------------------Ñ----- */
+
+.btn-select-profile {
+    transition: all 0.3s ease;
+    border: 2px solid #dee2e6;
+    color: #495057;
+}
+.btn-select-profile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-color: var(--bs-primary);
+    background-color: #f8f9fa;
+    color: var(--bs-primary);
+}
+/* Clase para el icono dentro del botón */
+.btn-select-profile i {
+    font-size: 2rem;
+    color: #adb5bd;
+    transition: color 0.3s;
+}
+.btn-select-profile:hover i {
+    color: var(--bs-primary);
+}
+
 
 /* -------------------------- */
 /* ---- ADMIN: USUARIOS ----  */

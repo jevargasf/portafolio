@@ -1,7 +1,7 @@
 <x-layouts.dashboard>
     <div class="row mt-5 ms-2 me-3">
         <h2 class="col-10">Listado de Usuarios</h2>
-        <a class="btn btn-primary btn-action float-end col-2" href="{{ route('usuarios.crear.form') }}">
+        <a class="btn btn-primary btn-action float-end col-2" href="{{ route('admin.usuarios.crear.form') }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px;"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
             Crear Usuario
         </a>
