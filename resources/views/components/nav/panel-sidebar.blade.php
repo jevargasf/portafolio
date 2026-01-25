@@ -33,8 +33,12 @@
         <i class="ri-user-settings-line me-2"></i> Mi Perfil
     </a>
     </li>
-
-  <li class="nav-item mt-auto pt-4 border-top"> 
+  <li class="nav-item mt-auto pt-4 border-top">
+    <a class="nav-link" href="{{ route('auth.form-seleccionar-perfil') }}">
+        <i class="ri-history-line me-2"></i> Seleccionar perfil
+    </a>
+  </li>
+  <li class="nav-item"> 
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
