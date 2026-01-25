@@ -29,8 +29,10 @@ class Proyecto extends Model
     ];
 
     // CONSTANTES DE ESTADO
-    const ESTADO_PAUSADO = 0;
-    const ESTADO_ACTIVO = 1;
+    const ESTADO_EN_PROGRESO = 0;
+    const ESTADO_TERMINADO = 1;
+    const ESTADO_PAUSADO = 2;
+    const ESTADO_ELIMINADO = 9;
 
     public function perfil()
     {

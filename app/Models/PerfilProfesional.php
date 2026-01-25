@@ -15,13 +15,13 @@ class PerfilProfesional extends Model
 
     protected $fillable = [
         'usuario_id',
-        'comuna_id',      // Asumiendo relación con tu tabla 'comunas'
-        'titulo',         // Ej: Desarrollador Full Stack
-        'biografia',      // o 'resumen_perfil'
+        'comuna_id',      
+        'titulo',         
+        'biografia',      
         'telefono',
         'url_linkedin',
         'url_github',
-        'estado',         // 1: Visible, 0: Oculto
+        'estado',         
     ];
 
     /* |--------------------------------------------------------------------------
