@@ -7,6 +7,7 @@ use App\Models\Usuario;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class UsuariosController extends Controller
 {
@@ -81,42 +82,57 @@ class UsuariosController extends Controller
             'correo' => 'required|unique:usuarios,correo|email',
             'password' => 'required|string|min:8|max:255',
             'password_rep' => 'required|same:password',
+            'rol_id'           => 'required|integer|in:1,2',
             'nombres' => 'required|string|max:100',
             'apellido_paterno' => 'required|string|max:100',
             'apellido_materno' => 'required|string|max:100'
         ],[
             'run.unique' => 'Este RUN ya está registrado.',
             'run.regex' => 'El formato debe ser 12.345.678-K',
-            'password_rep.same' => 'Las contraseñas no coinciden.'
+            'password_rep.same' => 'Las contraseñas no coinciden.',
+            'rol_id.in' => 'El rol seleccionado no es válido.'
         ]);
     
         try {
-                Usuario::create([
-                    'run' => $validated['run'],
-                    'correo' => $validated['correo'],
-                    'password' => Hash::make($validated['password']),
-                    'nombres' => $validated['nombres'],
+            DB::transaction(function () use ($validated) {
+                
+                $nuevoUsuario = Usuario::create([
+                    'run'              => $validated['run'],
+                    'correo'           => $validated['correo'],
+                    'password'         => Hash::make($validated['password']),
+                    'nombres'          => $validated['nombres'],
                     'apellido_paterno' => $validated['apellido_paterno'],
                     'apellido_materno' => $validated['apellido_materno'],
-                    'rol_id' => 1,
-                    'estado'  => 1
+                    'rol_id'           => $validated['rol_id'],
+                    'estado'           => 1
                 ]);
 
-                return redirect()
-                    ->route('admin.usuarios.listar')
-                    ->with('success', 'Usuario creado exitosamente.');
+                $nuevoUsuario->perfil()->create([
+                    'estado' => 1
+                ]);
+            });
 
-            } catch (QueryException $e) {
-                Log::error($e->getMessage());
+            return redirect()
+                ->route('admin.usuarios.listar')
+                ->with('success', 'Usuario y perfil creados exitosamente.');
 
-                $mensajeError = 'Error al guardar en base de datos.';
+        } catch (\Exception $e) {
+            
+            Log::error("Error creando usuario: " . $e->getMessage());
 
+            $mensajeError = 'Error al guardar en base de datos.';
+
+            if ($e instanceof \Illuminate\Database\QueryException) {
                 if ($e->getCode() == '22001') {
                     $mensajeError = 'Uno de los campos excede el largo máximo permitido.';
                 }
-
-                return back()->withInput()->withErrors(['general' => $mensajeError]);
+                if ($e->getCode() == '23000') {
+                    $mensajeError = 'El correo o RUN ya existe en el sistema.';
+                }
             }
+
+            return back()->withInput()->withErrors(['general' => $mensajeError]);
+        }
     }
 
     public function obtenerUsuario(Request $request){
