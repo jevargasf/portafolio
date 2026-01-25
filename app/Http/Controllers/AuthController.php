@@ -26,7 +26,6 @@ class AuthController extends Controller
             $rutaDestino = match ($rol) {
                 1 => 'auth.form-seleccionar-perfil', // ID 1 = Admin
                 2 => 'panel.inicio', // ID 2 = Funcionario
-                default => 'panel.inicio',       // ID X = Usuario normal
             };
 
             return redirect()->intended(route($rutaDestino));
@@ -49,10 +48,10 @@ class AuthController extends Controller
         $validated = $request->validate([
             'perfilId' => 'required|integer'
         ]);
-        $rutaDestino = match ($validated['perfilId']) {
+        
+        $rutaDestino = match (intval($validated['perfilId'])) {
             1 => 'admin.dashboard', // CORREGIDO: Debe coincidir con web.php
             2 => 'panel.inicio',    
-            default => 'panel.inicio',
         };
 
         return redirect()->intended(route($rutaDestino));
