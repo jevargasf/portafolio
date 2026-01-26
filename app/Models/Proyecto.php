@@ -40,4 +40,14 @@ class Proyecto extends Model
     {
         return $this->belongsTo(PerfilProfesional::class, 'perfil_id');
     }
+
+    public function tecnologias()
+    {
+        return $this->belongsToMany(
+            Tecnologia::class, 
+            'proyectos_tecnologias', 
+            'proyecto_id', 
+            'tecnologia_id'
+        );
+    }
 }

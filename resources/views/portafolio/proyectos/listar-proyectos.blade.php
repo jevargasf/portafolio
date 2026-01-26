@@ -24,6 +24,10 @@
         <script>
             window.proyectos = @json($proyectos->items());
         </script>
+        <script>
+            const rutaEditarBase = "{{ route('panel.proyectos.editar.form') }}";
+            const rutaEliminarBase = "{{ route('panel.proyectos.eliminar') }}";
+        </script>
         <script src="{{ asset('js/portafolio/proyectos/listar.js') }}"></script>
     @endpush
 </x-layouts.panel>

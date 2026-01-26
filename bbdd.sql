@@ -270,3 +270,10 @@ ADD COLUMN updated_at TIMESTAMP NULL DEFAULT NULL;
 ALTER TABLE perfil_profesional 
 ADD COLUMN created_at TIMESTAMP NULL DEFAULT NULL, 
 ADD COLUMN updated_at TIMESTAMP NULL DEFAULT NULL;
+
+
+-- -------------------------------------------
+-- 9. INSERTS
+-- -------------------------------------------
+INSERT INTO `tecnologias` (`nombre`) VALUES 
+('Laravel'), ('PHP'), ('MySQL'), ('Bootstrap'), ('Vue.js'), ('React');
