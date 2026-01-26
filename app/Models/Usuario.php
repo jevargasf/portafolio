@@ -46,4 +46,9 @@ class Usuario extends Authenticatable
         {
             return "{$this->nombres} {$this->apellido_paterno} {$this->apellido_materno}";
         }
+
+    public function perfil()
+    {
+        return $this->hasOne(PerfilProfesional::class, 'usuario_id');
+    }
 }
