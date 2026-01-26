@@ -154,6 +154,8 @@ CREATE TABLE IF NOT EXISTS `proyectos` (
   `perfil_id` INT NOT NULL,
   `nombre` VARCHAR(200) NOT NULL,
   `descripcion` TEXT,
+  `desafio` TEXT,
+  `solucion` TEXT,
   `horas_trabajo` INT,
   `url_repositorio` VARCHAR(255),
   `url_produccion` VARCHAR(255),
@@ -253,3 +255,18 @@ CREATE TABLE IF NOT EXISTS `historial_accesos` (
 );
 
 SET FOREIGN_KEY_CHECKS = 1; -- Reactivar chequeo de llaves foráneas
+
+-- -------------------------------------------
+-- 8. ÚLTIMOS CAMBIOS
+-- -------------------------------------------
+ALTER TABLE usuarios 
+ADD COLUMN created_at TIMESTAMP NULL DEFAULT NULL, 
+ADD COLUMN updated_at TIMESTAMP NULL DEFAULT NULL;
+
+ALTER TABLE proyectos 
+ADD COLUMN created_at TIMESTAMP NULL DEFAULT NULL, 
+ADD COLUMN updated_at TIMESTAMP NULL DEFAULT NULL;
+
+ALTER TABLE perfil_profesional 
+ADD COLUMN created_at TIMESTAMP NULL DEFAULT NULL, 
+ADD COLUMN updated_at TIMESTAMP NULL DEFAULT NULL;
