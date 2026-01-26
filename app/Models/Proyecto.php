@@ -15,6 +15,8 @@ class Proyecto extends Model
         'perfil_id',          
         'nombre',
         'descripcion',
+        'desafio',
+        'solucion',
         'horas_trabajo',      
         'url_repositorio',    
         'url_produccion',    

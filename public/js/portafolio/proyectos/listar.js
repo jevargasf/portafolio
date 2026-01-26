@@ -19,8 +19,8 @@ $(document).ready(function() {
         dom: '<"mb-2"f><"table-responsive"t><"mt-1"p>',
         columns: [
             { data: 'id', title: '#', width: '5%' },
-            { data: 'nombres', title: 'Nombre', width: '25%' },
-            { data: 'fecha', title: 'Fecha', width: '30%' },
+            { data: 'nombre', title: 'Nombre', width: '25%' },
+            { data: 'fecha_realizacion', title: 'Fecha', width: '30%' },
             { 
                 data: null, 
                 title: 'Acciones',
