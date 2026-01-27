@@ -29,7 +29,7 @@
 
     <li class="nav-item">
     <a class="nav-link {{ request()->routeIs('panel.perfil.*') ? 'active' : '' }}" 
-        href="{{ route('panel.perfil.inicio') }}">
+        href="{{ route('panel.perfil.editar.form') }}">
         <i class="ri-user-settings-line me-2"></i> Mi Perfil
     </a>
     </li>

@@ -69,7 +69,12 @@ Route::middleware('auth')->group(function () {
 
         // Perfil Personal
         Route::controller(PerfilController::class)->prefix('perfil')->name('perfil.')->group(function(){
-            Route::get('/', 'inicio')->name('inicio');          
+            Route::get('/obtener', 'verPerfil')->name('ver'); 
+            // Route::get('/crear', 'formCrearPerfil')->name('crear.form');       
+            // Route::post('/crear', 'crearPerfil')->name('crear');       
+            Route::get('/editar', 'formEditarPerfil')->name('editar.form');       
+            Route::post('/editar', 'editarPerfil')->name('editar');    
+            // Route::post('/eliminar', 'eliminarPerfil')->name('eliminar');        
         });
     });
 

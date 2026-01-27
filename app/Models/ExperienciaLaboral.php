@@ -9,7 +9,7 @@ class ExperienciaLaboral extends Model
 {
     use HasFactory;
 
-    protected $table = 'experiencia_laboral';
+    protected $table = 'experiencias_laborales';
 
     protected $fillable = [
         'perfil_id',

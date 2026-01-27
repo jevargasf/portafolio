@@ -9,7 +9,7 @@ class TituloAcademico extends Model
 {
     use HasFactory;
 
-    protected $table = 'educacion'; // O 'formacion_academica'
+    protected $table = 'titulos_academicos';
 
     protected $fillable = [
         'perfil_id',

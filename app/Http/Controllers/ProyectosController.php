@@ -10,6 +10,7 @@ use App\Models\Tecnologia;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Documento;
+use App\Models\DocumentoProyecto;
 
 class ProyectosController extends Controller
 {
@@ -71,7 +72,7 @@ class ProyectosController extends Controller
 
                 $rutaGuardada = $file->store('proyectos', 'public');
 
-                Documento::create([
+                DocumentoProyecto::create([
                     'proyecto_id'    => $proyecto->id,
                     'nombre_archivo' => $nombreOriginal,
                     'ruta_archivo'   => $rutaGuardada,
@@ -161,7 +162,7 @@ class ProyectosController extends Controller
 
                     $rutaGuardada = $file->store('proyectos', 'public');
 
-                    $portadaAnterior = Documento::where('proyecto_id', $proyecto->id)
+                    $portadaAnterior = DocumentoProyecto::where('proyecto_id', $proyecto->id)
                                                 ->where('es_portada', 1)
                                                 ->first();
 
@@ -172,7 +173,7 @@ class ProyectosController extends Controller
                         $portadaAnterior->delete();
                     }
 
-                    Documento::create([
+                    DocumentoProyecto::create([
                         'proyecto_id'    => $proyecto->id,
                         'nombre_archivo' => $nombreOriginal,
                         'ruta_archivo'   => $rutaGuardada,
