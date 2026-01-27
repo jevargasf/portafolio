@@ -9,19 +9,19 @@ class PerfilProfesional extends Model
 {
     use HasFactory;
 
-    // Aseguramos que apunte a la tabla correcta (singular o plural según tu SQL)
-    // Generalmente en SQL manual suele ser singular: 'perfil_profesional'
     protected $table = 'perfil_profesional';
 
     protected $fillable = [
         'usuario_id',
-        'comuna_id',      
-        'titulo',         
-        'biografia',      
-        'telefono',
-        'url_linkedin',
-        'url_github',
-        'estado',         
+        'ocupacion',       
+        'biografia',       
+        'telefono',        
+        'esta_disponible',
+        'estado'           
+    ];
+
+    protected $casts = [
+        'esta_disponible' => 'boolean',
     ];
 
     /* |--------------------------------------------------------------------------
@@ -46,24 +46,64 @@ class PerfilProfesional extends Model
         return $this->hasMany(Proyecto::class, 'perfil_id');
     }
 
-    /**
-     * Relación con Comuna (para ubicación)
-     */
-    public function comuna()
+    // /**
+    //  * Relación con Comuna (para ubicación)
+    //  */
+    // public function comuna()
+    // {
+    //     return $this->belongsTo(Comuna::class, 'comuna_id');
+    // }
+
+    public function experiencias()
     {
-        return $this->belongsTo(Comuna::class, 'comuna_id');
+        return $this->hasMany(ExperienciaLaboral::class, 'perfil_id')->orderBy('fecha_inicio', 'desc');
     }
 
+    public function educacion()
+    {
+        return $this->hasMany(TituloAcademico::class, 'perfil_id')->orderBy('fecha_inicio', 'desc');
+    }
+
+    public function habilidades()
+    {
+        return $this->hasMany(Habilidad::class, 'perfil_id');
+    }
+
+    public function redesSociales()
+    {
+        return $this->hasMany(LinkRedSocial::class, 'perfil_id');
+    }
+
+    public function certificaciones()
+    {
+        return $this->hasMany(Certificacion::class, 'perfil_id')->orderBy('fecha_inicio', 'desc');
+    }
+
+    public function documentos()
+    {
+        return $this->hasMany(DocumentoProfesional::class, 'perfil_id');
+    }
+    
     /* |--------------------------------------------------------------------------
     | ACCESSORS (Opcionales)
     |-------------------------------------------------------------------------- */
     
     // Para obtener la ubicación completa fácilmente: $perfil->ubicacion_completa
-    public function getUbicacionCompletaAttribute()
+    // public function getUbicacionCompletaAttribute()
+    // {
+    //     if ($this->comuna && $this->comuna->region) {
+    //         return $this->comuna->nombre . ', ' . $this->comuna->region->nombre;
+    //     }
+    //     return 'Ubicación no definida';
+    // }
+
+    public function getFotoPerfilAttribute()
     {
-        if ($this->comuna && $this->comuna->region) {
-            return $this->comuna->nombre . ', ' . $this->comuna->region->nombre;
-        }
-        return 'Ubicación no definida';
+        return $this->documentos()->where('es_foto_perfil', 1)->first();
+    }
+
+    public function getCvAttribute()
+    {
+        return $this->documentos()->where('es_cv', 1)->first();
     }
 }
