@@ -18,7 +18,24 @@ $(document).ready(function() {
         columns: [
             { data: 'id', title: '#', width: '5%' },
             { data: 'nombre', title: 'Nombre', width: '25%' },
-            { data: 'fecha_realizacion', title: 'Fecha', width: '30%' },
+            { 
+                data: 'fecha_realizacion', 
+                title: 'Fecha', 
+                width: '30%' ,
+                render: function(data, type, row){
+                    if (!data) return '';
+                    if (type === 'display' || type === 'filter') {
+                        var date = new Date(data);
+                        return date.toLocaleDateString('es-CL', {
+                            day: '2-digit', 
+                            month: '2-digit', 
+                            year: 'numeric'
+                        });
+                    }
+                    return data;
+                }
+            
+            },
             { 
                 data: null, 
                 title: 'Acciones',

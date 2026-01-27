@@ -62,7 +62,6 @@
                                 <div class="col-md-4 col-6">
                                     <div class="form-check">
                                         @php
-                                            // Obtenemos array de IDs seleccionados (ya sea del input anterior o de la base de datos)
                                             $seleccionadas = old('tecnologias', $proyecto->tecnologias->pluck('id')->toArray());
                                         @endphp
 

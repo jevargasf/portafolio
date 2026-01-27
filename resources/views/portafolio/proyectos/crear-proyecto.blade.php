@@ -85,6 +85,7 @@
 
             <div class="d-grid mt-4">
                 <button class="btn btn-primary" type="submit">Guardar Proyecto</button>
+                <a href="{{ route('panel.proyectos.listar') }}" class="btn btn-link text-muted mt-2">Cancelar</a>
             </div>
         </form>
     </div>

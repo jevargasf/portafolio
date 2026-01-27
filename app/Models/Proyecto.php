@@ -50,4 +50,10 @@ class Proyecto extends Model
             'tecnologia_id'
         );
     }
+
+    public function documentos()
+    {
+        // Asegúrate de tener el modelo Documento creado
+        return $this->hasMany(Documento::class, 'proyecto_id');
+    }
 }

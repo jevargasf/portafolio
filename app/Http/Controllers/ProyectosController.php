@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Tecnologia;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Documento;
 
 class ProyectosController extends Controller
 {
@@ -38,9 +40,7 @@ class ProyectosController extends Controller
 
         /** @var \App\Models\Usuario $user */
         $user = Auth::user();
-        
-        // Verificación de seguridad: ¿El usuario tiene un perfil creado?
-        
+                
         if (!$user->perfil) {
             $user->perfil()->create(['estado' => 1]);
             $user->refresh();
@@ -60,9 +60,28 @@ class ProyectosController extends Controller
                 'estado'            => $validated['estado'],
             ]);
 
-            // if ($request->hasFile('imagen_portada')) {
-            //         // Aquí iría tu lógica de subir archivo a DocumentosProyectos...
-            // }
+            if ($request->hasFile('imagen_portada')) {
+                
+                $file = $request->file('imagen_portada');
+
+                $nombreOriginal = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension();
+
+                $hashArchivo = hash_file('sha256', $file->getRealPath());
+
+                $rutaGuardada = $file->store('proyectos', 'public');
+
+                Documento::create([
+                    'proyecto_id'    => $proyecto->id,
+                    'nombre_archivo' => $nombreOriginal,
+                    'ruta_archivo'   => $rutaGuardada,
+                    'extension'      => $extension,
+                    'hash_archivo'   => $hashArchivo,
+                    'es_portada'     => 1,
+                    'es_demo'        => 0,
+                    'estado'         => 1
+                ]);
+            }
 
             if ($request->has('tecnologias')) {
                     $proyecto->tecnologias()->sync($request->tecnologias);
@@ -113,6 +132,7 @@ class ProyectosController extends Controller
             'nombre.required' => 'El nombre es obligatorio.',
             'tecnologias.*.exists' => 'Una de las tecnologías seleccionadas no es válida.'
         ]);
+
         try {
             $user = Auth::user();
 
@@ -132,26 +152,37 @@ class ProyectosController extends Controller
                     'estado'            => $validated['estado'],
                 ]);
 
-// if ($request->hasFile('imagen_portada')) {
-//     // 1. Subir archivo
-//     $path = $request->file('imagen_portada')->store('portadas_proyectos', 'public');
-    
-//     // 2. Buscar si ya tenía portada en la tabla de documentos (ej: tipo 1 = portada)
-//     $documento = $proyecto->documentos()->where('tipo', 1)->first();
+                if ($request->hasFile('imagen_portada')) {
+                    $file = $request->file('imagen_portada');
 
-//     if ($documento) {
-//         // Borrar archivo físico viejo
-//         \Storage::delete($documento->url);
-//         // Actualizar registro
-//         $documento->update(['url' => $path]);
-//     } else {
-//         // Crear nuevo registro
-//         $proyecto->documentos()->create([
-//             'url' => $path,
-//             'tipo' => 1 // Portada
-//         ]);
-//     }
-// }
+                    $nombreOriginal = $file->getClientOriginalName();
+                    $extension      = $file->getClientOriginalExtension();
+                    $hashArchivo    = hash_file('sha256', $file->getRealPath());
+
+                    $rutaGuardada = $file->store('proyectos', 'public');
+
+                    $portadaAnterior = Documento::where('proyecto_id', $proyecto->id)
+                                                ->where('es_portada', 1)
+                                                ->first();
+
+                    if ($portadaAnterior) {
+                        if (Storage::disk('public')->exists($portadaAnterior->ruta_archivo)) {
+                            Storage::disk('public')->delete($portadaAnterior->ruta_archivo);
+                        }
+                        $portadaAnterior->delete();
+                    }
+
+                    Documento::create([
+                        'proyecto_id'    => $proyecto->id,
+                        'nombre_archivo' => $nombreOriginal,
+                        'ruta_archivo'   => $rutaGuardada,
+                        'extension'      => $extension,
+                        'hash_archivo'   => $hashArchivo,
+                        'es_portada'     => 1,
+                        'es_demo'        => 0,
+                        'estado'         => 1
+                    ]);
+                }
 
                 $proyecto->tecnologias()->sync($request->input('tecnologias', []));
             });
@@ -170,4 +201,36 @@ class ProyectosController extends Controller
 
 
     }
+
+    public function eliminarProyecto(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|integer'
+        ]);
+
+        try {
+            $user = Auth::user();
+
+            $proyecto = $user->perfil->proyectos()->findOrFail($request->id);
+
+            foreach ($proyecto->documentos as $doc) {
+                if (Storage::disk('public')->exists($doc->ruta_archivo)) {
+                    Storage::disk('public')->delete($doc->ruta_archivo);
+                }
+            }
+
+            $proyecto->delete();
+
+            return redirect()
+                ->route('panel.proyectos.listar')
+                ->with('success', 'El proyecto y sus archivos asociados han sido eliminados.');
+
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return back()->with('error', 'No se encontró el proyecto o no tienes permisos para eliminarlo.');
+
+        } catch (\Exception $e) {
+            Log::error("Error eliminando proyecto ID {$request->id}: " . $e->getMessage());
+            return back()->with('error', 'Ocurrió un error al intentar eliminar el proyecto.');
+        }
+}
 }
