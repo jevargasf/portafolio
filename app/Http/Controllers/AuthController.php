@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\HistorialAcceso;
 
 class AuthController extends Controller
 {
@@ -27,6 +28,12 @@ class AuthController extends Controller
                 1 => 'auth.form-seleccionar-perfil', // ID 1 = Admin
                 2 => 'panel.inicio', // ID 2 = Funcionario
             };
+
+            HistorialAcceso::create([
+                'usuario_id'  => Auth::id(),
+                'fecha'       => now(),
+                'tipo_accion' => 1 // Login
+            ]);
 
             return redirect()->intended(route($rutaDestino));
         }
