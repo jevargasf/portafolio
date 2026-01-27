@@ -51,4 +51,10 @@ class Usuario extends Authenticatable
     {
         return $this->hasOne(PerfilProfesional::class, 'usuario_id');
     }
+
+    public function historial()
+    {
+        // Ordenamos por defecto para ver el último acceso primero
+        return $this->hasMany(HistorialAcceso::class, 'usuario_id')->orderBy('fecha', 'desc');
+    }
 }
