@@ -33,7 +33,8 @@ class ProyectosController extends Controller
             'url_produccion'    => 'nullable|url|max:255',
             'estado'            => 'required|integer|in:0,1',
             'imagen_portada'    => 'nullable|image|max:2048', 
-            'tecnologias'       => 'nullable|array'
+            'tecnologias'       => 'nullable|array',
+            'slug'              => 'nullable|string'
         ], [
             'nombre.required' => 'El nombre del proyecto es obligatorio.',
             'url_repositorio.url' => 'El formato del enlace al repositorio no es válido.',
@@ -59,6 +60,7 @@ class ProyectosController extends Controller
                 'url_repositorio'   => $validated['url_repositorio'],
                 'url_produccion'    => $validated['url_produccion'],
                 'estado'            => $validated['estado'],
+                'slug'            => $validated['slug']
             ]);
 
             if ($request->hasFile('imagen_portada')) {
@@ -128,7 +130,8 @@ class ProyectosController extends Controller
             'estado'            => 'required|integer|in:0,1',
             'imagen_portada'    => 'nullable|image|max:2048', // Máx 2MB
             'tecnologias'       => 'nullable|array',
-            'tecnologias.*'     => 'exists:tecnologias,id' // Verifica que cada ID exista
+            'tecnologias.*'     => 'exists:tecnologias,id', // Verifica que cada ID exista
+            'slug'              => 'nullable|string',
         ], [
             'nombre.required' => 'El nombre es obligatorio.',
             'tecnologias.*.exists' => 'Una de las tecnologías seleccionadas no es válida.'
@@ -151,6 +154,7 @@ class ProyectosController extends Controller
                     'url_repositorio'   => $validated['url_repositorio'],
                     'url_produccion'    => $validated['url_produccion'],
                     'estado'            => $validated['estado'],
+                    'slug'              => $validated['slug']
                 ]);
 
                 if ($request->hasFile('imagen_portada')) {

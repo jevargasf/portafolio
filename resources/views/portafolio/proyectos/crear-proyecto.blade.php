@@ -17,6 +17,13 @@
                 </div>
             </div>
 
+            <div class="row mb-3">
+                <div class="text-start">
+                    <label for="slug" class="form-label">Ruta visible del proyecto <span class="text-danger">*</span></label>
+                    <input type="text" name="slug" class="form-control" id="slug" value="{{ old('slug') }}" required placeholder="Ej: ecommerce-laravel">
+                </div>
+            </div>
+
             <div class="mb-3 text-start">
                 <label for="imagen_portada" class="form-label">Imagen de Portada</label>
                 <input class="form-control" type="file" id="imagen_portada" name="imagen_portada" accept="image/*">

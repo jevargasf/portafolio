@@ -160,6 +160,7 @@ CREATE TABLE IF NOT EXISTS `proyectos` (
   `url_repositorio` VARCHAR(255),
   `url_produccion` VARCHAR(255),
   `fecha_realizacion` DATE,
+  `slug` VARCHAR(255) DEFAULT NULL,
   `estado` INT DEFAULT 1,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_proyectos_perfil`

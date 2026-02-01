@@ -21,6 +21,7 @@ class Proyecto extends Model
         'url_repositorio',    
         'url_produccion',    
         'fecha_realizacion', 
+        'slug',
         'estado',
     ];
 
@@ -53,7 +54,6 @@ class Proyecto extends Model
 
     public function documentos()
     {
-        // Asegúrate de tener el modelo Documento creado
-        return $this->hasMany(Documento::class, 'proyecto_id');
+        return $this->hasMany(DocumentoProyecto::class, 'proyecto_id');
     }
 }
