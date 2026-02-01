@@ -7,6 +7,7 @@ use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\ProfesionalController;
+use App\Http\Controllers\PublicController;
 use App\Http\Middleware\SoloAdmin;
 
 // 1. GUEST (Login)
@@ -77,5 +78,16 @@ Route::middleware('auth')->group(function () {
             // Route::post('/eliminar', 'eliminarPerfil')->name('eliminar');        
         });
     });
+});
 
+
+// ==========================================
+// ZONA C: PÚBLICA (La vista del portafolio)
+// ==========================================
+Route::name('public.')->group(function(){
+    Route::get('/', [PublicController::class, 'index'])->name('inicio');
+    Route::get('/sobre-mi', [PublicController::class, 'verPerfil'])->name('perfil');
+    Route::get('/proyectos', [PublicController::class, 'verProyectos'])->name('proyectos');
+    Route::get('/proyecto/{proyecto:slug}', [PublicController::class, 'detalleProyecto'])->name('detalle-proyecto');
+    Route::get('/descargar-cv', [PublicController::class, 'descargarCV'])->name('descargar-cv');
 });
