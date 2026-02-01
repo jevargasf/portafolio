@@ -73,7 +73,7 @@ Route::middleware('auth')->group(function () {
             // Route::get('/crear', 'formCrearPerfil')->name('crear.form');       
             // Route::post('/crear', 'crearPerfil')->name('crear');       
             Route::get('/editar', 'formEditarPerfil')->name('editar.form');       
-            Route::post('/editar', 'editarPerfil')->name('editar');    
+            Route::put('/editar', 'editarPerfil')->name('editar');    
             // Route::post('/eliminar', 'eliminarPerfil')->name('eliminar');        
         });
     });
