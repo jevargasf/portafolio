@@ -27,8 +27,23 @@ class PublicController extends Controller
 
     }
 
-    public function verProyectos(Request $request){
-        
+    public function verProyectos(Request $request)
+    {
+        $query = Proyecto::where('estado', 1)->with(['tecnologias', 'documentos']);
+
+        if ($request->has('search') && $request->search != '') {
+            $query->where('nombre', 'LIKE', '%' . $request->search . '%');
+        }
+
+        if ($request->has('tech') && $request->tech != '') {
+            $query->whereHas('tecnologias', function($q) use ($request) {
+                $q->where('nombre', 'LIKE', '%' . $request->tech . '%');
+            });
+        }
+
+        $proyectos = $query->orderBy('fecha_realizacion', 'desc')->paginate(5);
+
+        return view('public.proyectos', compact('proyectos'));
     }
 
     public function detalleProyecto(Request $request){

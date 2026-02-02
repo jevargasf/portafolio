@@ -27,7 +27,7 @@
                                 {{ strtoupper($perfil->ocupacion ?? 'DESARROLLADOR FULL STACK') }}
                             </div>
                             
-                            <a class="btn btn-outline-dark btn-lg px-4 rounded-0" href="#proyectos">
+                            <a class="btn btn-outline-dark btn-lg px-4 rounded-0" href="{{ route('public.proyectos') }}">
                                 [ VER PROYECTOS ]
                             </a>
                         </div>
