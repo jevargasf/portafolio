@@ -18,9 +18,9 @@ class PublicController extends Controller
             abort(404, 'Perfil del dueño no configurado');
         }
 
-        $perfil = $usuario->perfil->load('proyectos', 'habilidades');
+        $perfil = $usuario->perfil->load('proyectos');
 
-        return view('welcome', compact('perfil'));
+        return view('public.index', compact('perfil'));
     }
 
     public function verPerfil(Request $request){
