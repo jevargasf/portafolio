@@ -82,7 +82,7 @@
                                     </p>
                                     
                                     <div>
-                                        <a href="{{ route('public.detalle-proyecto', $proyecto->id) }}" class="btn btn-outline-dark rounded-0 px-4">
+                                        <a href="{{ route('public.detalle-proyecto', $proyecto->slug) }}" class="btn btn-outline-dark rounded-0 px-4">
                                             [ VER DETALLE ]
                                         </a>
                                     </div>

@@ -46,8 +46,10 @@ class PublicController extends Controller
         return view('public.proyectos', compact('proyectos'));
     }
 
-    public function detalleProyecto(Request $request){
-        
+    public function detalleProyecto(Proyecto $proyecto){
+        $proyecto->load('tecnologias', 'documentos');
+
+        return view('public.detalle-proyecto', compact('proyecto'));
     }
 
     public function descargarCV(Request $request){
