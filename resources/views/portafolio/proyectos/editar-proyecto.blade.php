@@ -25,7 +25,7 @@
             <div class="row mb-3">
                 <div class="text-start">
                     <label for="slug" class="form-label">Ruta visible del proyecto <span class="text-danger">*</span></label>
-                    <input type="text" name="slug" class="form-control" id="slug" value="{{ old('slug') }}" required placeholder="Ej: ecommerce-laravel">
+                    <input type="text" name="slug" class="form-control" id="slug" value="{{ old('slug', $proyecto->slug) }}" required placeholder="Ej: ecommerce-laravel">
                 </div>
             </div>
 
