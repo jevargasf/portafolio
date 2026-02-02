@@ -57,7 +57,7 @@
                                 $imgProyecto = $portada ? $portada->url_publica : 'https://dummyimage.com/600x400/dee2e6/6c757d.jpg&text=Proyecto';
                             @endphp
                             
-                            <a href="{{ route('public.proyecto.detalle', $proyecto->id) }}">
+                            <a href="{{ route('public.detalle-proyecto', $proyecto->slug) }}">
                                 <img class="card-img-top rounded-0" src="{{ $imgProyecto }}" alt="{{ $proyecto->nombre }}" style="height: 200px; object-fit: cover;" />
                             </a>
 
@@ -83,7 +83,7 @@
                             
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-sm btn-dark mt-auto rounded-0 w-100" href="{{ route('public.proyecto.detalle', $proyecto->id) }}">
+                                    <a class="btn btn-sm btn-dark mt-auto rounded-0 w-100" href="{{ route('public.detalle-proyecto', $proyecto->slug) }}">
                                         Ver detalles
                                     </a>
                                 </div>
