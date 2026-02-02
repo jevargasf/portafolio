@@ -23,8 +23,19 @@ class PublicController extends Controller
         return view('public.index', compact('perfil'));
     }
 
-    public function verPerfil(Request $request){
+    public function verPerfil()
+    {
+        $perfil = PerfilProfesional::where('estado', 1)
+            ->with([
+                'usuario', 
+                'documentos',
+                'experiencias' => fn($q) => $q->orderBy('es_trabajo_actual', 'desc')->orderBy('fecha_inicio', 'desc'),
+                'educacion' => fn($q) => $q->orderBy('fecha_inicio', 'desc'),
+                'certificaciones' => fn($q) => $q->orderBy('fecha_inicio', 'desc')
+            ])
+            ->firstOrFail();
 
+        return view('public.perfil', compact('perfil'));
     }
 
     public function verProyectos(Request $request)
