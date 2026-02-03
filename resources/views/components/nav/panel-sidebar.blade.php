@@ -33,6 +33,12 @@
         <i class="ri-user-settings-line me-2"></i> Mi Perfil
     </a>
     </li>
+    <li class="nav-item">
+    <a class="nav-link {{ request()->routeIs('public.inicio') ? 'active' : '' }}" 
+        href="{{ route('public.inicio') }}">
+        <i class="ri-home-smile-line me-2"></i> Volver Vista Pública
+    </a>
+    </li>
   <li class="nav-item mt-auto pt-4 border-top">
     <a class="nav-link" href="{{ route('auth.form-seleccionar-perfil') }}">
         <i class="ri-history-line me-2"></i> Seleccionar perfil

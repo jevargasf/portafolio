@@ -11,17 +11,17 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Inicio</a>
+                    <a class="nav-link active" href="{{ route('public.inicio') }}">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Proyectos</a>
+                    <a class="nav-link" href="{{ route('public.proyectos') }}">Proyectos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sobre Mí</a>
+                    <a class="nav-link" href="{{ route('public.perfil') }}">Sobre Mí</a>
                 </li>
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Perfil</a>
+                        <a class="nav-link" href="{{ route('panel.perfil.editar') }}">Perfil</a>
                     </li>
                     <li class="nav-item mt-3"> <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
