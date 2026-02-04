@@ -9,7 +9,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav align-items-center">
                 <li class="nav-item">
                     <a class="nav-link active" href="{{ route('public.inicio') }}">Inicio</a>
                 </li>
@@ -21,9 +21,9 @@
                 </li>
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('panel.perfil.editar') }}">Perfil</a>
+                        <a class="nav-link" href="{{ route('panel.perfil.editar') }}">Panel</a>
                     </li>
-                    <li class="nav-item mt-3"> <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <li class="nav-item"> <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
 
@@ -33,12 +33,11 @@
                         </a>
                     </li>
                 @else
-                    @if(Route::has('login'))
-                    @else
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
                     </li>
-                    @endif
+                    
                 @endauth
             </ul>
         </div>
