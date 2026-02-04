@@ -27,9 +27,15 @@
                                 {{ strtoupper($perfil->ocupacion ?? 'DESARROLLADOR FULL STACK') }}
                             </div>
                             
-                            <a class="btn btn-outline-dark btn-lg px-4 rounded-0" href="{{ route('public.proyectos') }}">
+                    <div class="col-md-6">
+                            <a class="btn btn-primary-custom btn-lg px-4 w-100 mb-2" href="">
+                                [ DESCARGAR CV ]
+                            </a>
+                            <a class="btn btn-outline-custom btn-lg px-4 w-100" href="{{ route('public.proyectos') }}">
                                 [ VER PROYECTOS ]
                             </a>
+                    </div>        
+
                         </div>
                     </div>
 
@@ -69,13 +75,13 @@
                                     
                                     <div class="d-flex justify-content-center flex-wrap gap-2">
                                         @foreach($proyecto->tecnologias->take(4) as $tech)
-                                            <span class="badge border border-dark text-dark bg-transparent rounded-0">
+                                            <span class="badge badge-custom">
                                                 {{ strtoupper($tech->nombre) }}
                                             </span>
                                         @endforeach
                                         
                                         @if($proyecto->tecnologias->count() > 4)
-                                            <span class="badge text-muted small">+{{ $proyecto->tecnologias->count() - 4 }}</span>
+                                            <span class="badge badge-custom text-muted small">+{{ $proyecto->tecnologias->count() - 4 }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -83,7 +89,7 @@
                             
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-sm btn-dark mt-auto rounded-0 w-100" href="{{ route('public.detalle-proyecto', $proyecto->slug) }}">
+                                    <a class="btn btn-sm btn-primary-custom mt-auto w-100" href="{{ route('public.detalle-proyecto', $proyecto->slug) }}">
                                         Ver detalles
                                     </a>
                                 </div>

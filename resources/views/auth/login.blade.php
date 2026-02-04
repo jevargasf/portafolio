@@ -15,7 +15,7 @@
                 <input type="password" name="password" class="form-control" id="password">
             </div>
 
-            <button class="btn btn-primary" type="submit">Entrar</button>
+            <button class="btn btn-primary-custom" type="submit">Entrar</button>
         </form>
     </div>
 </x-layouts.app>

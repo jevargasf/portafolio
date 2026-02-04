@@ -1,12 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --primary-color: #1E40AF; /* El azul de Bootstrap (o tu color favorito) */
-    --background-primary: #f8f9fa;
-    --background-secondary: #E9ECEF;
-    --text-dark: #212529;
-    --success-color: #10B981;
-    --danger-color: #EF4444;
+    --primary: #0F4C5C;        /* Tu color Petrol */
+    --primary-hover: #09313b;  /* Versión oscura para interacciones */
+    --primary-light: #E7F1F3;  /* Versión muy clara para fondos/badges */
+
+    /* === 2. FONDOS (Backgrounds) === */
+    --bg-body: #f8f9fa;        /* Fondo general de la página */
+    --bg-card: #ffffff;        /* Fondo de tarjetas (para que destaquen sobre el body) */
+    --bg-secondary: #E9ECEF;   /* Fondo de secciones alternas o inputs deshabilitados */
+
+    /* === 3. TIPOGRAFÍA (Typography) === */
+    --text-main: #212529;      /* Títulos y párrafos principales */
+    --text-muted: #6C757D;     /* Metadatos, fechas, placeholders */
+    --text-light: #F8F9FA;     /* Texto sobre fondos oscuros */
+
+    /* === 4. BORDES Y LÍNEAS (Borders) === */
+    --border-strong: #212529;  /* Tus bordes estilo "Wireframe" externos */
+    --border-subtle: #DEE2E6;  /* Líneas divisorias internas suaves */
+
+    /* === 5. ESTADOS FUNCIONALES (Feedback) === */
+    --success: #10B981;        /* Éxito, Completado, Online */
+    --danger: #EF4444;         /* Error, Eliminar, Offline */
+    --warning: #F59E0B;        /* Alerta, En Progreso, Pendiente */
+    --info: #0EA5E9;           /* Información, Ayuda */
 }
 
 body{
@@ -14,8 +31,71 @@ body{
     padding: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #f8f9fa;
-    color: var(--text-dark);
+    color: var(--text-main);
 }
+
+/* DEAQUÍ PARA ABAJO TENGO QUE VOLVER A REVISAR TODOS LOS ESTILOS PARA QUE ESTÉN EN CONSONANCIA CON ESTA REFORMULACIÓN DE MARCA */
+
+
+/* ------------------------------ */
+/* ---- ESTILOS GENERALES ------  */
+/* ------------------------------ */
+
+/* NIVEL 1: LA ACCIÓN PRINCIPAL (Solid) */
+/* Úsalo para: Submit, Descargar CV, Ver Proyectos (Hero) */
+.btn-primary-custom {
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
+    color: white;
+    font-weight: 600; /* Un poco más grueso para destacar */
+    border-radius: 0;
+}
+
+.btn-primary-custom:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: white;
+}
+
+/* NIVEL 2: LA ACCIÓN SECUNDARIA (Outline) */
+/* Úsalo para: Ver Repositorio, Ver Demo, Cargar más */
+.btn-outline-custom {
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+    border-radius: 0;
+}
+
+.btn-outline-custom:hover {
+    color: var(--primary); /* Al pasar el mouse se ilumina con tu marca */
+    text-decoration: underline;
+}
+
+/* NIVEL 3: LA NAVEGACIÓN (Ghost / Text) */
+/* Úsalo para: Botón Volver */
+.btn-ghost-custom {
+    background-color: transparent;
+    border: none;
+    color: #333; /* Gris oscuro, no necesariamente Petrol */
+    text-decoration: none; /* O underline si prefieres */
+    padding-left: 0; /* Alineado a la izquierda */
+}
+
+.btn-ghost-custom:hover {
+    color: var(--primary); /* Al pasar el mouse se ilumina con tu marca */
+    text-decoration: underline;
+}
+
+/* EXTRA: BADGES (ETIQUETAS) */
+/* Úsalo para: Tecnologías (Laravel, PHP, etc.) */
+.badge-custom {
+    background-color: rgba(15, 76, 92, 0.1); /* Tu color Petrol al 10% de opacidad */
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 0;
+}
+
 
 /* -------------------------- */
 /* ---- PUBLIC: LOGIN ------  */
@@ -36,11 +116,10 @@ body{
     color: #4b5563;
 }
 
-#formLogin .btn-primary {
+#formLogin .btn-primary-custom {
     width: 100%;
     padding: 10px;
     font-weight: 600;
-    background-color: var(--primary-color);
 }
 
 /* ---------------------------------- */
