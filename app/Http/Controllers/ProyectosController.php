@@ -32,12 +32,13 @@ class ProyectosController extends Controller
             'url_repositorio'   => 'nullable|url|max:255',
             'url_produccion'    => 'nullable|url|max:255',
             'estado'            => 'required|integer|in:0,1',
-            'imagen_portada'    => 'nullable|image|max:2048', 
+            'imagen_portada'    => 'nullable|image|max:4096', 
             'tecnologias'       => 'nullable|array',
             'slug'              => 'nullable|string'
         ], [
             'nombre.required' => 'El nombre del proyecto es obligatorio.',
             'url_repositorio.url' => 'El formato del enlace al repositorio no es válido.',
+            'imagen_portada.max' => 'El tamaño del archivo no debe superar los 4 MB.'
         ]);
 
         /** @var \App\Models\Usuario $user */
@@ -116,7 +117,7 @@ class ProyectosController extends Controller
     }
 
     public function editarProyecto(Request $request){
-
+        
         $validated = $request->validate([
             'id'                => 'required|integer',
             'nombre'            => 'required|string|max:200',
@@ -128,13 +129,14 @@ class ProyectosController extends Controller
             'url_repositorio'   => 'nullable|url|max:255',
             'url_produccion'    => 'nullable|url|max:255',
             'estado'            => 'required|integer|in:0,1',
-            'imagen_portada'    => 'nullable|image|max:2048', // Máx 2MB
+            'imagen_portada'    => 'nullable|image|max:4096', // Máx 2MB
             'tecnologias'       => 'nullable|array',
             'tecnologias.*'     => 'exists:tecnologias,id', // Verifica que cada ID exista
             'slug'              => 'nullable|string',
         ], [
             'nombre.required' => 'El nombre es obligatorio.',
-            'tecnologias.*.exists' => 'Una de las tecnologías seleccionadas no es válida.'
+            'tecnologias.*.exists' => 'Una de las tecnologías seleccionadas no es válida.',
+            'imagen_portada.max' => 'El tamaño del archivo no debe superar los 4 MB.'
         ]);
 
         try {
