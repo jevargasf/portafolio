@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <button type="submit" class="btn btn-dark w-100 fw-bold">
+                            <button type="submit" class="btn btn-primary-custom w-100 fw-bold">
                                 APLICAR
                             </button>
                         </div>
@@ -71,7 +71,7 @@
                                     
                                     <div class="mb-3">
                                         @foreach($proyecto->tecnologias->take(5) as $tech)
-                                            <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 rounded-pill me-1">
+                                            <span class="badge badge-custom">
                                                 {{ $tech->nombre }}
                                             </span>
                                         @endforeach
@@ -82,7 +82,7 @@
                                     </p>
                                     
                                     <div>
-                                        <a href="{{ route('public.detalle-proyecto', $proyecto->slug) }}" class="btn btn-outline-dark rounded-0 px-4">
+                                        <a href="{{ route('public.detalle-proyecto', $proyecto->slug) }}" class="btn btn-outline-custom px-4">
                                             [ VER DETALLE ]
                                         </a>
                                     </div>

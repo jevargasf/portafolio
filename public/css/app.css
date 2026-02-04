@@ -31,7 +31,7 @@ body{
     padding: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #f8f9fa;
-    color: var(--text-main);
+    color: var(--text-main) !important;
 }
 
 /* DEAQUÍ PARA ABAJO TENGO QUE VOLVER A REVISAR TODOS LOS ESTILOS PARA QUE ESTÉN EN CONSONANCIA CON ESTA REFORMULACIÓN DE MARCA */
@@ -41,6 +41,25 @@ body{
 /* ---- ESTILOS GENERALES ------  */
 /* ------------------------------ */
 
+
+/* ------- TEXTOS ------- */
+.text-muted{
+    color: var(--text-muted) !important;
+}
+
+.text-primary   { color: var(--primary) !important; }
+.text-secondary { color: var(--secondary) !important; }
+.text-success   { color: var(--success) !important; }
+.text-danger    { color: var(--danger) !important; }
+.text-warning   { color: var(--warning) !important; }
+
+.bg-primary     { background-color: var(--primary) !important; }
+.bg-secondary   { background-color: var(--secondary) !important; }
+.bg-light       { background-color: var(--primary-light) !important; }
+
+
+
+/* ------- BOTONES -------------- */
 /* NIVEL 1: LA ACCIÓN PRINCIPAL (Solid) */
 /* Úsalo para: Submit, Descargar CV, Ver Proyectos (Hero) */
 .btn-primary-custom {
@@ -51,7 +70,9 @@ body{
     border-radius: 0;
 }
 
-.btn-primary-custom:hover {
+.btn-primary-custom:hover,
+.btn-primary-custom:focus,
+.btn-primary-custom:active {
     background-color: var(--primary-hover);
     border-color: var(--primary-hover);
     color: white;
@@ -68,8 +89,9 @@ body{
 }
 
 .btn-outline-custom:hover {
-    color: var(--primary); /* Al pasar el mouse se ilumina con tu marca */
-    text-decoration: underline;
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: white;
 }
 
 /* NIVEL 3: LA NAVEGACIÓN (Ghost / Text) */
@@ -94,6 +116,12 @@ body{
     color: var(--primary);
     border: 1px solid var(--primary);
     border-radius: 0;
+}
+
+/* --- FORMULARIOS */
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(15, 76, 92, 0.25);
 }
 
 

@@ -3,7 +3,7 @@
     <div class="container px-4 my-5">
         
         <div class="mb-4">
-            <a href="{{ route('public.inicio') }}" class="text-decoration-none text-dark fw-bold">
+            <a href="{{ route('public.inicio') }}" class="btn-ghost-custom fw-bold">
                 <i class="ri-arrow-left-line me-1"></i> < Volver al inicio
             </a>
         </div>
@@ -22,9 +22,9 @@
                             @endif
 
                             <div class="flex-grow-1 text-center text-md-start">
-                                <h5 class="text-muted text-uppercase small ls-1 mb-1">Hola, soy</h5>
+                                
                                 <h1 class="display-5 fw-bolder text-uppercase mb-2">
-                                    {{ $perfil->usuario->nombres }}
+                                    {{ $perfil->usuario->nombre_completo }}
                                 </h1>
                                 <h4 class="text-primary fw-bold mb-3">{{ $perfil->ocupacion }}</h4>
                                 <p class="lead text-muted fs-6 mb-4">
@@ -32,11 +32,11 @@
                                 </p>
                                 
                                 @if($perfil->cv)
-                                    <a href="{{ $perfil->cv->url_publica }}" target="_blank" class="btn btn-dark rounded-0 px-4 py-2 fw-bold">
+                                    <a href="{{ $perfil->cv->url_publica }}" target="_blank" class="btn btn-primary-custom rounded-0 px-4 py-2 fw-bold">
                                         <i class="ri-file-download-line me-2"></i> DESCARGAR CV
                                     </a>
                                 @else
-                                    <button class="btn btn-outline-secondary rounded-0 px-4 py-2" disabled>
+                                    <button class="btn btn-ghost-custom rounded-0 px-4 py-2" disabled>
                                         CV No disponible
                                     </button>
                                 @endif
@@ -78,7 +78,7 @@
             <div class="col-lg-4">
                 
                 <div class="card border-dark rounded-0 shadow-sm mb-4">
-                    <div class="card-header bg-dark text-white rounded-0 fw-bold text-uppercase py-3">
+                    <div class="card-header bg-primary text-white rounded-0 fw-bold text-uppercase py-3">
                         <i class="ri-graduation-cap-line me-2"></i> Educación
                     </div>
                     <div class="list-group list-group-flush">
