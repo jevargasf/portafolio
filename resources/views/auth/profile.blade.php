@@ -44,7 +44,7 @@
                 <div class="text-center mt-4">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-link text-muted text-decoration-none btn-sm">
+                        <button type="submit" class="btn btn-ghost-custom btn-sm">
                             <i class="ri-logout-box-r-line me-1"></i> Cancelar y Salir
                         </button>
                     </form>

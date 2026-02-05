@@ -1,5 +1,5 @@
 <x-layouts.panel>
-    <h2 class="text-center mt-3">Editar Proyecto: {{ $proyecto->nombre }}</h2>
+    <h2 class="text-center mt-5">Editar Proyecto: {{ $proyecto->nombre }}</h2>
     <x-ui.feedback />
 
     <div class="card p-4 mx-auto my-5 form-admin" style="max-width: 800px;">
@@ -116,8 +116,8 @@
             </div>
 
             <div class="d-grid mt-4">
-                <button class="btn btn-warning" type="submit">Actualizar Proyecto</button>
-                <a href="{{ route('panel.proyectos.listar') }}" class="btn btn-link text-muted mt-2">Cancelar</a>
+                <button class="btn btn-warning-custom" type="submit">Actualizar Proyecto</button>
+                <a href="{{ route('panel.proyectos.listar') }}" class="btn btn-ghost-custom mt-2">Cancelar</a>
             </div>
         </form>
     </div>

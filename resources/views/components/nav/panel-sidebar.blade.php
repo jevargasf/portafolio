@@ -1,4 +1,4 @@
-<ul class="nav flex-column p-4 h-100" id="sidebar">
+<ul class="nav flex-column p-4 h-100 bg-light" id="sidebar">
   
   <a class="navbar-brand p-2 align-middle d-flex align-items-center mb-4" href="{{ route('inicio') }}">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 28px; height: 28px;" class="me-2 text-primary">
@@ -8,10 +8,6 @@
         Mi Panel
     </span>
   </a>
-      
-    <li class="nav-item">
-    <span class="nav-link text-uppercase text-muted small mt-2">Mi Espacio</span>
-    </li>
 
     <li class="nav-item">
     <a class="nav-link {{ request()->routeIs('panel.inicio') ? 'active' : '' }}" 
@@ -36,7 +32,7 @@
     <li class="nav-item">
     <a class="nav-link {{ request()->routeIs('public.inicio') ? 'active' : '' }}" 
         href="{{ route('public.inicio') }}">
-        <i class="ri-home-smile-line me-2"></i> Volver Vista Pública
+        <i class="ri-home-smile-line me-2"></i> Vista Pública
     </a>
     </li>
   <li class="nav-item mt-auto pt-4 border-top">

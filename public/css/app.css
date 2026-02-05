@@ -67,7 +67,7 @@ body{
     border: 2px solid var(--primary);
     color: white;
     font-weight: 600; /* Un poco más grueso para destacar */
-    border-radius: 0;
+    border-radius: 8px;
 }
 
 .btn-primary-custom:hover,
@@ -85,7 +85,7 @@ body{
     border: 2px solid var(--primary);
     color: var(--primary);
     font-weight: 600;
-    border-radius: 0;
+    border-radius: 8px;
 }
 
 .btn-outline-custom:hover {
@@ -109,13 +109,50 @@ body{
     text-decoration: underline;
 }
 
+.btn-danger-custom{
+    background-color: var(--danger);
+    color: white;
+    border-radius: 8px;
+    border: 2px solid var(--danger);
+}
+
+.btn-danger-custom:hover{
+    background-color: color-mix(in srgb, var(--danger), black 10%);
+    color: white;
+}
+
+.btn-warning-custom{
+    background-color: var(--warning);
+    color: var(--text-dark);
+    border-radius: 8px;
+    border: 2px solid var(--warning);
+}
+
+.btn-warning-custom:hover{
+    background-color: color-mix(in srgb, var(--warning), black 10%);
+    color: var(--text-light);
+}
+
+.btn-info-custom{
+    background-color: transparent;
+    color: var(--info);
+    border-radius: 8px;
+    border: 2px solid var(--info);
+}
+
+.btn-info-custom:hover{
+    background-color: color-mix(in srgb, var(--info), black 10%);
+    color: var(--text-light);
+    border: 2px solid var(--info);
+}
+
 /* EXTRA: BADGES (ETIQUETAS) */
 /* Úsalo para: Tecnologías (Laravel, PHP, etc.) */
 .badge-custom {
     background-color: rgba(15, 76, 92, 0.1); /* Tu color Petrol al 10% de opacidad */
     color: var(--primary);
     border: 1px solid var(--primary);
-    border-radius: 0;
+    border-radius: 8px;
 }
 
 /* --- FORMULARIOS */
@@ -157,14 +194,14 @@ body{
 .btn-select-profile {
     transition: all 0.3s ease;
     border: 2px solid #dee2e6;
-    color: #495057;
+    color: var(--primary);
 }
 .btn-select-profile:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    border-color: var(--bs-primary);
+    border-color: var(--primary);
     background-color: #f8f9fa;
-    color: var(--bs-primary);
+    color: var(--primary);
 }
 /* Clase para el icono dentro del botón */
 .btn-select-profile i {
@@ -173,7 +210,7 @@ body{
     transition: color 0.3s;
 }
 .btn-select-profile:hover i {
-    color: var(--bs-primary);
+    color: var(--primary);
 }
 
 

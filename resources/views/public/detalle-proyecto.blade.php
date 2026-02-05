@@ -3,7 +3,7 @@
     <div class="container px-4 my-5">
         
         <div class="mb-4">
-            <a href="{{ route('public.proyectos') }}" class="text-decoration-none text-dark fw-bold">
+            <a href="{{ route('public.proyectos') }}" class="btn-ghost-custom fw-bold">
                 <i class="ri-arrow-left-line me-1"></i> < Volver al listado
             </a>
         </div>
@@ -91,7 +91,7 @@
 
             <div class="col-lg-4">
                 <div class="card border-dark rounded-0 shadow-sm">
-                    <div class="card-header bg-dark text-white rounded-0 fw-bold text-uppercase py-3">
+                    <div class="card-header bg-primary text-white rounded-0 fw-bold text-uppercase py-3">
                         Ficha Técnica
                     </div>
                     <div class="card-body p-4">
@@ -130,7 +130,7 @@
                             <h6 class="fw-bold small text-uppercase mb-3">Stack Tecnológico</h6>
                             <div class="d-flex flex-wrap gap-2">
                                 @foreach($proyecto->tecnologias as $tech)
-                                    <span class="badge bg-white text-dark border border-dark rounded-0 py-2 px-3">
+                                    <span class="badge badge-custom py-2 px-3">
                                         @if($tech->icono_class) 
                                             <i class="{{ $tech->icono_class }} me-1"></i> 
                                         @endif

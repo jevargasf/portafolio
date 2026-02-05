@@ -1,4 +1,4 @@
-<ul class="nav flex-column p-4 h-100" id="sidebar">
+<ul class="nav flex-column p-4 h-100 bg-light" id="sidebar">
   
   <a class="navbar-brand p-2 align-middle d-flex align-items-center mb-4" href="{{ route('inicio') }}">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 28px; height: 28px;" class="me-2 text-primary">
