@@ -32,7 +32,7 @@
                                 </p>
                                 
                                 @if($perfil->cv)
-                                    <a href="{{ $perfil->cv->url_publica }}" target="_blank" class="btn btn-primary-custom rounded-0 px-4 py-2 fw-bold">
+                                    <a href="{{ $perfil->cv->url_publica }}" target="_blank" class="btn btn-primary-custom px-4 py-2 fw-bold">
                                         <i class="ri-file-download-line me-2"></i> DESCARGAR CV
                                     </a>
                                 @else
@@ -63,7 +63,7 @@
                                 @endforeach
                             </div>
                             
-                            <button class="btn btn-outline-dark btn-sm rounded-0 mt-3 fw-bold" type="button" 
+                            <button class="btn btn-outline-custom btn-sm rounded-0 mt-3 fw-bold" type="button" 
                                     data-bs-toggle="collapse" data-bs-target="#collapseExperiencia" 
                                     aria-expanded="false" aria-controls="collapseExperiencia"
                                     onclick="this.innerText = this.innerText == 'VER HISTORIAL COMPLETO' ? 'MOSTRAR MENOS' : 'VER HISTORIAL COMPLETO'">
