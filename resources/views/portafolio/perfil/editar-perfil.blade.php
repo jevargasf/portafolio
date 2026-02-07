@@ -30,7 +30,7 @@
                     <div class="card-body">
                         @if($usuario->perfil && $usuario->perfil->cv)
                             <div class="d-grid mb-3">
-                                <a href="{{ $usuario->perfil->cv->url_publica }}" target="_blank" class="btn btn-outline-custom btn-info-custom">
+                                <a href="{{ $usuario->perfil->cv->url_publica }}" target="_blank" class="btn btn-outline-custom btn-info-outline-custom">
                                     <i class="ri-file-download-line"></i> Descargar mi CV actual
                                 </a>
                             </div>
@@ -137,7 +137,7 @@
                             </div>
                             <span class="h2 font-weight-bold text-gray-800">{{ $perfil ? $perfil->experiencias->count() : 0 }}</span>
                         </div>
-                        <a href="#" class="btn btn-sm btn-outline-custom mt-3 stretched-link">Gestionar</a>
+                        <a href="#" class="btn btn-sm btn-primary-outline-custom mt-3">Gestionar</a>
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                             </div>
                             <span class="h2 font-weight-bold text-gray-800">{{ $perfil ? $perfil->educacion->count() : 0 }}</span>
                         </div>
-                        <a href="#" class="btn btn-sm btn-outline-success mt-3 stretched-link">Gestionar</a>
+                        <a href="#" class="btn btn-sm btn-success-outline-custom mt-3">Gestionar</a>
                     </div>
                 </div>
             </div>
@@ -167,7 +167,7 @@
                             </div>
                             <span class="h2 font-weight-bold text-gray-800">0</span>
                         </div>
-                        <a href="#" class="btn btn-sm btn-outline-info mt-3 stretched-link">Gestionar</a>
+                        <a href="#" class="btn btn-sm btn-info-outline-custom mt-3">Gestionar</a>
                     </div>
                 </div>
             </div>

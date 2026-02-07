@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\PerfilProfesional;
 use App\Models\Proyecto;
+use Illuminate\Support\Facades\Auth;
 
 class PublicController extends Controller
 {
@@ -25,6 +26,8 @@ class PublicController extends Controller
 
     public function verPerfil()
     {
+    // 1. Obtener los datos (puedes filtrar por 'visible' si quieres ocultar algunos)
+
         $perfil = PerfilProfesional::where('estado', 1)
             ->with([
                 'usuario', 
@@ -34,8 +37,58 @@ class PublicController extends Controller
                 'certificaciones' => fn($q) => $q->orderBy('fecha_inicio', 'desc')
             ])
             ->firstOrFail();
+        $experiencias = PerfilProfesional::where('estado', 1)->firstOrFail()->experiencias;
+        $educacion    = PerfilProfesional::where('estado', 1)->firstOrFail()->educacion;
+        $certificaciones = PerfilProfesional::where('estado', 1)->firstOrFail()->certificaciones;
 
-        return view('public.perfil', compact('perfil'));
+        // 2. Estandarizar (DTO - Data Transfer Object simplificado)
+        // Convertimos todo a un formato común: 'fecha', 'titulo', 'subtitulo', 'tipo'
+        
+        $timeline = collect();
+
+        // Mapear Experiencia
+        $timeline = $timeline->merge($experiencias->map(function($item) {
+            return [
+                'fecha' => $item->fecha_inicio, // Usamos Carbon para ordenar
+                'fecha_fin' => $item->fecha_fin,
+                'titulo' => $item->cargo,
+                'subtitulo' => $item->empresa,
+                'descripcion' => $item->descripcion,
+                'tipo' => 'WORK', // Para el ícono y color
+                'es_hito' => true // Esto decide si va grande o pequeño
+            ];
+        }));
+
+        // Mapear Educación
+        $timeline = $timeline->merge($educacion->map(function($item) {
+            return [
+                'fecha' => $item->fecha_inicio,
+                'fecha_fin' => $item->fecha_fin,
+                'titulo' => $item->titulo,
+                'subtitulo' => $item->institucion,
+                'descripcion' => $item->descripcion, // Tesis, logros
+                'tipo' => 'ACADEMIC',
+                'es_hito' => true
+            ];
+        }));
+
+        // Mapear Certificaciones (Aquí está el truco)
+        $timeline = $timeline->merge($certificaciones->map(function($item) {
+            return [
+                'fecha' => $item->fecha_obtencion,
+                'fecha_fin' => null, // Las certs son puntuales
+                'titulo' => $item->nombre,
+                'subtitulo' => $item->plataforma, // Udemy, Coursera, AWS
+                'descripcion' => null, // Generalmente no necesitamos descripción larga
+                'tipo' => 'CERT',
+                'es_hito' => false // <--- ESTO ES CLAVE. No es un hito mayor.
+            ];
+        }));
+
+        // 3. Ordenar cronológicamente descendente (Lo más nuevo primero)
+        $timeline = $timeline->sortByDesc('fecha');
+
+        return view('public.perfil', compact('perfil', 'timeline'));
     }
 
     public function verProyectos(Request $request)
