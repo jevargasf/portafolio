@@ -57,4 +57,9 @@ class Usuario extends Authenticatable
         // Ordenamos por defecto para ver el último acceso primero
         return $this->hasMany(HistorialAcceso::class, 'usuario_id')->orderBy('fecha', 'desc');
     }
+
+    public function entradas()
+    {
+        return $this->hasMany(Entrada::class, 'usuario_id');
+    }
 }
