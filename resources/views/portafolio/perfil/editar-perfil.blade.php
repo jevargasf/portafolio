@@ -137,7 +137,7 @@
                             </div>
                             <span class="h2 font-weight-bold text-gray-800">{{ $perfil ? $perfil->experiencias->count() : 0 }}</span>
                         </div>
-                        <a href="#" class="btn btn-sm btn-primary-outline-custom mt-3">Gestionar</a>
+                        <a href="{{ route('panel.perfil.experiencias.listar') }}" class="btn btn-sm btn-primary-outline-custom mt-3">Gestionar</a>
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                             </div>
                             <span class="h2 font-weight-bold text-gray-800">{{ $perfil ? $perfil->educacion->count() : 0 }}</span>
                         </div>
-                        <a href="#" class="btn btn-sm btn-success-outline-custom mt-3">Gestionar</a>
+                        <a href="{{ route('panel.perfil.educacion.listar') }}" class="btn btn-sm btn-success-outline-custom mt-3">Gestionar</a>
                     </div>
                 </div>
             </div>
@@ -167,7 +167,7 @@
                             </div>
                             <span class="h2 font-weight-bold text-gray-800">0</span>
                         </div>
-                        <a href="#" class="btn btn-sm btn-info-outline-custom mt-3">Gestionar</a>
+                        <a href="{{ route('panel.perfil.certificaciones.listar') }}" class="btn btn-sm btn-info-outline-custom mt-3">Gestionar</a>
                     </div>
                 </div>
             </div>
