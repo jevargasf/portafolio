@@ -30,6 +30,12 @@
     </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link {{ request()->routeIs('panel.blog.*') ? 'active' : '' }}" 
+          href="{{ route('panel.blog.listar') }}">
+          <i class="ri-home-smile-line me-2"></i> Blog
+      </a>
+    </li>
+    <li class="nav-item">
     <a class="nav-link {{ request()->routeIs('public.inicio') ? 'active' : '' }}" 
         href="{{ route('public.inicio') }}">
         <i class="ri-home-smile-line me-2"></i> Vista Pública
