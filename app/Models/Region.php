@@ -14,7 +14,10 @@ class Region extends Model
     // Desactivamos timestamps si tu tabla SQL no tiene created_at/updated_at
     public $timestamps = false; 
 
-    protected $fillable = ['nombre'];
+    protected $fillable = [
+        'nombre',
+        'iso'
+    ];
 
     /**
      * Relación: Una región tiene muchas comunas
