@@ -1,4 +1,4 @@
-name: 🚀 Deploy Laravel a cPanel
+name: Deploy Laravel Final
 
 on:
   push:
@@ -10,32 +10,31 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      # 1. Obtener el código más reciente
       - name: Get latest code
         uses: actions/checkout@v4
 
-      # 2. Instalar dependencias de PHP (Vendor)
       - name: Install Dependencies
         run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-      # 3. Subir archivos via FTP
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-
-          # FTP SIMPLE PARA EVITAR EL RIESGO DE FALLO AL PEDIR USO DEL PUERTO ALEATORIO
+          
           protocol: ftp
           port: 21
           
-          # CARPETA DE DESTINO EN CPANEL
           server-dir: ./public_html/
           
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/**
-            .env.example
             .github/**
+            .env.example
+            .editorconfig
+            .gitattributes
+            .gitignore
+            README.md
