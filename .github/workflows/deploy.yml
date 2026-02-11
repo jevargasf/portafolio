@@ -1,0 +1,15 @@
+name: Probar GitHub Actions
+
+on:
+  push:
+    branches: [ "main" ] # O "master", revisa cómo se llama tu rama principal
+
+jobs:
+  prueba-de-vida:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+      
+      - name: Saludar
+        run: echo "¡Hola Javier! GitHub Actions ha encontrado este archivo exitosamente."
