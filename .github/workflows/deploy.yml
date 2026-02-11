@@ -25,6 +25,10 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+
+          # FTP SIMPLE PARA EVITAR EL RIESGO DE FALLO AL PEDIR USO DEL PUERTO ALEATORIO
+          protocol: ftp
+          port: 21
           
           # CARPETA DE DESTINO EN CPANEL
           server-dir: /public_html/
