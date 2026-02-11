@@ -10,6 +10,7 @@ class Certificacion extends Model
     use HasFactory;
 
     protected $table = 'certificaciones';
+    
     public $timestamps = false;
 
     protected $fillable = [
@@ -21,7 +22,6 @@ class Certificacion extends Model
         'fecha_inicio',
         'fecha_fin',
         'url_certificado',
-        'comuna_id',
         'estado'
     ];
 
@@ -29,6 +29,7 @@ class Certificacion extends Model
     protected $casts = [
         'fecha_inicio' => 'date',
         'fecha_fin'    => 'date',
+        'estado' => 'integer',
     ];
 
     /* RELACIONES */
@@ -36,10 +37,5 @@ class Certificacion extends Model
     public function perfil()
     {
         return $this->belongsTo(PerfilProfesional::class, 'perfil_id');
-    }
-
-    public function comuna()
-    {
-        return $this->belongsTo(Comuna::class, 'comuna_id');
     }
 }
