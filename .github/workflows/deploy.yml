@@ -21,4 +21,4 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y lftp
 
-          lftp -c "set ftp:ssl-allow no; set ssl:verify-certificate no; open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; mirror -R -v --parallel=2 --exclude .git/ --exclude .github/ --exclude node_modules/ --exclude .env ./ /public_html"
+          lftp -c "set ftp:ssl-allow no; set ssl:verify-certificate no; open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; mirror -R -v --parallel=2 --exclude .git/ --exclude .github/ --exclude node_modules/ --exclude .env ./ public_html"
