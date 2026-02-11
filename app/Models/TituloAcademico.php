@@ -11,17 +11,31 @@ class TituloAcademico extends Model
 
     protected $table = 'titulos_academicos';
 
+    public $timestamps = false;
+    
     protected $fillable = [
         'perfil_id',
         'institucion',
-        'titulo_obtenido',
+        'nombre_titulo',
         'fecha_inicio',
-        'fecha_fin',
+        'fecha_obtencion',
+        'comuna_id',
         'estado'
     ];
 
+    protected $casts = [
+        'fecha_inicio'    => 'date', 
+        'fecha_obtencion' => 'date', 
+        'estado'          => 'integer',
+    ];
+    
     public function perfil()
     {
         return $this->belongsTo(PerfilProfesional::class, 'perfil_id');
+    }
+
+    public function comuna()
+    {
+        return $this->belongsTo(Comuna::class, 'comuna_id');
     }
 }
