@@ -120,13 +120,10 @@ CREATE TABLE IF NOT EXISTS `certificaciones` (
   `fecha_inicio` DATE NOT NULL,
   `fecha_fin` DATE NULL,
   `url_certificado` VARCHAR(255),
-  `comuna_id` INT NULL,
   `estado` INT(1) DEFAULT 1,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_cert_perfil`
-    FOREIGN KEY (`perfil_id`) REFERENCES `perfil_profesional` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_cert_comuna`
-    FOREIGN KEY (`comuna_id`) REFERENCES `comunas` (`id`)
+    FOREIGN KEY (`perfil_id`) REFERENCES `perfil_profesional` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `documentos_profesionales` (
@@ -256,6 +253,43 @@ CREATE TABLE IF NOT EXISTS `historial_accesos` (
 );
 
 SET FOREIGN_KEY_CHECKS = 1; -- Reactivar chequeo de llaves foráneas
+
+-- -----------------------------------------------------
+-- 7. BLOG
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `entradas` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `usuario_id` INT NOT NULL,
+  `slug` VARCHAR(255) NOT NULL,
+  `titulo` VARCHAR(255) NOT NULL,
+  `extracto` VARCHAR(255) NOT NULL,
+  `contenido` LONGTEXT,
+  `fecha_publicacion` DATETIME,
+  `scope` VARCHAR(20) NOT NULL,
+  `estado` INT DEFAULT 1,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `entradas_slug_unique` (`slug`),
+  CONSTRAINT `fk_usuario_entrada`
+    FOREIGN KEY (`usuario_id`)
+    REFERENCES `usuarios` (`id`)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS `documentos_entradas` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `entrada_id` INT NOT NULL,
+  `nombre_archivo` VARCHAR(100) NOT NULL,
+  `ruta_archivo` VARCHAR(255) NOT NULL,
+  `extension` VARCHAR(10) NOT NULL,
+  `hash_archivo` VARCHAR(255) NOT NULL,
+  `es_portada` TINYINT(1) DEFAULT 0,
+  `estado` INT DEFAULT 1,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_docs_entrada`
+    FOREIGN KEY (`entrada_id`)
+    REFERENCES `entradas` (`id`)
+    ON DELETE CASCADE
+);
 
 -- -------------------------------------------
 -- 8. ÚLTIMOS CAMBIOS
