@@ -1,4 +1,4 @@
-name: Deploy Laravel Final
+name: Deploy Laravel via SFTP
 
 on:
   push:
@@ -16,27 +16,18 @@ jobs:
       - name: Install Dependencies
         run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-      - name: Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: SFTP Deploy
+        
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
+          server: ${{ secrets.FTP_SERVER }}
           password: ${{ secrets.FTP_PASSWORD }}
           
-          protocol: sftp
-          port: 22
+          port: 22 
           
-          server-dir: /public_html/
+          local_path: './'
           
-          security: loose
-
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            .github/**
-            .env.example
-            .editorconfig
-            .gitattributes
-            .gitignore
-            README.md
+          remote_path: '/public_html/'
+          
+          sftp_args: '-o ConnectTimeout=30'
