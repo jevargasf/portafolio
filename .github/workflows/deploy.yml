@@ -27,7 +27,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           
           # CARPETA DE DESTINO EN CPANEL
-          local-dir: ./repositories/portafolio
+          local-dir: ./repositories/portafolio/
           server-dir: /public_html/
           
           exclude: |
