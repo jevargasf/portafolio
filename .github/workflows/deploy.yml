@@ -1,4 +1,4 @@
-name: Deploy Laravel (Modo Diagnóstico + Fix)
+name: Deploy Laravel (Estructura Correcta)
 
 on:
   push:
@@ -16,9 +16,9 @@ jobs:
       - name: Install Dependencies
         run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-      - name: Upload via LFTP (Paso a Paso)
+      - name: Upload via LFTP (Al repositorio real)
         run: |
           sudo apt-get update
           sudo apt-get install -y lftp
           
-          lftp -c "set ftp:ssl-allow no; set ssl:verify-certificate no; open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; echo '--- LISTADO RAIZ ---'; ls -la; echo '--- ENTRANDO A PUBLIC_HTML ---'; cd public_html; mirror -R -v --parallel=2 --exclude .git/ --exclude .github/ --exclude node_modules/ --exclude .env ./ ."
+          lftp -c "set ftp:ssl-allow no; set ssl:verify-certificate no; open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; mirror -R -v --parallel=2 --exclude .git/ --exclude .github/ --exclude node_modules/ --exclude .env ./ repositories/portafolio"
