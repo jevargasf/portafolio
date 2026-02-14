@@ -16,7 +16,7 @@
                 </h1>
             </div>
             <a href="{{ route('panel.perfil.educacion.listar') }}" class="btn btn-ghost-custom text-muted x-small">
-                <i class="ri-arrow-left-line"></i> Volver
+                <svg class="me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"></path></svg> Volver
             </a>
         </div>
 
@@ -91,7 +91,7 @@
                             <input type="date" class="form-control rounded-0" id="fecha_obtencion" name="fecha_obtencion" 
                                    required value="{{ old('fecha_obtencion', $titulo->fecha_obtencion->format('Y-m-d')) }}">
                             <div class="form-text x-small font-mono text-muted mt-1">
-                                <i class="ri-information-line"></i> Si cursas actualmente, indica fecha estimada.
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z"></path></svg> Si cursas actualmente, indica fecha estimada.
                             </div>
                             @error('fecha_obtencion') <span class="text-danger x-small font-mono">{{ $message }}</span> @enderror
                         </div>
@@ -106,7 +106,7 @@
                             Cancelar
                         </a>
                         <button type="submit" class="btn btn-primary-custom px-4">
-                            <i class="ri-save-line me-1"></i> Actualizar Título
+                            <svg class="me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 19V13H17V19H19V7.82843L16.1716 5H5V19H7ZM4 3H17L21 7V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM9 15V19H15V15H9Z"></path></svg> Actualizar Título
                         </button>
                     </div>
 

@@ -15,7 +15,7 @@
                 <h1 class="h3 fw-bold mb-0 text-dark font-mono">Editar Certificación</h1>
             </div>
             <a href="{{ route('panel.perfil.certificaciones.listar') }}" class="btn btn-ghost-custom text-muted x-small">
-                <i class="ri-arrow-left-line"></i> Volver
+                <svg class="me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"></path></svg> Volver
             </a>
         </div>
 
@@ -65,7 +65,7 @@
                         <div class="col-md-8">
                             <label for="url_certificado" class="form-label font-mono x-small text-uppercase text-muted fw-bold">URL del Certificado (Opcional)</label>
                             <div class="input-group">
-                                <span class="input-group-text rounded-0 bg-light border-end-0 text-muted"><i class="ri-link"></i></span>
+                                <span class="input-group-text rounded-0 bg-light border-end-0 text-muted"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.3638 15.5355L16.9496 14.1213L18.3638 12.7071C20.3164 10.7545 20.3164 7.58866 18.3638 5.63604C16.4112 3.68341 13.2453 3.68341 11.2927 5.63604L9.87849 7.05025L8.46428 5.63604L9.87849 4.22182C12.6122 1.48815 17.0443 1.48815 19.778 4.22182C22.5117 6.95549 22.5117 11.3876 19.778 14.1213L18.3638 15.5355ZM15.5353 18.364L14.1211 19.7782C11.3875 22.5118 6.95531 22.5118 4.22164 19.7782C1.48797 17.0445 1.48797 12.6123 4.22164 9.87868L5.63585 8.46446L7.05007 9.87868L5.63585 11.2929C3.68323 13.2455 3.68323 16.4113 5.63585 18.364C7.58847 20.3166 10.7543 20.3166 12.7069 18.364L14.1211 16.9497L15.5353 18.364ZM14.8282 7.75736L16.2425 9.17157L9.17139 16.2426L7.75717 14.8284L14.8282 7.75736Z"></path></svg></span>
                                 <input type="url" class="form-control rounded-0 border-start-0 ps-0" id="url_certificado" name="url_certificado" 
                                        placeholder="https://..." 
                                        value="{{ old('url_certificado', $certificacion->url_certificado) }}">
@@ -88,7 +88,7 @@
                             <input type="date" class="form-control rounded-0" id="fecha_fin" name="fecha_fin" 
                                    value="{{ old('fecha_fin', optional($certificacion->fecha_fin)->format('Y-m-d')) }}">
                             <div class="form-text x-small font-mono text-muted mt-1">
-                                <i class="ri-information-line"></i> Dejar vacío si no aplica o es indefinido.
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z"></path></svg> Dejar vacío si no aplica o es indefinido.
                             </div>
                             @error('fecha_fin') <span class="text-danger x-small font-mono">{{ $message }}</span> @enderror
                         </div>
@@ -123,7 +123,7 @@
                             Cancelar
                         </a>
                         <button type="submit" class="btn btn-primary-custom px-4">
-                            <i class="ri-save-line me-1"></i> Actualizar Certificación
+                            <svg class="me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 19V13H17V19H19V7.82843L16.1716 5H5V19H7ZM4 3H17L21 7V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM9 15V19H15V15H9Z"></path></svg> Actualizar Certificación
                         </button>
                     </div>
 

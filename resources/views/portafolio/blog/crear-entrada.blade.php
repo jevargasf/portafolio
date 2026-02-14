@@ -16,7 +16,7 @@
                 <h1 class="h3 fw-bold mb-0 text-dark font-mono">Escribir Entrada</h1>
             </div>
             <a href="{{ route('panel.blog.listar') }}" class="btn btn-ghost-custom text-muted x-small">
-                <i class="ri-arrow-left-line"></i> Volver
+                <svg class="me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"></path></svg> Volver
             </a>
         </div>
 
@@ -107,7 +107,7 @@
 
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary-custom rounded-0 font-mono">
-                                    <i class="ri-send-plane-fill me-1"></i> Guardar Entrada
+                                    <svg class="me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M1.94607 9.31543C1.42353 9.14125 1.4194 8.86022 1.95682 8.68108L21.043 2.31901C21.5715 2.14285 21.8746 2.43866 21.7265 2.95694L16.2733 22.0432C16.1223 22.5716 15.8177 22.59 15.5944 22.0876L11.9999 14L17.9999 6.00005L9.99992 12L1.94607 9.31543Z"></path></svg> Guardar Entrada
                                 </button>
                             </div>
                         </div>
@@ -120,7 +120,7 @@
                         <div class="card-body p-3 text-center">
                             
                             <div class="image-upload-wrapper border border-dashed p-4 mb-2 bg-light">
-                                <i class="ri-image-add-line display-4 text-muted opacity-50"></i>
+                                <svg class="display-4 text-muted opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M21 15V18H24V20H21V23H19V20H16V18H19V15H21ZM21.0082 3C21.556 3 22 3.44495 22 3.9934V13H20V5H4V18.999L14 9L17 12V14.829L14 11.8284L6.827 19H14V21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082ZM8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7Z"></path></svg>
                                 <p class="small text-muted mb-2 mt-2">Arrastra o haz clic</p>
                                 <input type="file" class="form-control d-none" id="imagen_portada" name="imagen_portada" accept="image/*">
                                 <button type="button" class="btn btn-sm btn-outline-secondary rounded-0 font-mono" onclick="document.getElementById('imagen_portada').click()">

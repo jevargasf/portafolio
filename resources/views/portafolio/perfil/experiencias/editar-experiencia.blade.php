@@ -16,7 +16,7 @@
                 </h1>
             </div>
             <a href="{{ route('panel.perfil.experiencias.listar') }}" class="btn btn-light border rounded-0 text-muted font-mono x-small">
-                <i class="ri-arrow-left-line"></i> Volver
+                <svg class="me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"></path></svg> Volver
             </a>
         </div>
 
@@ -112,7 +112,7 @@
                             Cancelar
                         </a>
                         <button type="submit" class="btn btn-primary rounded-0 font-mono px-4 bg-petrol border-petrol">
-                            <i class="ri-save-line me-1"></i> Actualizar Cambios
+                            <svg class="me-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 19V13H17V19H19V7.82843L16.1716 5H5V19H7ZM4 3H17L21 7V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM9 15V19H15V15H9Z"></path></svg> Actualizar Cambios
                         </button>
                     </div>
 

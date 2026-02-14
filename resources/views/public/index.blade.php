@@ -78,7 +78,7 @@
                     <div class="d-flex flex-wrap gap-3">
                         <a href="#proyectos" class="btn btn-primary-custom btn-lg px-4 py-3 d-flex align-items-center gap-2">
                             <span>VER PROYECTOS</span>
-                            <i class="ri-arrow-down-line"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.0001 16.1716L18.3641 10.8076L19.7783 12.2218L12.0001 20L4.22192 12.2218L5.63614 10.8076L11.0001 16.1716V4H13.0001V16.1716Z"></path></svg>
                         </a>
 
                         <a href="" class="btn btn-outline-custom btn-lg px-4 py-3">
@@ -185,7 +185,7 @@
                             <div class="d-grid gap-2">
                                 <a href="{{ route('public.detalle-proyecto', $proyecto) }}" class="btn btn-outline-custom rounded-0 d-flex justify-content-between align-items-center">
                                     <span>ANALIZAR CASO</span>
-                                    <i class="ri-arrow-right-line"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg>
                                 </a>
                             </div>
                         </div>

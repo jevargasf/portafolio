@@ -95,9 +95,9 @@
                          style="width: 32px; height: 32px; left: -41px; top: 0px; background-color: {{ $item['tipo'] == 'WORK' ? 'var(--primary)' : 'white' }};">
                         
                         @if($item['tipo'] == 'WORK')
-                            <i class="ri-briefcase-line text-white small"></i>
+                            <svg class="text-white small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5V2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2V5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V6C2 5.44772 2.44772 5 3 5H7ZM4 16V19H20V16H4ZM4 14H20V7H4V14ZM9 3V5H15V3H9ZM11 11H13V13H11V11Z"></path></svg>
                         @else
-                            <i class="ri-book-open-line text-dark small"></i>
+                            <svg class="text-dark small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13 21V23H11V21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H9C10.1947 3 11.2671 3.52375 12 4.35418C12.7329 3.52375 13.8053 3 15 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H13ZM20 19V5H15C13.8954 5 13 5.89543 13 7V19H20ZM11 19V7C11 5.89543 10.1046 5 9 5H4V19H11Z"></path></svg>
                         @endif
                     </div>
                     
@@ -145,7 +145,7 @@
         foreach(certificaciones as cert)
             <div class="border border-secondary px-2 py-1 bg-light font-monospace small d-flex align-items-center gap-2" 
                  title=" cert->nombre }} -  cert->fecha_obtencion }}">
-                <i class="ri-uninstall-line text-muted"></i> <span> Str::limit($cert->nombre, 20) }}</span>
+                <svg class="text-muted" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 2V4H5L4.999 14H18.999L19 4H16V2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H8ZM18.999 16H4.999L5 20H19L18.999 16ZM17 17V19H15V17H17ZM12 2L16 6H13V11H11V6H8L12 2Z"></path></svg> <span> Str::limit($cert->nombre, 20) }}</span>
                 <span class="badge bg-secondary text-white" style="font-size: 0.6rem;">$cert->plataforma }}</span>
             </div>
         endforeach
