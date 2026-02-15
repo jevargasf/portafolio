@@ -185,6 +185,10 @@ small {
     border: 1px solid var(--info);
 }
 
+svg{
+    width: 24px;
+}
+
 /* ---- BADGES ---- */
 .badge-custom {
     background-color: rgba(15, 76, 92, 0.1); /* Tu color Petrol al 10% de opacidad */
