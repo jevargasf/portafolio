@@ -1,5 +1,12 @@
 <x-layouts.panel>
     <div class="row mt-5 ms-2 me-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb font-mono x-small mb-1 text-uppercase">
+                <li class="breadcrumb-item"><a href="{{ route('panel.inicio') }}" class="text-decoration-none text-muted">Panel</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('panel.perfil.editar.form') }}" class="text-decoration-none text-muted">Perfil</a></li>
+                <li class="breadcrumb-item active text-dark">Títulos Académicos</li>
+            </ol>
+        </nav>
         <h2 class="col-10">Listado de Títulos Académicos</h2>
         <a class="btn btn-primary-custom d-flex align-items-center justify-content-center float-end col-2" href="{{ route('panel.perfil.educacion.agregar.form') }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 24px; height: 24px;"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
