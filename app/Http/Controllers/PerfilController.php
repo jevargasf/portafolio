@@ -24,19 +24,22 @@ class PerfilController extends Controller
 
 public function editarPerfil(Request $request){
         $validated = $request->validate([
-            'ocupacion'       => 'nullable|string|max:200',
-            'telefono'        => 'nullable|string|max:9',
-            'biografia'       => 'nullable|string',
-            'esta_disponible' => 'nullable', // Viene como "1" o null (checkbox)
+            'ocupacion'         => 'nullable|string|max:200',
+            'telefono'          => 'nullable|string|max:9',
+            'biografia'         => 'nullable|string',
+            'biografia_enfoque' => 'nullable|string|max:200',
+            'esta_disponible'   => 'nullable', // Viene como "1" o null (checkbox)
+            'index_bio'         => 'nullable|string|max:200',
+            'index_especialidad'=> 'nullable|string|max:200',
             
             // Archivos
-            'foto_perfil'     => 'nullable|image|max:2048', // JPG/PNG, Máx 2MB
-            'archivo_cv'      => 'nullable|file|mimes:pdf|max:5120', // PDF, Máx 5MB
+            'foto_perfil'       => 'nullable|image|max:2048', // JPG/PNG, Máx 2MB
+            'archivo_cv'        => 'nullable|file|mimes:pdf|max:5120', // PDF, Máx 5MB
             
             // Redes Sociales (Array)
-            'redes'           => 'nullable|array',
-            'redes.linkedin'  => 'nullable|url|max:255',
-            'redes.github'    => 'nullable|url|max:255',
+            'redes'             => 'nullable|array',
+            'redes.linkedin'    => 'nullable|url|max:255',
+            'redes.github'      => 'nullable|url|max:255',
         ]);
 
         try {
@@ -46,11 +49,14 @@ public function editarPerfil(Request $request){
                 $perfil = PerfilProfesional::updateOrCreate(
                     ['usuario_id' => $user->id],
                     [
-                        'ocupacion'       => $validated['ocupacion'],
-                        'telefono'        => $validated['telefono'],
-                        'biografia'       => $validated['biografia'],
-                        'esta_disponible' => $request->has('esta_disponible') ? 1 : 0,
-                        'estado'          => 1 // Activo por defecto
+                        'ocupacion'          => $validated['ocupacion'],
+                        'telefono'           => $validated['telefono'],
+                        'biografia'          => $validated['biografia'],
+                        'biografia_enfoque'          => $validated['biografia_enfoque'],
+                        'index_bio'          => $validated['index_bio'],
+                        'index_especialidad' => $validated['index_especialidad'],
+                        'esta_disponible'    => $request->has('esta_disponible') ? 1 : 0,
+                        'estado'             => 1 // Activo por defecto
                     ]
                 );
 

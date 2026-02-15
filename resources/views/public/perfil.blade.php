@@ -10,7 +10,7 @@
                     <a href="{{ route('public.inicio') }}" class="text-muted text-decoration-none">~/Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page" style="color: var(--primary);">
-                    ./Profile_Config
+                    ./Perfil_Profesional
                 </li>
             </nav>
         </nav>
@@ -39,13 +39,10 @@
             > System_Philosophy
         </h3>
         <p class="text-dark">
-            Programar es escribir las reglas de la interacción social digital. 
-            Como <strong>Sociólogo</strong> y <strong>Desarrollador</strong>, no solo construyo funciones; 
-            analizo el impacto y la lógica detrás de cada línea de código.
+            {{ $perfil->biografia ?? 'El usuario no ha agregado una biografía.' }}
         </p>
         <p class="text-muted small">
-            Enfoque: <strong>Primeros Principios</strong>. Descompongo problemas complejos (como el Cubo Rubik) 
-            a sus bases matemáticas para reconstruir soluciones eficientes, no parches.
+            {{ $perfil->biografia_enfoque ?? 'El usuario no ha agregado un enfoque' }}
         </p>
         
         <a href="/cv" class="btn btn-outline-custom font-monospace btn-sm mt-2">

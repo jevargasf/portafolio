@@ -14,7 +14,10 @@ class PerfilProfesional extends Model
     protected $fillable = [
         'usuario_id',
         'ocupacion',       
-        'biografia',       
+        'biografia',  
+        'biografia_enfoque',
+        'index_bio',
+        'index_especialidad',     
         'telefono',        
         'esta_disponible',
         'estado'           

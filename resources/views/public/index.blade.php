@@ -1,49 +1,4 @@
 <x-layouts.app>
-
-    <!-- <header class="py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="card border-2 shadow-sm rounded-0 p-4 p-lg-5 bg-white">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    
-                    <div class="col-md-5 mb-4 mb-md-0 text-center">
-                        @php
-                            // Lógica para obtener la foto: si existe en BD usa esa, sino una default
-                            $fotoUrl = ($perfil && $perfil->foto_perfil) 
-                                ? $perfil->foto_perfil->url_publica 
-                                : 'https://dummyimage.com/400x400/dee2e6/6c757d.jpg&text=JAVIER';
-                        @endphp
-                        <img class="img-fluid rounded border border-dark" 
-                             src="{{ $fotoUrl }}" 
-                             alt="Foto de {{ $perfil->usuario->nombres ?? 'Javier' }}" 
-                             style="width: 100%; max-width: 350px; aspect-ratio: 1/1; object-fit: cover;" />
-                    </div>
-
-                    <div class="col-md-7">
-                        <div class="text-center text-md-start">
-                            <h1 class="display-5 fw-bolder text-dark mb-2">
-                                HOLA, SOY {{ strtoupper($perfil->usuario->nombres ?? 'JAVIER') }}
-                            </h1>
-                            <div class="fs-4 mb-4 text-muted fst-italic">
-                                {{ strtoupper($perfil->ocupacion ?? 'DESARROLLADOR FULL STACK') }}
-                            </div>
-                            
-                    <div class="col-md-6">
-                            <a class="btn btn-primary-custom btn-lg px-4 w-100 mb-2" href="">
-                                [ DESCARGAR CV ]
-                            </a>
-                            <a class="btn btn-outline-custom btn-lg px-4 w-100" href="{{ route('public.proyectos') }}">
-                                [ VER PROYECTOS ]
-                            </a>
-                    </div>        
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </header> -->
-
     <header class="py-5 bg-white border-bottom border-2" style="border-color: var(--primary) !important;">
         <div class="container py-lg-5">
             <div class="row align-items-center gy-4">
@@ -67,11 +22,10 @@
                     </h2>
 
                     <p class="lead text-secondary mb-5 pe-lg-5" style="font-size: 1.15rem;">
-                        Desarrollador con base en <strong>Sociología</strong> y <strong>Ciencias Exactas</strong>. 
-                        No solo escribo código; diseño sistemas analizando el problema desde sus primeros principios.
+                        {{ $perfil->index_bio }}
                         <br><br>
                         <span class="fs-6 fst-italic text-muted">
-                            Especialista en Desarrollo Web, Lógica Algorítmica y Arquitectura de Datos.
+                            {{ $perfil->index_especialidad }}
                         </span>
                     </p>
 
