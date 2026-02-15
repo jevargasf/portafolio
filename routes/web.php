@@ -14,6 +14,7 @@ use App\Http\Controllers\PublicPortfolioController;
 use App\Http\Controllers\PublicBlogController;
 use App\Http\Controllers\AdminBlogController;
 use App\Http\Middleware\SoloAdmin;
+use Illuminate\Support\Facades\Config;
 
 // ==========================================
 // LECTURA DE ENTORNOS
@@ -21,7 +22,6 @@ use App\Http\Middleware\SoloAdmin;
 // Capturamos el dominio del blog desde el .env
 // Si por alguna razón no existe en el .env, usamos el de producción por defecto
 $dominioBlog = env('BLOG_DOMAIN', 'lohumanoquemequeda.eu.org');
-
 
 // ==========================================
 // GRUPO 1: BLOG EXTERNO (Dominio Dinámico)
@@ -40,8 +40,11 @@ Route::domain($dominioBlog)->group(function () {
 
 // GUEST (Login)
 Route::middleware('guest')->group(function () {
-    Route::get('/login', [AuthController::class, 'formLogin'])->name('login');
-    Route::post('/login', [AuthController::class, 'login']);
+
+    $rutaSecreta = Config::get('app.login_route');
+
+    Route::get($rutaSecreta, [AuthController::class, 'formLogin'])->name('login');
+    Route::post($rutaSecreta, [AuthController::class, 'login']);
 });
 
 // RUTA DE REDIRECCIÓN / INICIO GENERAL

@@ -185,6 +185,8 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
     
-    'portfolio_owner' => env('PORTFOLIO_OWNER_EMAIL', 'contacto@tudominio.cl')
+    'portfolio_owner' => env('PORTFOLIO_OWNER_EMAIL', 'contacto@tudominio.cl'),
+
+    'login_route' => env('SECRET_LOGIN', 'login')
 
 ];
