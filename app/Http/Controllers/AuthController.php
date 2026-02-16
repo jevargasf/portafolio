@@ -22,7 +22,7 @@ class AuthController extends Controller
         // AUTENTICAR
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            $rol = Auth::user()->rol_id; 
+            $rol = (int) Auth::user()->rol_id; 
 
             $rutaDestino = match ($rol) {
                 1 => 'auth.form-seleccionar-perfil', // ID 1 = Admin

@@ -16,7 +16,7 @@ class SoloAdmin
     public function handle(Request $request, Closure $next)
     {
         // Si NO es admin (asumiendo que 1 es admin)
-        if (auth()->check() && auth()->user()->rol_id !== 1) {
+        if (auth()->check() && (int) auth()->user()->rol_id !== 1) {
             // Opción A: Abortar con error 403 (Prohibido)
             abort(403, 'No tienes permiso para entrar aquí.');
             
