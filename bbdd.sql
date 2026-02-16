@@ -312,3 +312,10 @@ ADD COLUMN updated_at TIMESTAMP NULL DEFAULT NULL;
 -- -------------------------------------------
 INSERT INTO `tecnologias` (`nombre`) VALUES 
 ('Laravel'), ('PHP'), ('MySQL'), ('Bootstrap'), ('Vue.js'), ('React');
+
+-- -------------------------------------------
+-- 10. ALTERS
+-- -------------------------------------------
+alter table perfil_profesional add column `index_bio` varchar(255) default null;
+alter table perfil_profesional add column `index_especialidad` varchar(255) default null;
+alter table perfil_profesional add column `biografia_enfoque` varchar(255) default null;
