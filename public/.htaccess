@@ -1,10 +1,22 @@
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
+        # ESTA LINEA SUELE CAUSAR EL ERROR 500 EN CPANEL, POR ESO LA COMENTO:
+        # Options -MultiViews -Indexes
     </IfModule>
 
     RewriteEngine On
 
-    # Redirigir todo el tráfico a la carpeta "public"
-    RewriteRule ^(.*)$ public/$1 [L]
+    # Manejo de Headers de Autorización
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redireccionar si la URL termina en / (slash)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Enviar todo el tráfico a index.php (El Corazón de Laravel)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
 </IfModule>
