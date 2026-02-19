@@ -12,7 +12,7 @@ class EducacionController extends Controller
     public function formAgregarTitulo(Request $request){
         $regiones = Region::with('comunas')->get();
 
-        return view('portafolio.perfil.educacion.agregar-titulo', compact('regiones'));
+        return view('panel.perfil.educacion.agregar-titulo', compact('regiones'));
     }
 
     public function agregarTitulo(Request $request){
@@ -50,7 +50,7 @@ class EducacionController extends Controller
     
         $titulos = TituloAcademico::orderBy('id', 'desc')->paginate($perPage);
 
-        return view('portafolio.perfil.educacion.listar-titulos', compact('titulos'));
+        return view('panel.perfil.educacion.listar-titulos', compact('titulos'));
     }
 
     public function formEditarTitulo(Request $request){
@@ -64,7 +64,7 @@ class EducacionController extends Controller
         
         $regiones = Region::with('comunas')->get();
 
-        return view('portafolio.perfil.educacion.editar-titulo', compact('titulo', 'regiones'));
+        return view('panel.perfil.educacion.editar-titulo', compact('titulo', 'regiones'));
 
     }
 

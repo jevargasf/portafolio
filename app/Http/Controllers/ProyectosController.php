@@ -18,7 +18,7 @@ class ProyectosController extends Controller
 
         $tecnologias = Tecnologia::where('estado', 1)->get();
 
-        return view('portafolio.proyectos.crear-proyecto', compact('tecnologias'));
+        return view('panel.proyectos.crear-proyecto', compact('tecnologias'));
     }
 
     public function crearProyecto(Request $request){
@@ -103,7 +103,7 @@ class ProyectosController extends Controller
     
         $proyectos = Proyecto::orderBy('id', 'desc')->paginate($perPage);
 
-        return view('portafolio.proyectos.listar-proyectos', compact('proyectos'));
+        return view('panel.proyectos.listar-proyectos', compact('proyectos'));
     }
 
     public function formEditarProyecto(Request $request)
@@ -113,7 +113,7 @@ class ProyectosController extends Controller
     
         $tecnologias = Tecnologia::where('estado', 1)->get();
 
-        return view('portafolio.proyectos.editar-proyecto', compact('proyecto', 'tecnologias'));
+        return view('panel.proyectos.editar-proyecto', compact('proyecto', 'tecnologias'));
     }
 
     public function editarProyecto(Request $request){

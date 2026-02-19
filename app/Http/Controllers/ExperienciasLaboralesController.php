@@ -13,7 +13,7 @@ class ExperienciasLaboralesController extends Controller
     public function formAgregarExperiencia(Request $request){
         $regiones = Region::with('comunas')->get();
 
-        return view('portafolio.perfil.experiencias.agregar-experiencia', compact('regiones'));
+        return view('panel.perfil.experiencias.agregar-experiencia', compact('regiones'));
     }
 
     public function agregar(Request $request){
@@ -63,7 +63,7 @@ class ExperienciasLaboralesController extends Controller
     
         $experiencias = ExperienciaLaboral::orderBy('id', 'desc')->paginate($perPage);
 
-        return view('portafolio.perfil.experiencias.listar-experiencias', compact('experiencias'));
+        return view('panel.perfil.experiencias.listar-experiencias', compact('experiencias'));
     }
 
     public function formEditarExperiencia(Request $request){
@@ -78,7 +78,7 @@ class ExperienciasLaboralesController extends Controller
         
         $regiones = Region::with('comunas')->get();
 
-        return view('portafolio.perfil.experiencias.editar-experiencia', compact('experiencia', 'regiones'));
+        return view('panel.perfil.experiencias.editar-experiencia', compact('experiencia', 'regiones'));
 
     }
 

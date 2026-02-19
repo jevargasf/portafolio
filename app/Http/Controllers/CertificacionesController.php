@@ -13,7 +13,7 @@ class CertificacionesController extends Controller
 {
     public function formAgregarCertificacion(Request $request){
 
-        return view('portafolio.perfil.certificaciones.agregar-certificacion');
+        return view('panel.perfil.certificaciones.agregar-certificacion');
     }
 
     public function agregarCertificacion(Request $request){
@@ -51,7 +51,7 @@ class CertificacionesController extends Controller
     
         $certificaciones = Certificacion::orderBy('id', 'desc')->paginate($perPage);
 
-        return view('portafolio.perfil.certificaciones.listar-certificaciones', compact('certificaciones'));
+        return view('panel.perfil.certificaciones.listar-certificaciones', compact('certificaciones'));
     }
 
     public function formEditarCertificacion(Request $request){
@@ -64,7 +64,7 @@ class CertificacionesController extends Controller
 
         $certificacion = $perfil->certificaciones()->findOrFail($request->id);
 
-        return view('portafolio.perfil.certificaciones.editar-certificacion', compact('certificacion'));
+        return view('panel.perfil.certificaciones.editar-certificacion', compact('certificacion'));
     }
 
     public function editarCertificacion(Request $request){

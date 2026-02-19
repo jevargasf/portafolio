@@ -19,7 +19,7 @@ class PerfilController extends Controller
         
         $perfil = $usuario->perfil()->with(['redesSociales', 'experiencias', 'educacion', 'documentos'])->first();
         
-        return view('portafolio.perfil.editar-perfil', compact('usuario', 'perfil'));
+        return view('panel.perfil.editar-perfil', compact('usuario', 'perfil'));
     }
 
 public function editarPerfil(Request $request){

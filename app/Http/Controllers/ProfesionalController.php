@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class ProfesionalController extends Controller
 {
     public function inicio(Request $request){
-        return view('portafolio.home');
+        return view('panel.home');
     }
 }

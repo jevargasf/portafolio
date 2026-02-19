@@ -16,7 +16,7 @@ class AdminBlogController extends Controller
 {
     public function formCrearEntrada(Request $request){
 
-        return view('portafolio.blog.crear-entrada');
+        return view('panel.blog.crear-entrada');
     }
 
     public function crearEntrada(Request $request){
@@ -94,7 +94,7 @@ class AdminBlogController extends Controller
 
         $entradas = Entrada::orderBy('id', 'desc')->paginate($perPage);
         
-        return view('portafolio.blog.listar-entradas', compact('entradas'));
+        return view('panel.blog.listar-entradas', compact('entradas'));
     }
 
     public function formEditarEntrada(Request $request){
@@ -103,7 +103,7 @@ class AdminBlogController extends Controller
 
         $entrada = $usuario->entradas()->findOrFail($request->id);
 
-        return view('portafolio.blog.editar-entrada', compact('entrada'));
+        return view('panel.blog.editar-entrada', compact('entrada'));
     }
 
     public function editarEntrada(Request $request){
