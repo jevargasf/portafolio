@@ -45,7 +45,7 @@ class AuthController extends Controller
     }
 
     public function formSeleccionarPerfil(Request $request){
-        if (Auth::user()->rol_id !== 1) {
+        if ((int) Auth::user()->rol_id !== 1) {
             return redirect()->route('panel.inicio');
         }
         return view('auth.profile');
