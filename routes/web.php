@@ -21,13 +21,13 @@ use Illuminate\Support\Facades\Config;
 // ==========================================
 // Capturamos el dominio del blog desde el .env
 // Si por alguna razón no existe en el .env, usamos el de producción por defecto
-$dominioBlog = env('BLOG_DOMAIN', 'lohumanoquemequeda.eu.org');
+$dominioBlog = env('BLOG_DOMAIN', 'lohumanoquemequeda.test');
 
 // ==========================================
 // GRUPO 1: BLOG EXTERNO (Dominio Dinámico)
 // ==========================================
 Route::domain($dominioBlog)->group(function () {
-    Route::get('/', [PublicBlogController::class, 'index']);
+    Route::get('/', [PublicBlogController::class, 'index'])->name('public.blog-personal');
     Route::get('/{slug}', [PublicBlogController::class, 'mostrarEntrada']);
 });
 
