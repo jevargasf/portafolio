@@ -8,7 +8,7 @@ use App\Models\Entrada;
 class PublicBlogController extends Controller
 {
     public function index(Request $request){
-        $entradas = Entrada::where('scope', 'Personal')->where('estado', 2)->get();
+        $entradas = Entrada::where('scope', 'Personal')->where('estado', 2)->orderBy('fecha_publicacion', 'desc')->get();
 
         return view('public.blog.index', compact('entradas'));
     }
