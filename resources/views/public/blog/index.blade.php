@@ -3,7 +3,7 @@
         <div class="row mb-4">
             <div class="col">
                 <h1 class="fw-bold">Lo Humano Que Me Queda</h1>
-                <p class="text-muted">Reflexiones y apuntes.</p>
+                <p class="text-muted">Aquí ensayo el pensamiento.</p>
             </div>
         </div>
 
