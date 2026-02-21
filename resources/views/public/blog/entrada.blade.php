@@ -12,7 +12,7 @@
 
             @if(isset($entrada->portada))
                 <figure class="mb-4">
-                    <img class="img-fluid rounded" src="{{ asset('storage/' . $entrada->portada) }}" alt="{{ $entrada->titulo }}">
+                    <img class="img-fluid rounded" src="{{ asset('storage/' . $entrada->portada->ruta_archivo) }}" alt="{{ $entrada->titulo }}">
                 </figure>
             @endif
 
