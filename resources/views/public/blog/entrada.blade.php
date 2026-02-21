@@ -10,9 +10,9 @@
                 </div>
             </header>
 
-            @if(isset($entrada->imagen_portada))
+            @if(isset($entrada->portada))
                 <figure class="mb-4">
-                    <img class="img-fluid rounded" src="{{ asset('storage/' . $entrada->imagen_portada) }}" alt="{{ $entrada->titulo }}">
+                    <img class="img-fluid rounded" src="{{ asset('storage/' . $entrada->portada) }}" alt="{{ $entrada->titulo }}">
                 </figure>
             @endif
 
