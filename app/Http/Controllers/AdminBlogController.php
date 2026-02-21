@@ -109,7 +109,7 @@ class AdminBlogController extends Controller
     public function editarEntrada(Request $request){
         $entrada = Entrada::findOrFail($request->id);
 
-        if ($entrada->usuario_id !== (int) Auth::id()) {
+        if ((int) $entrada->usuario_id !== (int) Auth::id()) {
             abort(403, 'ACCESO DENEGADO: No tienes permiso para modificar este registro.');
         }
 
