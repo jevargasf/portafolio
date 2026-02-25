@@ -21,7 +21,7 @@
                             </h6>
                             
                             <p class="card-text flex-grow-1 text-secondary">
-                                {{ \Illuminate\Support\Str::limit($entrada->extracto ?? $entrada->contenido, 120) }}
+                                {{ \Illuminate\Support\Str::limit($entrada->extracto ?? $entrada->contenido, 200) }}
                             </p>
                             
                             <a href="{{ url('/' . $entrada->slug) }}" class="btn btn-outline-custom mt-auto stretched-link">
