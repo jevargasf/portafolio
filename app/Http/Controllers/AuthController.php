@@ -57,7 +57,7 @@ class AuthController extends Controller
         ]);
         
         $rutaDestino = match (intval($validated['perfilId'])) {
-            1 => 'admin.dashboard', // CORREGIDO: Debe coincidir con web.php
+            1 => 'admin.dashboard',
             2 => 'panel.inicio',    
         };
 

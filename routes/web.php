@@ -13,6 +13,7 @@ use App\Http\Controllers\ProfesionalController;
 use App\Http\Controllers\PublicPortfolioController;
 use App\Http\Controllers\PublicBlogController;
 use App\Http\Controllers\AdminBlogController;
+use App\Http\Controllers\SuscriptoresController;
 use App\Http\Middleware\SoloAdmin;
 use Illuminate\Support\Facades\Config;
 
@@ -28,7 +29,11 @@ $dominioBlog = env('BLOG_DOMAIN', 'lohumanoquemequeda.test');
 // ==========================================
 Route::domain($dominioBlog)->group(function () {
     Route::get('/', [PublicBlogController::class, 'index'])->name('public.blog-personal');
-    Route::get('/{slug}', [PublicBlogController::class, 'mostrarEntrada']);
+    Route::get('/suscribirse', [SuscriptoresController::class, 'formRegistrarSuscriptor']);
+    Route::post('/suscribirse', [SuscriptoresController::class, 'registrarSuscriptor']);
+    Route::get('/verificar/{suscriptor}', [SuscriptoresController::class, 'verificarCorreo'])->name('verificar')->middleware('signed');
+    Route::get('/dar-de-baja/{suscriptor}', [SuscriptoresController::class, 'darDeBajaSuscriptor'])->name('dar-de-baja')->middleware('signed');
+    Route::get('/{slug}', [PublicBlogController::class, 'mostrarEntrada'])->name('public.entrada');
 });
 
 

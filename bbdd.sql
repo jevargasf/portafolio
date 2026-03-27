@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `links_redes_sociales` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `perfil_id` INT NOT NULL,
   `nombre_red` VARCHAR(50) NOT NULL, -- Ej: LinkedIn, GitHub
-  `url` VARCHAR(255) NOT NULL,
+  `url` VARCHAR(255) NOT NULL,  1
   `icono_class` VARCHAR(50), -- Ej: 'fab fa-linkedin' (FontAwesome)
   `estado` INT(1) DEFAULT 1,
   PRIMARY KEY (`id`),
@@ -291,8 +291,19 @@ CREATE TABLE IF NOT EXISTS `documentos_entradas` (
     ON DELETE CASCADE
 );
 
+-- -----------------------------------------------------
+-- 8. SUSCRIPTORES NEWSLETTER
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `suscriptores` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `correo` VARCHAR(255) UNIQUE NOT NULL,
+  `timestamp_verificacion` DATETIME DEFAULT NULL,
+  `estado` INT DEFAULT 1,
+  PRIMARY KEY (`id`)
+);
+
 -- -------------------------------------------
--- 8. ÚLTIMOS CAMBIOS
+-- I. ÚLTIMOS CAMBIOS
 -- -------------------------------------------
 ALTER TABLE usuarios 
 ADD COLUMN created_at TIMESTAMP NULL DEFAULT NULL, 
@@ -308,7 +319,7 @@ ADD COLUMN updated_at TIMESTAMP NULL DEFAULT NULL;
 
 
 -- -------------------------------------------
--- 9. INSERTS
+-- II. INSERTS
 -- -------------------------------------------
 INSERT INTO `tecnologias` (`nombre`) VALUES 
 ('Laravel'), ('PHP'), ('MySQL'), ('Bootstrap'), ('Vue.js'), ('React');
