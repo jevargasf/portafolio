@@ -446,3 +446,98 @@ table.dataTable tbody td {
     font-weight: 600;
     background-color: var(--primary-color);
 }
+
+
+
+/* -------------------------- */
+/* ---- BLOG: ACERCA DE ----  */
+/* -------------------------- */
+/* Contenedor optimizado para lectura de prosa (ensayos/manifiestos) */
+.manifesto-container {
+    width: 100%;
+    max-width: 720px; /* Limita la longitud de línea a ~65-75 caracteres */
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Cabecera Tipográfica */
+.manifesto-header {
+    margin-bottom: 3.5rem;
+    border-bottom: 4px solid var(--primary);
+    padding-bottom: 1.5rem;
+}
+
+.manifesto-title {
+    font-family: var(--font-code);
+    color: var(--primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin: 0 0 0.5rem 0;
+}
+
+.manifesto-title::before {
+    content: ">_ ";
+    opacity: 0.7;
+}
+
+.manifesto-subtitle {
+    font-family: var(--font-body);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+/* Estructura del Cuerpo (Lecturabilidad) */
+.manifesto-content {
+    font-family: var(--font-body);
+    color: var(--text-main);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.manifesto-content p {
+    margin-bottom: 1.75rem;
+}
+
+/* Subtítulos de Secciones (Motivaciones/Principios) */
+.manifesto-content h2 {
+    font-family: var(--font-code);
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+}
+
+/* Citas o Principios Fundamentales (Blockquote) */
+.principle-block {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    background-color: var(--bg-card);
+    border-left: 4px solid var(--primary);
+    box-shadow: 4px 4px 0px var(--primary-light); /* Heredado de tu concepto .project-card-hover */
+    font-style: italic;
+}
+
+.principle-block p {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--primary-hover);
+}
+
+/* Separador temático */
+.thematic-break {
+    border: 0;
+    height: 1px;
+    background: repeating-linear-gradient(
+        to right,
+        var(--text-muted),
+        var(--text-muted) 4px,
+        transparent 4px,
+        transparent 8px
+    );
+    margin: 3.5rem 0;
+    opacity: 0.3;
+}

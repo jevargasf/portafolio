@@ -20,4 +20,8 @@ class PublicBlogController extends Controller
 
         return view('public.blog.entrada', compact('entrada'));
     }
+
+    public function acercaDe(Request $request){
+        return view('public.blog.acerca-de');
+    }
 }

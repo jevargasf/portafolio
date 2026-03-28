@@ -21,7 +21,7 @@
             </section>
 
             <div class="mt-4 pt-4 border-top">
-                <a href="{{ route('public.blog-personal') }}" class="btn btn-outline-secondary">
+                <a href="{{ route('blog-personal.index') }}" class="btn btn-outline-secondary">
                     &larr; Volver al blog
                 </a>
             </div>

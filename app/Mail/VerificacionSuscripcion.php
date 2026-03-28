@@ -28,7 +28,7 @@ class VerificacionSuscripcion extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Verificacion Suscripcion',
+            subject: 'Verificación Suscripción',
         );
     }
 

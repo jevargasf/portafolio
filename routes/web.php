@@ -27,13 +27,14 @@ $dominioBlog = env('BLOG_DOMAIN', 'lohumanoquemequeda.test');
 // ==========================================
 // GRUPO 1: BLOG EXTERNO (Dominio Dinámico)
 // ==========================================
-Route::domain($dominioBlog)->group(function () {
-    Route::get('/', [PublicBlogController::class, 'index'])->name('public.blog-personal');
+Route::domain($dominioBlog)->name('blog-personal.')->group(function () {
+    Route::get('/', [PublicBlogController::class, 'index'])->name('index');
+    Route::get('/acerca-de', [PublicBlogController::class, 'acercaDe'])->name('acerca-de');
     Route::get('/suscribirse', [SuscriptoresController::class, 'formRegistrarSuscriptor'])->name('form-suscripcion');
     Route::post('/suscribirse', [SuscriptoresController::class, 'registrarSuscriptor']);
     Route::get('/verificar/{suscriptor}', [SuscriptoresController::class, 'verificarCorreo'])->name('verificar')->middleware('signed');
     Route::get('/dar-de-baja/{suscriptor}', [SuscriptoresController::class, 'darDeBajaSuscriptor'])->name('dar-de-baja')->middleware('signed');
-    Route::get('/{slug}', [PublicBlogController::class, 'mostrarEntrada'])->name('public.entrada');
+    Route::get('/{slug}', [PublicBlogController::class, 'mostrarEntrada'])->name('entrada');
 });
 
 

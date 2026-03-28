@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
+    <x-nav.blog-nav/>
     <main>
         {{ $slot }}
     </main>

@@ -134,7 +134,7 @@
                 {{ $message }}
             </p>
 
-            <a href="{{ route('public.blog-personal') }}" class="btn-primary-custom">
+            <a href="{{ route('blog-personal.index') }}" class="btn-primary-custom">
                 VOLVER AL INICIO
             </a>
         </div>
