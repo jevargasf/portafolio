@@ -29,7 +29,7 @@ $dominioBlog = env('BLOG_DOMAIN', 'lohumanoquemequeda.test');
 // ==========================================
 Route::domain($dominioBlog)->group(function () {
     Route::get('/', [PublicBlogController::class, 'index'])->name('public.blog-personal');
-    Route::get('/suscribirse', [SuscriptoresController::class, 'formRegistrarSuscriptor']);
+    Route::get('/suscribirse', [SuscriptoresController::class, 'formRegistrarSuscriptor'])->name('form-suscripcion');
     Route::post('/suscribirse', [SuscriptoresController::class, 'registrarSuscriptor']);
     Route::get('/verificar/{suscriptor}', [SuscriptoresController::class, 'verificarCorreo'])->name('verificar')->middleware('signed');
     Route::get('/dar-de-baja/{suscriptor}', [SuscriptoresController::class, 'darDeBajaSuscriptor'])->name('dar-de-baja')->middleware('signed');
