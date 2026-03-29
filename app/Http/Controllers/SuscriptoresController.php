@@ -40,7 +40,7 @@ class SuscriptoresController extends Controller
         }
 
 
-        $url = URL::temporarySignedRoute('verificar', now()->addHours(24),['suscriptor' => $suscriptor->id]);
+        $url = URL::temporarySignedRoute('blog-personal.verificar', now()->addHours(24),['suscriptor' => $suscriptor->id]);
 
         // enviar link correo
         $correoVerificacion = new VerificacionSuscripcion($url);
