@@ -452,15 +452,13 @@ table.dataTable tbody td {
 /* -------------------------- */
 /* ---- BLOG: ACERCA DE ----  */
 /* -------------------------- */
-/* Contenedor optimizado para lectura de prosa (ensayos/manifiestos) */
 .manifesto-container {
     width: 100%;
-    max-width: 720px; /* Limita la longitud de línea a ~65-75 caracteres */
+    max-width: 720px; 
     margin: 4rem auto;
     padding: 0 1.5rem;
 }
 
-/* Cabecera Tipográfica */
 .manifesto-header {
     margin-bottom: 3.5rem;
     border-bottom: 4px solid var(--primary);
@@ -489,7 +487,6 @@ table.dataTable tbody td {
     margin: 0;
 }
 
-/* Estructura del Cuerpo (Lecturabilidad) */
 .manifesto-content {
     font-family: var(--font-body);
     color: var(--text-main);
@@ -501,7 +498,6 @@ table.dataTable tbody td {
     margin-bottom: 1.75rem;
 }
 
-/* Subtítulos de Secciones (Motivaciones/Principios) */
 .manifesto-content h2 {
     font-family: var(--font-code);
     color: var(--primary);
@@ -511,13 +507,12 @@ table.dataTable tbody td {
     font-weight: 600;
 }
 
-/* Citas o Principios Fundamentales (Blockquote) */
 .principle-block {
     margin: 2.5rem 0;
     padding: 1.5rem 2rem;
     background-color: var(--bg-card);
     border-left: 4px solid var(--primary);
-    box-shadow: 4px 4px 0px var(--primary-light); /* Heredado de tu concepto .project-card-hover */
+    box-shadow: 4px 4px 0px var(--primary-light);
     font-style: italic;
 }
 
@@ -527,7 +522,6 @@ table.dataTable tbody td {
     color: var(--primary-hover);
 }
 
-/* Separador temático */
 .thematic-break {
     border: 0;
     height: 1px;

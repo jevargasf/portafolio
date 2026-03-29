@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use App\Models\Usuario;
 use App\Models\DocumentoEntrada;
+use App\Jobs\NotificarSuscriptoresJob;
 
 class AdminBlogController extends Controller
 {
@@ -35,7 +36,7 @@ class AdminBlogController extends Controller
         ]);
 
         try {
-            DB::transaction(function () use ($validated, $request) {
+            $entrada = DB::transaction(function () use ($validated, $request) {
                 
                 $fechaPub = $request->input('fecha_publicacion');
                 if (!$fechaPub && $validated['estado'] == 2) {
@@ -77,7 +78,13 @@ class AdminBlogController extends Controller
                         'estado'         => 1
                     ]);
                 }
+            
+                return $entrada;
             });
+
+            if($entrada->estado === 2){
+                new NotificarSuscriptoresJob($entrada->id);
+            }
 
             return redirect()
                 ->route('panel.blog.listar')
