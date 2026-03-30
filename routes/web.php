@@ -32,8 +32,8 @@ Route::domain($dominioBlog)->name('blog-personal.')->group(function () {
     Route::get('/acerca-de', [PublicBlogController::class, 'acercaDe'])->name('acerca-de');
     Route::get('/suscribirse', [SuscriptoresController::class, 'formRegistrarSuscriptor'])->name('form-suscripcion');
     Route::post('/suscribirse', [SuscriptoresController::class, 'registrarSuscriptor']);
-    Route::get('/verificar/{suscriptor}', [SuscriptoresController::class, 'verificarCorreo'])->name('verificar')->middleware('signed');
-    Route::get('/dar-de-baja/{suscriptor}', [SuscriptoresController::class, 'darDeBajaSuscriptor'])->name('dar-de-baja')->middleware('signed');
+    Route::get('/verificar/{id}', [SuscriptoresController::class, 'verificarCorreo'])->name('verificar')->middleware('signed');
+    Route::post('/dar-de-baja', [SuscriptoresController::class, 'darDeBajaSuscriptor'])->name('dar-de-baja');
     Route::get('/{slug}', [PublicBlogController::class, 'mostrarEntrada'])->name('entrada');
 });
 

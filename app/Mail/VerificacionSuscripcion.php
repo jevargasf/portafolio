@@ -13,7 +13,7 @@ class VerificacionSuscripcion extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public string $urlVerificacion;
+    public readonly string $urlVerificacion;
     /**
      * Create a new message instance.
      */
@@ -39,6 +39,7 @@ class VerificacionSuscripcion extends Mailable implements ShouldQueue
     {
         return new Content(
             view: 'email.suscripcion.verificar',
+            text: 'email.suscripcion.verificar-plano',
         );
     }
 

@@ -40,7 +40,7 @@ class SuscriptoresController extends Controller
         }
 
 
-        $url = URL::temporarySignedRoute('blog-personal.verificar', now()->addHours(24),['suscriptor' => $suscriptor->id]);
+        $url = URL::temporarySignedRoute('blog-personal.verificar', now()->addHours(24),['id' => $suscriptor->id]);
 
         // enviar link correo
         $correoVerificacion = new VerificacionSuscripcion($url);
@@ -78,6 +78,25 @@ class SuscriptoresController extends Controller
     }
 
     public function darDeBajaSuscriptor(Request $request){
-        
+        // Extracción explícita del identificador bajo la convención RFC 8058 (One-Click POST)
+        $validated = $request->validate([
+            'correo' => 'required|email'
+        ]);
+
+        $suscriptor = Suscriptor::where('correo', $validated['correo'])->first();
+
+        if (!$suscriptor) {
+            return response()->json([
+                'error' => 'Registro no encontrado en la base de datos.'
+            ], 404);
+        }
+
+        // Mutación determinista del estado hacia INACTIVO
+        $suscriptor->update(['estado' => 0]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Desuscripción procesada correctamente.'
+        ], 200);
     }
 }
