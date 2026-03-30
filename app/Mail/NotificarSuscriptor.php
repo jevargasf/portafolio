@@ -10,9 +10,9 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Headers;
 
-class NotificarSuscriptor extends Mailable implements ShouldQueue
+class NotificarSuscriptor extends Mailable
 {
-    use Queueable, SerializesModels;
+    use SerializesModels;
 
     public readonly string $tituloEntrada;
     public readonly string $slugEntrada;
@@ -44,15 +44,15 @@ class NotificarSuscriptor extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            view: 'email.suscripcion.notificar', text: $texto
+            view: 'email.suscripcion.notificar', text: 'email.suscripcion.notificar-plano'
         );
     }
 
     public function headers(): Headers{
         return new Headers(
-            [
-                'List-Unsuscribe' => '',
-                'List-Unsuscribe-Post'
+            text: [
+                'List-Unsuscribe' => '<mailto:desuscribir@lohumanoquemequeda.blog>, <https://lohumanoquemequeda.blog/desuscribir>',
+                'List-Unsuscribe-Post' => 'List-Unsubscribe=One-Click'
             ]
         );
     }

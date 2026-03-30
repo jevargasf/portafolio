@@ -43,7 +43,7 @@ class AdminBlogController extends Controller
                     $fechaPub = now();
                 }
 
-                $entrada = Entrada::create([
+                $nuevaEntrada = Entrada::create([
                     'usuario_id' => Auth::id(),
                     'slug' => Str::slug($validated['slug']),
                     'titulo' => $validated['titulo'],
@@ -69,7 +69,7 @@ class AdminBlogController extends Controller
                     );
 
                     DocumentoEntrada::create([
-                        'entrada_id'    => $entrada->id,
+                        'entrada_id'    => $nuevaEntrada->id,
                         'nombre_archivo' => $nombreOriginal,
                         'ruta_archivo'   => $rutaGuardada,
                         'extension'      => $extension,
@@ -79,11 +79,11 @@ class AdminBlogController extends Controller
                     ]);
                 }
             
-                return $entrada;
+                return $nuevaEntrada;
             });
 
             if($entrada->estado === 2){
-                new NotificarSuscriptoresJob($entrada->id);
+                NotificarSuscriptoresJob::dispatch($entrada->id);
             }
 
             return redirect()
