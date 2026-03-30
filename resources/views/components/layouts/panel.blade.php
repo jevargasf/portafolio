@@ -16,7 +16,7 @@
         <div class="d-md-flex col-12 col-md-2 m-0 p-0">
             <x-nav.panel-sidebar/>
         </div>
-        <main class="col-10 m-0 py-0 px-4 pb-5">
+        <main class="col-12 col-md-10 m-0 py-0 px-4 pb-5">
             {{ $slot }}
         </main>
     </div>

@@ -66,7 +66,7 @@
                     <div class="row">
                         @if(isset($tecnologias) && count($tecnologias) > 0)
                             @foreach($tecnologias as $tecnologia)
-                                <div class="col-md-4 col-6">
+                                <div class="col-12 col-md-4">
                                     <div class="form-check">
                                         @php
                                             $seleccionadas = old('tecnologias', $proyecto->tecnologias->pluck('id')->toArray());
