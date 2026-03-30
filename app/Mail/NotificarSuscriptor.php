@@ -48,10 +48,13 @@ class NotificarSuscriptor extends Mailable
         );
     }
 
-    public function headers(): Headers{
+    public function headers(): Headers
+    {
+        $urlDesuscripcion = route('blog-personal.dar-de-baja');
+
         return new Headers(
             text: [
-                'List-Unsuscribe' => '<mailto:desuscribir@lohumanoquemequeda.blog>, <https://lohumanoquemequeda.blog/desuscribir>',
+                'List-Unsuscribe' => '<mailto:desuscribir@lohumanoquemequeda.blog>, <' . $urlDesuscripcion . '>',
                 'List-Unsuscribe-Post' => 'List-Unsubscribe=One-Click'
             ]
         );
