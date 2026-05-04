@@ -8,7 +8,7 @@
                     <div class="mb-3 d-inline-flex align-items-center px-2 py-1 border border-dark bg-light rounded-1 font-monospace small">
                         <span class="text-success me-2">●</span>
                         <span class="text-muted">System.status: </span>
-                        <strong class="ms-1 text-dark">Ready_to_work</strong>
+                        <strong class="ms-1 text-dark">Ready_To_Work</strong>
                     </div>
 
                     <h1 class="display-3 fw-bold mb-3 lh-1 text-dark">
