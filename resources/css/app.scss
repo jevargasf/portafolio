@@ -1,20 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900');
 
-// 1. El Motor Base (Obligatorio y en este orden exacto)
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/variables-dark";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 
-// 2. Lo que quieres generar (Tu Grid)
 @import "bootstrap/scss/grid";
 
-// 3. El motor de utilidades y la orden de imprimirlas (Para que d-flex y mb-3 funcionen)
 @import "bootstrap/scss/utilities";
 @import "bootstrap/scss/utilities/api";
 
-
+// FUENTES
 @font-face {
     font-family: 'Commit Mono';
     src: url('../fonts/CommitMonoV143/CommitMono-400-Regular.otf') format('opentype');
@@ -47,53 +44,194 @@
     font-display: swap;
 }
 
-
+// DECLARACIÓN DE VARIABLES
 :root {
     --font-code: 'Commit Mono', monospace;
     --font-body: 'Inter', sans-serif;
 
-    --primary: #0F4C5C;
-    /* Tu color Petrol */
-    --primary-hover: #09313b;
-    /* Versión oscura para interacciones */
-    --primary-light: #E7F1F3;
-    /* Versión muy clara para fondos/badges */
+    // PALETA COLOR PRIMARIO
+    --primary-50: hsl(190 90% 97%);
+    --primary-100: hsl(190 90% 94%);
+    --primary-200: hsl(190 75% 88%);
+    --primary-300: hsl(190 73% 78%);
+    --primary-400: hsl(192 71% 68%);
+    --primary-500: hsl(192 69% 58%);
+    --primary-600: hsl(192 67% 48%);
+    --primary-700: hsl(198 65% 38%);
+    --primary-800: hsl(198 65% 28%);
+    --primary-900: hsl(198 65% 18%);
 
-    /* FALTA COLOR SECUNDARIO */
-    --secondary: #D65108;
+    // COLORES ABSOLUTOS
+    --color-white: hsl(0 0% 100%);
+    --color-black: hsl(0 0% 0%);
 
-    /* === 2. FONDOS (Backgrounds) === */
-    --bg-body: #f8f9fa;
-    /* Fondo general de la página */
-    --bg-card: #ffffff;
-    /* Fondo de tarjetas (para que destaquen sobre el body) */
-    --bg-secondary: #E9EEF0;
-    /* Fondo de secciones alternas o inputs deshabilitados */
-    --bg-hover: #b34306;
+    // COLORES PRIMITIVOS
+    --color-green: hsl(150 60% 45%);
+    --color-red: hsl(350 70% 50%);
+    --color-yellow: hsl(40 90% 55%);
+    --color-blue: hsl(210 90% 50%);
+    --color-orange: hsl(20 90% 45%);
 
-    /* === 3. TIPOGRAFÍA (Typography) === */
-    --text-main: #16282d;
-    /* Títulos y párrafos principales */
-    --text-muted: #6C757D;
-    /* Metadatos, fechas, placeholders */
-    --text-light: #F8F9FA;
-    /* Texto sobre fondos oscuros */
-    --text-dark: #041014;
-    /* === 4. BORDES Y LÍNEAS (Borders) === */
-    --border-strong: #0a1c20;
-    /* Tus bordes estilo "Wireframe" externos */
-    --border-subtle: #C9D6DA;
-    /* Líneas divisorias internas suaves */
+    // PALETA NEUTRA
+    --neutral-50: hsl(198 15% 97%);
+    --neutral-100: hsl(198 15% 94%);
+    --neutral-200: hsl(198 15% 88%);
+    --neutral-300: hsl(198 15% 78%);
+    --neutral-400: hsl(198 15% 60%);
+    --neutral-500: hsl(198 15% 45%);
+    --neutral-600: hsl(198 15% 35%);
+    --neutral-700: hsl(198 15% 25%);
+    --neutral-800: hsl(198 15% 15%);
+    --neutral-900: hsl(198 15% 10%);
 
-    /* === 5. ESTADOS FUNCIONALES (Feedback) === */
-    --success: #10B981;
-    /* Éxito, Completado, Online */
-    --danger: #EF4444;
-    /* Error, Eliminar, Offline */
-    --warning: #F59E0B;
-    /* Alerta, En Progreso, Pendiente */
-    --info: #0EA5E9;
-    /* Información, Ayuda */
+
+    // VARIABLES UTILITARIAS DE ESTILO
+    --primary: var(--primary-800);
+    --primary-hover: var(--primary-700);
+    --primary-light: var(--primary-50);
+    --primary-active: var(--primary-900);
+
+    --bg-primary: var(--neutral-50);
+    --bg-card: var(--neutral-100);
+    --bg-hover: var(--neutral-200);
+
+    --text-main: var(--neutral-800);
+    --text-muted: var(--neutral-400);
+    --text-light: var(--color-white);
+    --text-dark: var(--neutral-900);
+
+    --success: var(--color-green);
+    --danger: var(--color-red);
+    --warning: var(--color-yellow);
+    --info: var(--color-blue);
+    --accent: var(--color-orange);
+
+    --border-subtle: var(--neutral-200);
+    --border-strong: var(--neutral-300);
+    --shadow-color: var(--neutral-900);
+
+    // SISTEMA ESPACIAL (BASE 4px)
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+
+    // TAMAÑOS DE FUENTE
+    // metadatos, fechas, badges
+    --font-size-xs: 0.75rem;
+    // texto de apoyo, navegación
+    --font-size-sm: 0.875rem;
+    // páarafos y lectura principal
+    --font-size-base: 1rem;
+    // subtítulos sutiles
+    --font-size-lg: 1.125rem;
+    // títulos de tarjetas
+    --font-size-xl: 1.25rem;
+    // H3, títulos de sección
+    --font-size-2xl: 1.5rem;
+    // H2, encabezados estándar
+    --font-size-3xl: 1.875rem;
+    // H1 pequeños
+    --font-size-4xl: 2.25rem;
+    // Hero sections
+    --font-size-5xl: 3rem;
+    // Brutalismo masivo
+    --font-size-6xl: 3.75rem;
+
+    // PESOS DE FUENTE
+    // lectura general
+    --font-weight-normal: 400;
+    // subtítulos o botones
+    --font-weight-medium: 500;
+    // énfasis principal
+    --font-weight-bold: 700;
+    // impacto extremo
+    --font-weight-black: 900;
+
+    // ALTURAS DE LÍNEA
+    // para textos gigantes 5xl, 6xl, botones y badges
+    --line-height-none: 1;
+    // para H1, H2, H3
+    --line-height-tight: 1.25;
+    // para párrafos de lectura principal
+    --line-height-normal: 1.5;
+    // para bloques de textos muy anchos y densos
+    --line-height-loose: 1.75;
+
+    // GROSORES DE BORDE
+    // líneas divisorias
+    --border-width-sm: 1px;
+    // estándar para botones, tarjetas e inputs
+    --border-width-base: 2px;
+    // para elementos activos o cajas de alto impacto
+    --border-width-lg: 4px;
+    // impacto extremo
+    --border-width-xl: 8px;
+
+    // RADIOS DE BORDE
+    // geometría agresiva
+    --border-radius-none: 0px;
+    // para inputs
+    --border-radius-sm: 2px;
+    // para tarjetas o modales
+    --border-radius-base: 4px;
+    //  para contenedores muy grandes
+    --border-radius-lg: 8px;
+    // para botones tipo píldora
+    --border-radius-full: 9999px;
+
+    // SOMBRAS BRUTALISTAS
+    //  para botones e interacciones rápidas
+    --shadow-hard-sm: 2px 2px 0px var(--shadow-color);
+    // para tarjetas en estado de reposo
+    --shadow-hard-base: 4px 4px 0px var(--shadow-color);
+    //  para el estado :hover de tarjetas
+    --shadow-hard-lg: 8px 8px 0px var(--shadow-color);
+
+    // SOMBRAS DIFUSAS
+    //  para modeales o tooltips
+    --shadow-soft-sm: 0 4px 6px -1px color-mix(in srgb, var(--shadow-color) 10%, transparent);
+    --shadow-soft-base: 0 10px 15px -3px color-mix(in srgb, var(--shadow-color) 10%, transparent);
+    --shadow-soft-lg: 0 20px 25px -5px color-mix(in srgb, var(--shadow-color) 10%, transparent);
+
+    // ELEVACIÓN
+    --z-hide: -1;
+    --z-base: 0;
+    --z-dropdown: 100;
+    // navbar
+    --z-sticky: 200;
+    // modales siempre encima del navbar
+    --z-modal: 300;
+    // alertas globales por sobre todo
+    --z-toast: 400;
+
+    // TRANSICIONES
+    // DURACIONES DE TRANSICIÓN
+    // para hovers de color y opacidad
+    --duration-fast: 150ms;
+    // para deslizar tarjetas, modales o tooltips
+    --duration-base: 300ms;
+    // para animaciones grandes de entrada
+    --duration-slow: 500ms;
+
+    // CURVAS DE ACELERACIÓN
+    --ease-linear: linear;
+    // lento -> rápido. para elementos que salen de la pantalla
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    // rápido -> lento. para elementos que entran o hovers
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    // estándar equilibrado
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    // arranque ultra agresivo y frenado dramático (brutalista)
+    --ease-snappy: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 body {
@@ -102,7 +240,6 @@ body {
     font-family: var(--font-body);
     background-color: #f8f9fa;
     color: var(--text-main);
-    /* font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11'; */
 }
 
 /* ELEMENTOS ESTRUCTURALES */
@@ -115,550 +252,4 @@ h6,
 small {
     font-family: var(--font-code);
     letter-spacing: -1px;
-}
-
-
-/* ------------------------------ */
-/* ---- ESTILOS GENERALES ------  */
-/* ------------------------------ */
-
-
-/* ------- TEXTOS ------- */
-
-
-
-/* ------- BOTONES -------------- */
-/* NIVEL 1: LA ACCIÓN PRINCIPAL (Solid) */
-/* Úsalo para: Submit, Descargar CV, Ver Proyectos (Hero) */
-.btn-primary-custom {
-    background-color: var(--primary);
-    border: 2px solid var(--primary);
-    color: white;
-    font-weight: 600;
-    /* Un poco más grueso para destacar */
-}
-
-.btn-primary-custom:hover,
-.btn-primary-custom:focus,
-.btn-primary-custom:active {
-    background-color: var(--primary-hover);
-    border-color: var(--primary-hover);
-    color: white;
-}
-
-/* NIVEL 2: LA ACCIÓN SECUNDARIA (Outline) */
-/* Úsalo para: Ver Repositorio, Ver Demo, Cargar más */
-.btn-outline-custom {
-    background-color: transparent;
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    font-weight: 600;
-}
-
-.btn-outline-custom:hover {
-    background-color: var(--primary-hover);
-    border-color: var(--primary-hover);
-    color: white;
-}
-
-/* NIVEL 3: LA NAVEGACIÓN (Ghost / Text) */
-/* Úsalo para: Botón Volver */
-.btn-ghost-custom {
-    background-color: transparent;
-    border: none;
-    color: #333;
-    /* Gris oscuro, no necesariamente Petrol */
-    text-decoration: none;
-    /* O underline si prefieres */
-    padding-left: 0;
-    /* Alineado a la izquierda */
-}
-
-.btn-ghost-custom:hover {
-    color: var(--primary);
-    /* Al pasar el mouse se ilumina con tu marca */
-    text-decoration: underline;
-}
-
-.btn-danger-custom {
-    background-color: var(--danger);
-    color: white;
-    border: 2px solid var(--danger);
-}
-
-.btn-danger-custom:hover {
-    background-color: color-mix(in srgb, var(--danger), black 10%);
-    color: white;
-}
-
-.btn-warning-custom {
-    background-color: var(--warning);
-    color: var(--text-dark);
-    border: 2px solid var(--warning);
-}
-
-.btn-warning-custom:hover {
-    background-color: color-mix(in srgb, var(--warning), black 10%);
-    color: var(--text-light);
-}
-
-.btn-primary-outline-custom {
-    background-color: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-}
-
-.btn-primary-outline-custom:hover {
-    background-color: color-mix(in srgb, var(--primary), black 10%);
-    color: var(--text-light);
-    border: 1px solid var(--primary);
-}
-
-.btn-success-outline-custom {
-    background-color: transparent;
-    color: var(--success);
-    border: 1px solid var(--success);
-}
-
-.btn-success-outline-custom:hover {
-    background-color: color-mix(in srgb, var(--success), black 10%);
-    color: var(--text-light);
-    border: 1px solid var(--success);
-}
-
-.btn-info-outline-custom {
-    background-color: transparent;
-    color: var(--info);
-    border: 1px solid var(--info);
-}
-
-.btn-info-outline-custom:hover {
-    background-color: color-mix(in srgb, var(--info), black 10%);
-    color: var(--text-light);
-    border: 1px solid var(--info);
-}
-
-svg {
-    width: 24px;
-}
-
-/* ---- BADGES ---- */
-/* --- FORMULARIOS ---- */
-.form-control:focus,
-.form-select:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 0.25rem rgba(15, 76, 92, 0.25);
-}
-
-/* ---- NAVBAR ----- */
-.navbar {
-    background-color: #ffffff;
-    /* O var(--bg-body) */
-    border-bottom: 2px solid var(--primary);
-    /* Límite duro, no sombra difusa */
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-.navbar-brand {
-    font-weight: 700;
-    color: var(--primary) !important;
-}
-
-.nav-link {
-    color: var(--text-muted) !important;
-    position: relative;
-    /* Necesario para el truco matemático siguiente */
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--primary) !important;
-}
-
-.navbar-brand:hover::after {
-    content: '_';
-    animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
-}
-
-@media (max-width: 767.98px) {
-    #sidebar {
-        position: fixed;
-        bottom: 0;
-        width: 100;
-    }
-}
-
-/* --- TABLAS ---- */
-/* 1. Personalizar la barra de búsqueda de DataTables */
-.dataTables_filter {
-    text-align: left !important;
-    /* Alinear a la izquierda */
-    float: none !important;
-    width: 100%;
-}
-
-.dataTables_filter label {
-    width: 100%;
-    /* El label envuelve al input */
-}
-
-.dataTables_filter input {
-    width: 100% !important;
-    /* Forzar ancho completo */
-    margin-left: 0 !important;
-    /* Quitar margen izquierdo por defecto */
-    padding: 10px 15px;
-    /* Más espacio interno (padding) */
-    border-radius: 8px;
-    /* Bordes redondeados modernos */
-    border: 1px solid #dee2e6;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-    /* Sombra muy sutil */
-    font-size: 1rem;
-}
-
-.dataTables_filter input:focus {
-    border-color: #2563EB;
-    /* Tu color primario al hacer click */
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-.dt-input {
-    width: 100%;
-}
-
-/* 2. Limpiar estilo de la Tabla */
-table.dataTable {
-    border-collapse: collapse !important;
-    /* Quitar doble borde */
-    width: 100% !important;
-}
-
-table.dataTable thead th {
-    border-bottom: 2px solid #f3f4f6 !important;
-    /* Línea suave abajo del header */
-    color: #6b7280;
-    /* Texto gris suave (Slate 500) */
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 0.05em;
-    padding-bottom: 12px;
-}
-
-/* Filas más altas para mejor lectura */
-table.dataTable tbody td {
-    padding: 16px 10px !important;
-    vertical-align: middle;
-    border-bottom: 1px solid #f3f4f6;
-    color: #1f2937;
-}
-
-/* Quitar bordes laterales si usas table-bordered */
-.table-bordered td,
-.table-bordered th {
-    border: none;
-}
-
-
-/* -------------------------- */
-/* ---- PUBLIC: LOGIN ------  */
-/* -------------------------- */
-
-#formLogin {
-    width: 100%;
-    max-width: 400px;
-    /* border: none;  */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-}
-
-#formLogin .form-label {
-    display: block;
-    text-align: left;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #4b5563;
-}
-
-#formLogin .btn-primary-custom {
-    width: 100%;
-    padding: 10px;
-    font-weight: 600;
-}
-
-/* ---------------------------------- */
-/* ---- AUTH: SELECCIONAR PERFIL ----  */
-/* ----------------------------Ñ----- */
-
-.btn-select-profile {
-    transition: all 0.3s ease;
-    border: 2px solid #dee2e6;
-    color: var(--primary);
-}
-
-.btn-select-profile:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    border-color: var(--primary);
-    background-color: #f8f9fa;
-    color: var(--primary);
-}
-
-/* Clase para el icono dentro del botón */
-.btn-select-profile i {
-    font-size: 2rem;
-    color: #adb5bd;
-    transition: color 0.3s;
-}
-
-.btn-select-profile:hover i {
-    color: var(--primary);
-}
-
-/* -------------------------- */
-/* ---- PUBLIC: INDEX ------  */
-/* -------------------------- */
-
-/* ------ HERO ------ */
-.hero-title {
-    font-family: var(--font-body);
-    font-size: 5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1;
-}
-
-.hero-subtitle {
-    color: var(--primary);
-    margin-bottom: 2rem;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-}
-
-.hero-lead {
-    font-family: var(--font-body);
-    font-size: 1.125rem;
-    line-height: 1.6;
-}
-
-.hero-badge {
-    font-family: var(--font-code);
-    font-size: 0.875rem;
-    border: 2px solid var(--border-strong);
-    border-radius: 2px;
-    background-color: var(--bg-secondary);
-    /* mb-3 d-inline-flex align-items-center px-2 py-1 border border-dark bg-light rounded-1 small */
-}
-
-.dot-available {
-    color: var(--secondary);
-}
-
-.status-text {
-    color: var(--primary);
-}
-
-.status-value {
-    color: var(--text-dark);
-}
-
-/* ------ CARDS ------ */
-/* Efecto de Hover en la imagen */
-.group-hover-zoom img {
-    transition: transform 0.5s ease;
-}
-
-.project-card:hover .group-hover-zoom img {
-    transform: scale(1.05);
-    /* Zoom sutil al pasar el mouse por la tarjeta */
-}
-
-/* Overlay técnico sobre la imagen */
-.overlay-tech {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(15, 76, 92, 0.7);
-    /* Tu Petrol con transparencia */
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 10;
-}
-
-.project-card:hover .overlay-tech {
-    opacity: 1;
-}
-
-/* Ajuste de tipografía para el interior de la tarjeta */
-.project-card-header small {
-    letter-spacing: -0.5px;
-}
-
-
-/* ----------------------------- */
-/* ---- PUBLIC: PROYECTOS ------  */
-/* ----------------------------- */
-/* Estilos específicos para la consola de búsqueda */
-.form-control::placeholder {
-    color: #6c757d;
-    opacity: 0.5;
-}
-
-.form-control:focus,
-.form-select:focus {
-    background-color: #2c2c2c !important;
-    /* Mantiene oscuro al enfocar */
-    color: white !important;
-    border-color: var(--success) !important;
-    box-shadow: none;
-}
-
-/* Hover sutil en la tarjeta completa */
-.project-card-hover {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.project-card-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: 8px 8px 0px var(--primary-light) !important;
-    /* Sombra dura al hacer hover */
-}
-
-
-/* -------------------------- */
-/* ---- ADMIN: USUARIOS ----  */
-/* -------------------------- */
-
-#sidebar {
-    background-color: var(--background-secondary);
-    height: 100%;
-}
-
-#sidebar span,
-#sidebar a {
-    color: var(--text-dark);
-}
-
-.form-admin {
-    width: 100%;
-    max-width: 600px;
-    /* border: none;  */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-}
-
-.btn-action {
-    height: 40px;
-
-}
-
-.form-admin .form-label {
-    display: block;
-    text-align: left;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #4b5563;
-}
-
-.form-admin .btn-primary {
-    width: 100%;
-    padding: 10px;
-    font-weight: 600;
-    background-color: var(--primary-color);
-}
-
-
-
-/* -------------------------- */
-/* ---- BLOG: ACERCA DE ----  */
-/* -------------------------- */
-.manifesto-container {
-    width: 100%;
-    max-width: 720px;
-    margin: 4rem auto;
-    padding: 0 1.5rem;
-}
-
-.manifesto-header {
-    margin-bottom: 3.5rem;
-    border-bottom: 4px solid var(--primary);
-    padding-bottom: 1.5rem;
-}
-
-.manifesto-title {
-    font-family: var(--font-code);
-    color: var(--primary);
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin: 0 0 0.5rem 0;
-}
-
-.manifesto-title::before {
-    content: ">_ ";
-    opacity: 0.7;
-}
-
-.manifesto-subtitle {
-    font-family: var(--font-body);
-    color: var(--text-muted);
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin: 0;
-}
-
-.manifesto-content {
-    font-family: var(--font-body);
-    color: var(--text-main);
-    line-height: 1.8;
-    font-size: 1.1rem;
-}
-
-.manifesto-content p {
-    margin-bottom: 1.75rem;
-}
-
-.manifesto-content h2 {
-    font-family: var(--font-code);
-    color: var(--primary);
-    font-size: 1.5rem;
-    margin-top: 3rem;
-    margin-bottom: 1.25rem;
-    font-weight: 600;
-}
-
-.principle-block {
-    margin: 2.5rem 0;
-    padding: 1.5rem 2rem;
-    background-color: var(--bg-card);
-    border-left: 4px solid var(--primary);
-    box-shadow: 4px 4px 0px var(--primary-light);
-    font-style: italic;
-}
-
-.principle-block p {
-    margin: 0;
-    font-size: 1.15rem;
-    color: var(--primary-hover);
-}
-
-.thematic-break {
-    border: 0;
-    height: 1px;
-    background: repeating-linear-gradient(to right,
-            var(--text-muted),
-            var(--text-muted) 4px,
-            transparent 4px,
-            transparent 8px);
-    margin: 3.5rem 0;
-    opacity: 0.3;
 }
