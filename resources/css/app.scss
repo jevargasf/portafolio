@@ -9,12 +9,16 @@
 @import "bootstrap/scss/utilities";
 @import "bootstrap/scss/utilities/api";
 
-@import "abstracts/_variables";
+@import "abstracts/variables";
+@import "mixins/functions";
 @import "base/reset";
 @import "base/typography";
-@import "components/buttons";
-@import "components/cards";
 @import "layout/header";
 @import "layout/grid";
 @import "layout/nav";
 @import "layout/footer";
+@import "components/buttons";
+@import "components/cards";
+@import "components/forms";
+@import "components/badges";
+@import "components/icons";
