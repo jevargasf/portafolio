@@ -1,0 +1,188 @@
+:root {
+    --font-code: 'Commit Mono', monospace;
+    --font-body: 'Inter', sans-serif;
+
+    // PALETA COLOR PRIMARIO
+    --primary-50: hsl(190 90% 97%);
+    --primary-100: hsl(190 90% 94%);
+    --primary-200: hsl(190 75% 88%);
+    --primary-300: hsl(190 73% 78%);
+    --primary-400: hsl(192 71% 68%);
+    --primary-500: hsl(192 69% 58%);
+    --primary-600: hsl(192 67% 48%);
+    --primary-700: hsl(198 65% 38%);
+    --primary-800: hsl(198 65% 28%);
+    --primary-900: hsl(198 65% 18%);
+
+    // COLORES ABSOLUTOS
+    --color-white: hsl(0 0% 100%);
+    --color-black: hsl(0 0% 0%);
+
+    // COLORES PRIMITIVOS
+    --color-green: hsl(150 60% 45%);
+    --color-red: hsl(350 70% 50%);
+    --color-yellow: hsl(40 90% 55%);
+    --color-blue: hsl(210 90% 50%);
+    --color-orange: hsl(20 90% 45%);
+
+    // PALETA NEUTRA
+    --neutral-50: hsl(198 15% 97%);
+    --neutral-100: hsl(198 15% 94%);
+    --neutral-200: hsl(198 15% 88%);
+    --neutral-300: hsl(198 15% 78%);
+    --neutral-400: hsl(198 15% 60%);
+    --neutral-500: hsl(198 15% 45%);
+    --neutral-600: hsl(198 15% 35%);
+    --neutral-700: hsl(198 15% 25%);
+    --neutral-800: hsl(198 15% 15%);
+    --neutral-900: hsl(198 15% 10%);
+
+
+    // VARIABLES UTILITARIAS DE ESTILO
+    --primary: var(--primary-800);
+    --primary-hover: var(--primary-700);
+    --primary-light: var(--primary-50);
+    --primary-active: var(--primary-900);
+
+    --bg-primary: var(--neutral-50);
+    --bg-card: var(--neutral-100);
+    --bg-hover: var(--neutral-200);
+
+    --text-main: var(--neutral-800);
+    --text-muted: var(--neutral-400);
+    --text-light: var(--color-white);
+    --text-dark: var(--neutral-900);
+
+    --success: var(--color-green);
+    --danger: var(--color-red);
+    --warning: var(--color-yellow);
+    --info: var(--color-blue);
+    --accent: var(--color-orange);
+
+    --border-subtle: var(--neutral-200);
+    --border-strong: var(--neutral-300);
+    --shadow-color: var(--neutral-900);
+
+    // SISTEMA ESPACIAL (BASE 4px)
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+
+    // TAMAÑOS DE FUENTE
+    // metadatos, fechas, badges
+    --font-size-xs: 0.75rem;
+    // texto de apoyo, navegación
+    --font-size-sm: 0.875rem;
+    // páarafos y lectura principal
+    --font-size-base: 1rem;
+    // subtítulos sutiles
+    --font-size-lg: 1.125rem;
+    // títulos de tarjetas
+    --font-size-xl: 1.25rem;
+    // H3, títulos de sección
+    --font-size-2xl: 1.5rem;
+    // H2, encabezados estándar
+    --font-size-3xl: 1.875rem;
+    // H1 pequeños
+    --font-size-4xl: 2.25rem;
+    // Hero sections
+    --font-size-5xl: 3rem;
+    // Brutalismo masivo
+    --font-size-6xl: 3.75rem;
+
+    // PESOS DE FUENTE
+    // lectura general
+    --font-weight-normal: 400;
+    // subtítulos o botones
+    --font-weight-medium: 500;
+    // énfasis principal
+    --font-weight-bold: 700;
+    // impacto extremo
+    --font-weight-black: 900;
+
+    // ALTURAS DE LÍNEA
+    // para textos gigantes 5xl, 6xl, botones y badges
+    --line-height-none: 1;
+    // para H1, H2, H3
+    --line-height-tight: 1.25;
+    // para párrafos de lectura principal
+    --line-height-normal: 1.5;
+    // para bloques de textos muy anchos y densos
+    --line-height-loose: 1.75;
+
+    // GROSORES DE BORDE
+    // líneas divisorias
+    --border-width-sm: 1px;
+    // estándar para botones, tarjetas e inputs
+    --border-width-base: 2px;
+    // para elementos activos o cajas de alto impacto
+    --border-width-lg: 4px;
+    // impacto extremo
+    --border-width-xl: 8px;
+
+    // RADIOS DE BORDE
+    // geometría agresiva
+    --border-radius-none: 0px;
+    // para inputs
+    --border-radius-sm: 2px;
+    // para tarjetas o modales
+    --border-radius-base: 4px;
+    //  para contenedores muy grandes
+    --border-radius-lg: 8px;
+    // para botones tipo píldora
+    --border-radius-full: 9999px;
+
+    // SOMBRAS BRUTALISTAS
+    //  para botones e interacciones rápidas
+    --shadow-hard-sm: 2px 2px 0px var(--shadow-color);
+    // para tarjetas en estado de reposo
+    --shadow-hard-base: 4px 4px 0px var(--shadow-color);
+    //  para el estado :hover de tarjetas
+    --shadow-hard-lg: 8px 8px 0px var(--shadow-color);
+
+    // SOMBRAS DIFUSAS
+    //  para modeales o tooltips
+    --shadow-soft-sm: 0 4px 6px -1px color-mix(in srgb, var(--shadow-color) 10%, transparent);
+    --shadow-soft-base: 0 10px 15px -3px color-mix(in srgb, var(--shadow-color) 10%, transparent);
+    --shadow-soft-lg: 0 20px 25px -5px color-mix(in srgb, var(--shadow-color) 10%, transparent);
+
+    // ELEVACIÓN
+    --z-hide: -1;
+    --z-base: 0;
+    --z-dropdown: 100;
+    // navbar
+    --z-sticky: 200;
+    // modales siempre encima del navbar
+    --z-modal: 300;
+    // alertas globales por sobre todo
+    --z-toast: 400;
+
+    // TRANSICIONES
+    // DURACIONES DE TRANSICIÓN
+    // para hovers de color y opacidad
+    --duration-fast: 150ms;
+    // para deslizar tarjetas, modales o tooltips
+    --duration-base: 300ms;
+    // para animaciones grandes de entrada
+    --duration-slow: 500ms;
+
+    // CURVAS DE ACELERACIÓN
+    --ease-linear: linear;
+    // lento -> rápido. para elementos que salen de la pantalla
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    // rápido -> lento. para elementos que entran o hovers
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    // estándar equilibrado
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    // arranque ultra agresivo y frenado dramático (brutalista)
+    --ease-snappy: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
