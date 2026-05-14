@@ -1,0 +1,109 @@
+.nav {
+    padding: var(--space-1);
+    // background-color: var(--bg-primary);
+    border-bottom: var(--border-width-base) solid var(--border-strong);
+
+    .container-fluid {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        @media (max-width: $bp-lg) {
+            // display: block;
+            // text-align: center;
+        }
+    }
+}
+
+.nav__brand {
+    display: inline-block;
+    font-family: var(--font-code);
+    font-size: var(--font-size-sm);
+    color: var(--text-main);
+    margin: var(--space-3);
+    padding: var(--space-1) var(--space-2);
+    transition: var(--duration-fast) var(--ease-snappy);
+
+}
+
+.nav__list {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: var(--space-2);
+
+    @media (max-width: $bp-lg) {
+        display: block;
+        text-align: center;
+    }
+}
+
+.nav__item {
+    margin: var(--space-1) var(--space-2);
+}
+
+.nav__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-family: var(--font-code);
+    font-size: var(--font-size-sm);
+    color: var(--text-main);
+    padding: var(--space-1) var(--space-2);
+    transition: var(--duration-fast) var(--ease-snappy);
+
+    @media (max-width: $bp-lg) {
+        justify-content: center;
+    }
+}
+
+.nav__icon {
+    width: var(--space-6);
+    height: var(--space-6);
+}
+
+.nav__link:hover,
+.nav__brand:hover {
+    background-color: var(--bg-hover);
+    color: var(--primary-hover);
+}
+
+.nav__link--active {
+    color: var(--primary-active);
+    background-color: var(--bg-hover);
+}
+
+.nav__collapse {
+    @media (max-width: $bp-lg) {
+        flex-basis: 100%;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all var(--duration-base) var(--ease-out);
+    }
+}
+
+.nav__collapse--open {
+    @media (max-width: $bp-lg) {
+        max-height: 500px;
+        opacity: 1;
+    }
+}
+
+.nav__toggler {
+    display: none;
+}
+
+.nav__toggler {
+    @media (max-width: $bp-lg) {
+        display: inline-block;
+        border: none;
+        background-color: inherit;
+        margin: 0 0 0 auto;
+        padding-right: var(--space-5);
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}

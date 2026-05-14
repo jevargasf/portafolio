@@ -186,3 +186,10 @@
     // arranque ultra agresivo y frenado dramático (brutalista)
     --ease-snappy: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+
+// BREAKPOINTS
+$bp-sm: 576x;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+$bp-2xl: 1400px;

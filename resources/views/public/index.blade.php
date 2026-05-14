@@ -176,5 +176,7 @@
             </p>
         </div>
     </footer>
-
+    @push('scripts')
+        <script src="{{ asset('js/public/nav.js') }}"></script>
+    @endpush
 </x-layouts.app>
