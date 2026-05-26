@@ -36,7 +36,7 @@
                         <!-- AQUÍ IBA UN ÍCONO DE FLECHA -->
                     </a>
 
-                    <a href="" class="btn__brand--outline">
+                    <a href="{{ route('public.descargar-cv')}}" class="btn__brand--outline">
                         DESCARGAR CV
                     </a>
                 </div>
@@ -140,7 +140,7 @@
         <x-icons.info-circled/>
         <h4>Portafolio en Desarrollo</h4>
         <p>
-            Próximamente, las fichas de detalle de cada proyecto.
+            Próximamente: Fichas de detalle proyecto, información profesional y formulario de contacto.
         </p>
         <form method="dialog">
             <button class="btn__brand--primary">Aceptar</button>
