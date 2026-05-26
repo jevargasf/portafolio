@@ -7,3 +7,11 @@ wrapper.addEventListener('click', (e) => {
         proximamenteAlert.showModal();
     }
 });
+
+nav.addEventListener('click', (e) => {
+    const link = e.target.closest('.nav__link--disabled');
+    if (link) {
+        e.preventDefault();
+        proximamenteAlert.showModal();
+    }
+});
