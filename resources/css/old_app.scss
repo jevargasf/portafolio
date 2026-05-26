@@ -1,0 +1,641 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900');
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+
+@import "bootstrap/scss/grid";
+
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
+
+// FUENTES
+@font-face {
+    font-family: 'Commit Mono';
+    src: url('../fonts/CommitMonoV143/CommitMono-400-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Commit Mono';
+    src: url('../fonts/CommitMonoV143/CommitMono-400-Italic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Commit Mono';
+    src: url('../fonts/CommitMonoV143/CommitMono-700-Regular.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Commit Mono';
+    src: url('../fonts/CommitMonoV143/CommitMono-700-Italic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+
+:root {
+    --font-code: 'Commit Mono', monospace;
+    --font-body: 'Inter', sans-serif;
+
+    --primary: #0F4C5C;
+    /* Tu color Petrol */
+    --primary-hover: #09313b;
+    /* Versión oscura para interacciones */
+    --primary-light: #E7F1F3;
+    /* Versión muy clara para fondos/badges */
+
+    /* FALTA COLOR SECUNDARIO */
+    --secondary: #D65108;
+
+    /* === 2. FONDOS (Backgrounds) === */
+    --bg-body: #f8f9fa;
+    /* Fondo general de la página */
+    --bg-card: #ffffff;
+    /* Fondo de tarjetas (para que destaquen sobre el body) */
+    --bg-secondary: #E9EEF0;
+    /* Fondo de secciones alternas o inputs deshabilitados */
+    --bg-hover: #b34306;
+
+    /* === 3. TIPOGRAFÍA (Typography) === */
+    --text-main: #16282d;
+    /* Títulos y párrafos principales */
+    --text-muted: #6C757D;
+    /* Metadatos, fechas, placeholders */
+    --text-light: #F8F9FA;
+    /* Texto sobre fondos oscuros */
+    --text-dark: #041014;
+    /* === 4. BORDES Y LÍNEAS (Borders) === */
+    --border-strong: #0a1c20;
+    /* Tus bordes estilo "Wireframe" externos */
+    --border-subtle: #C9D6DA;
+    /* Líneas divisorias internas suaves */
+
+    /* === 5. ESTADOS FUNCIONALES (Feedback) === */
+    --success: #10B981;
+    /* Éxito, Completado, Online */
+    --danger: #EF4444;
+    /* Error, Eliminar, Offline */
+    --warning: #F59E0B;
+    /* Alerta, En Progreso, Pendiente */
+    --info: #0EA5E9;
+    /* Información, Ayuda */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background-color: #f8f9fa;
+    color: var(--text-main);
+    /* font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11'; */
+}
+
+/* ELEMENTOS ESTRUCTURALES */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+small {
+    font-family: var(--font-code);
+    letter-spacing: -1px;
+}
+
+
+/* ------------------------------ */
+/* ---- ESTILOS GENERALES ------  */
+/* ------------------------------ */
+
+
+/* ------- TEXTOS ------- */
+
+
+
+/* ------- BOTONES -------------- */
+/* NIVEL 1: LA ACCIÓN PRINCIPAL (Solid) */
+/* Úsalo para: Submit, Descargar CV, Ver Proyectos (Hero) */
+.btn-primary-custom {
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
+    color: white;
+    font-weight: 600;
+    /* Un poco más grueso para destacar */
+}
+
+.btn-primary-custom:hover,
+.btn-primary-custom:focus,
+.btn-primary-custom:active {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: white;
+}
+
+/* NIVEL 2: LA ACCIÓN SECUNDARIA (Outline) */
+/* Úsalo para: Ver Repositorio, Ver Demo, Cargar más */
+.btn-outline-custom {
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.btn-outline-custom:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: white;
+}
+
+/* NIVEL 3: LA NAVEGACIÓN (Ghost / Text) */
+/* Úsalo para: Botón Volver */
+.btn-ghost-custom {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    /* Gris oscuro, no necesariamente Petrol */
+    text-decoration: none;
+    /* O underline si prefieres */
+    padding-left: 0;
+    /* Alineado a la izquierda */
+}
+
+.btn-ghost-custom:hover {
+    color: var(--primary);
+    /* Al pasar el mouse se ilumina con tu marca */
+    text-decoration: underline;
+}
+
+.btn-danger-custom {
+    background-color: var(--danger);
+    color: white;
+    border: 2px solid var(--danger);
+}
+
+.btn-danger-custom:hover {
+    background-color: color-mix(in srgb, var(--danger), black 10%);
+    color: white;
+}
+
+.btn-warning-custom {
+    background-color: var(--warning);
+    color: var(--text-dark);
+    border: 2px solid var(--warning);
+}
+
+.btn-warning-custom:hover {
+    background-color: color-mix(in srgb, var(--warning), black 10%);
+    color: var(--text-light);
+}
+
+.btn-primary-outline-custom {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.btn-primary-outline-custom:hover {
+    background-color: color-mix(in srgb, var(--primary), black 10%);
+    color: var(--text-light);
+    border: 1px solid var(--primary);
+}
+
+.btn-success-outline-custom {
+    background-color: transparent;
+    color: var(--success);
+    border: 1px solid var(--success);
+}
+
+.btn-success-outline-custom:hover {
+    background-color: color-mix(in srgb, var(--success), black 10%);
+    color: var(--text-light);
+    border: 1px solid var(--success);
+}
+
+.btn-info-outline-custom {
+    background-color: transparent;
+    color: var(--info);
+    border: 1px solid var(--info);
+}
+
+.btn-info-outline-custom:hover {
+    background-color: color-mix(in srgb, var(--info), black 10%);
+    color: var(--text-light);
+    border: 1px solid var(--info);
+}
+
+svg {
+    width: 24px;
+}
+
+/* ---- BADGES ---- */
+/* --- FORMULARIOS ---- */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(15, 76, 92, 0.25);
+}
+
+/* ---- NAVBAR ----- */
+.navbar {
+    background-color: #ffffff;
+    /* O var(--bg-body) */
+    border-bottom: 2px solid var(--primary);
+    /* Límite duro, no sombra difusa */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--primary) !important;
+}
+
+.nav-link {
+    color: var(--text-muted) !important;
+    position: relative;
+    /* Necesario para el truco matemático siguiente */
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary) !important;
+}
+
+.navbar-brand:hover::after {
+    content: '_';
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #sidebar {
+        position: fixed;
+        bottom: 0;
+        width: 100;
+    }
+}
+
+/* --- TABLAS ---- */
+/* 1. Personalizar la barra de búsqueda de DataTables */
+.dataTables_filter {
+    text-align: left !important;
+    /* Alinear a la izquierda */
+    float: none !important;
+    width: 100%;
+}
+
+.dataTables_filter label {
+    width: 100%;
+    /* El label envuelve al input */
+}
+
+.dataTables_filter input {
+    width: 100% !important;
+    /* Forzar ancho completo */
+    margin-left: 0 !important;
+    /* Quitar margen izquierdo por defecto */
+    padding: 10px 15px;
+    /* Más espacio interno (padding) */
+    border-radius: 8px;
+    /* Bordes redondeados modernos */
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    /* Sombra muy sutil */
+    font-size: 1rem;
+}
+
+.dataTables_filter input:focus {
+    border-color: #2563EB;
+    /* Tu color primario al hacer click */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.dt-input {
+    width: 100%;
+}
+
+/* 2. Limpiar estilo de la Tabla */
+table.dataTable {
+    border-collapse: collapse !important;
+    /* Quitar doble borde */
+    width: 100% !important;
+}
+
+table.dataTable thead th {
+    border-bottom: 2px solid #f3f4f6 !important;
+    /* Línea suave abajo del header */
+    color: #6b7280;
+    /* Texto gris suave (Slate 500) */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding-bottom: 12px;
+}
+
+/* Filas más altas para mejor lectura */
+table.dataTable tbody td {
+    padding: 16px 10px !important;
+    vertical-align: middle;
+    border-bottom: 1px solid #f3f4f6;
+    color: #1f2937;
+}
+
+/* Quitar bordes laterales si usas table-bordered */
+.table-bordered td,
+.table-bordered th {
+    border: none;
+}
+
+
+/* -------------------------- */
+/* ---- PUBLIC: LOGIN ------  */
+/* -------------------------- */
+
+
+/* ---------------------------------- */
+/* ---- AUTH: SELECCIONAR PERFIL ----  */
+/* ----------------------------Ñ----- */
+
+.btn-select-profile {
+    transition: all 0.3s ease;
+    border: 2px solid #dee2e6;
+    color: var(--primary);
+}
+
+.btn-select-profile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+    background-color: #f8f9fa;
+    color: var(--primary);
+}
+
+/* Clase para el icono dentro del botón */
+.btn-select-profile i {
+    font-size: 2rem;
+    color: #adb5bd;
+    transition: color 0.3s;
+}
+
+.btn-select-profile:hover i {
+    color: var(--primary);
+}
+
+/* -------------------------- */
+/* ---- PUBLIC: INDEX ------  */
+/* -------------------------- */
+
+/* ------ HERO ------ */
+.hero-title {
+    font-family: var(--font-body);
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.hero-subtitle {
+    color: var(--primary);
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+}
+
+.hero-lead {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+.hero-badge {
+    font-family: var(--font-code);
+    font-size: 0.875rem;
+    border: 2px solid var(--border-strong);
+    border-radius: 2px;
+    background-color: var(--bg-secondary);
+    /* mb-3 d-inline-flex align-items-center px-2 py-1 border border-dark bg-light rounded-1 small */
+}
+
+.dot-available {
+    color: var(--secondary);
+}
+
+.status-text {
+    color: var(--primary);
+}
+
+.status-value {
+    color: var(--text-dark);
+}
+
+/* ------ CARDS ------ */
+/* Efecto de Hover en la imagen */
+.group-hover-zoom img {
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .group-hover-zoom img {
+    transform: scale(1.05);
+    /* Zoom sutil al pasar el mouse por la tarjeta */
+}
+
+/* Overlay técnico sobre la imagen */
+.overlay-tech {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 76, 92, 0.7);
+    /* Tu Petrol con transparencia */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.project-card:hover .overlay-tech {
+    opacity: 1;
+}
+
+/* Ajuste de tipografía para el interior de la tarjeta */
+.project-card-header small {
+    letter-spacing: -0.5px;
+}
+
+
+/* ----------------------------- */
+/* ---- PUBLIC: PROYECTOS ------  */
+/* ----------------------------- */
+/* Estilos específicos para la consola de búsqueda */
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.5;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #2c2c2c !important;
+    /* Mantiene oscuro al enfocar */
+    color: white !important;
+    border-color: var(--success) !important;
+    box-shadow: none;
+}
+
+/* Hover sutil en la tarjeta completa */
+.project-card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 0px var(--primary-light) !important;
+    /* Sombra dura al hacer hover */
+}
+
+
+/* -------------------------- */
+/* ---- ADMIN: USUARIOS ----  */
+/* -------------------------- */
+
+#sidebar {
+    background-color: var(--background-secondary);
+    height: 100%;
+}
+
+#sidebar span,
+#sidebar a {
+    color: var(--text-dark);
+}
+
+.form-admin {
+    width: 100%;
+    max-width: 600px;
+    /* border: none;  */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.btn-action {
+    height: 40px;
+
+}
+
+.form-admin .form-label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.form-admin .btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-weight: 600;
+    background-color: var(--primary-color);
+}
+
+
+
+/* -------------------------- */
+/* ---- BLOG: ACERCA DE ----  */
+/* -------------------------- */
+.manifesto-container {
+    width: 100%;
+    max-width: 720px;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+}
+
+.manifesto-header {
+    margin-bottom: 3.5rem;
+    border-bottom: 4px solid var(--primary);
+    padding-bottom: 1.5rem;
+}
+
+.manifesto-title {
+    font-family: var(--font-code);
+    color: var(--primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin: 0 0 0.5rem 0;
+}
+
+.manifesto-title::before {
+    content: ">_ ";
+    opacity: 0.7;
+}
+
+.manifesto-subtitle {
+    font-family: var(--font-body);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.manifesto-content {
+    font-family: var(--font-body);
+    color: var(--text-main);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.manifesto-content p {
+    margin-bottom: 1.75rem;
+}
+
+.manifesto-content h2 {
+    font-family: var(--font-code);
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+}
+
+.principle-block {
+    margin: 2.5rem 0;
+    padding: 1.5rem 2rem;
+    background-color: var(--bg-card);
+    border-left: 4px solid var(--primary);
+    box-shadow: 4px 4px 0px var(--primary-light);
+    font-style: italic;
+}
+
+.principle-block p {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--primary-hover);
+}
+
+.thematic-break {
+    border: 0;
+    height: 1px;
+    background: repeating-linear-gradient(to right,
+            var(--text-muted),
+            var(--text-muted) 4px,
+            transparent 4px,
+            transparent 8px);
+    margin: 3.5rem 0;
+    opacity: 0.3;
+}
