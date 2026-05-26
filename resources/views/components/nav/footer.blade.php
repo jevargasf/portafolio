@@ -19,12 +19,6 @@
                     @else
                         
                     @endif
-                    <a href="#" target="_blank" class="footer__link">
-                            GitHub
-                        </a>,
-                        <a href="#" target="_blank" class="footer__link">
-                            LinkedIn
-                        </a> 
                 </li>
                     
 
