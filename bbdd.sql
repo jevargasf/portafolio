@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `links_redes_sociales` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `perfil_id` INT NOT NULL,
   `nombre_red` VARCHAR(50) NOT NULL, -- Ej: LinkedIn, GitHub
-  `url` VARCHAR(255) NOT NULL,  1
+  `url` VARCHAR(255) NOT NULL,
   `icono_class` VARCHAR(50), -- Ej: 'fab fa-linkedin' (FontAwesome)
   `estado` INT(1) DEFAULT 1,
   PRIMARY KEY (`id`),
