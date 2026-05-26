@@ -22,6 +22,13 @@ class ProyectosController extends Controller
     }
 
     public function crearProyecto(Request $request){
+        $tecnologiasDecodificadas = json_decode($request->input('tecnologias_ordenadas'), true) ?? [];
+        $arrayIds = [];
+        foreach ($tecnologiasDecodificadas as $tec) {
+            $arrayIds[] = intval($tec['id']);
+        }
+        $request->merge(['tecnologias_ordenadas' => $arrayIds]);
+
         $validated = $request->validate([
             'nombre'            => 'required|string|max:200',
             'descripcion'       => 'nullable|string',
@@ -33,10 +40,12 @@ class ProyectosController extends Controller
             'url_produccion'    => 'nullable|url|max:255',
             'estado'            => 'required|integer|in:0,1',
             'imagen_portada'    => 'nullable|image|max:4096', 
-            'tecnologias'       => 'nullable|array',
+            'tecnologias_ordenadas'       => 'nullable|array',
+            'tecnologias_ordenadas.*'     => 'exists:tecnologias,id',
             'slug'              => 'nullable|string'
         ], [
             'nombre.required' => 'El nombre del proyecto es obligatorio.',
+            'tecnologias_ordenadas.*.exists' => 'Una de las tecnologías seleccionadas no es válida.',
             'url_repositorio.url' => 'El formato del enlace al repositorio no es válido.',
             'imagen_portada.max' => 'El tamaño del archivo no debe superar los 4 MB.'
         ]);
@@ -49,7 +58,7 @@ class ProyectosController extends Controller
             $user->refresh();
         }
 
-        DB::transaction(function () use ($validated, $user, $request) {
+        DB::transaction(function () use ($validated, $user, $request, $tecnologiasDecodificadas) {
             $proyecto = Proyecto::create([
                 'perfil_id'         => $user->perfil->id,
                 'nombre'            => $validated['nombre'],
@@ -87,9 +96,11 @@ class ProyectosController extends Controller
                 ]);
             }
 
-            if ($request->has('tecnologias')) {
-                    $proyecto->tecnologias()->sync($request->tecnologias);
+            $tecnologiasSync = [];
+            foreach ($tecnologiasDecodificadas as $tec) {
+                $tecnologiasSync[intval($tec['id'])] = ['prioridad' => intval($tec['prioridad'])];
             }
+            $proyecto->tecnologias()->sync($tecnologiasSync);
         });
 
         return redirect()
@@ -117,7 +128,13 @@ class ProyectosController extends Controller
     }
 
     public function editarProyecto(Request $request){
-        
+        $tecnologiasDecodificadas = json_decode($request->input('tecnologias_ordenadas'), true) ?? [];
+        $arrayIds = [];
+        foreach ($tecnologiasDecodificadas as $tec) {
+            $arrayIds[] = intval($tec['id']);
+        }
+        $request->merge(['tecnologias_validadas' => $arrayIds]);
+
         $validated = $request->validate([
             'id'                => 'required|integer',
             'nombre'            => 'required|string|max:200',
@@ -129,13 +146,13 @@ class ProyectosController extends Controller
             'url_repositorio'   => 'nullable|url|max:255',
             'url_produccion'    => 'nullable|url|max:255',
             'estado'            => 'required|integer|in:0,1',
-            'imagen_portada'    => 'nullable|image|max:4096', // Máx 2MB
-            'tecnologias'       => 'nullable|array',
-            'tecnologias.*'     => 'exists:tecnologias,id', // Verifica que cada ID exista
+            'imagen_portada'    => 'nullable|image|max:4096',
+            'tecnologias_validadas'       => 'nullable|array',
+            'tecnologias_validadas.*'     => 'exists:tecnologias,id',
             'slug'              => 'nullable|string',
         ], [
             'nombre.required' => 'El nombre es obligatorio.',
-            'tecnologias.*.exists' => 'Una de las tecnologías seleccionadas no es válida.',
+            'tecnologias_validadas.*.exists' => 'Una de las tecnologías seleccionadas no es válida.',
             'imagen_portada.max' => 'El tamaño del archivo no debe superar los 4 MB.'
         ]);
 
@@ -144,7 +161,7 @@ class ProyectosController extends Controller
 
             $proyecto = $user->perfil->proyectos()->findOrFail($request->id);
 
-            DB::transaction(function () use ($validated, $request, $proyecto) {
+            DB::transaction(function () use ($validated, $request, $proyecto, $tecnologiasDecodificadas) {
                 
                 $proyecto->update([
                     'nombre'            => $validated['nombre'],
@@ -191,7 +208,11 @@ class ProyectosController extends Controller
                     ]);
                 }
 
-                $proyecto->tecnologias()->sync($request->input('tecnologias', []));
+                $tecnologiasSync = [];
+                foreach ($tecnologiasDecodificadas as $tec) {
+                    $tecnologiasSync[intval($tec['id'])] = ['prioridad' => intval($tec['prioridad'])];
+                }
+                $proyecto->tecnologias()->sync($tecnologiasSync);
             });
 
             return redirect()

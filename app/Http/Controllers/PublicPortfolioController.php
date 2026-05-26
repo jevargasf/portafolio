@@ -7,10 +7,11 @@ use App\Models\Usuario;
 use App\Models\PerfilProfesional;
 use App\Models\Proyecto;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PublicPortfolioController extends Controller
 {
-    public function index(Request $request){
+    private function obtenerPerfil(){
         $emailDueño = config('app.portfolio_owner', env('PORTFOLIO_OWNER_EMAIL'));
 
         $usuario = Usuario::where('correo', $emailDueño)->first();
@@ -19,8 +20,20 @@ class PublicPortfolioController extends Controller
             abort(404, 'Perfil del dueño no configurado');
         }
 
-        $perfil = $usuario->perfil->load('proyectos');
+        return $usuario->perfil;
+    }
 
+    public function index(Request $request){
+        $perfil = $this->obtenerPerfil();
+
+        $perfil = $perfil->load([
+            'proyectos.tecnologias' => fn($q) => $q->orderByPivot('prioridad')
+        ]);
+
+        $perfil->proyectos->each(function ($proyecto) {
+            $proyecto->setRelation('tecnologias',
+            $proyecto->tecnologias->take(3));
+        });
         return view('public.index', compact('perfil'));
     }
 
@@ -117,7 +130,11 @@ class PublicPortfolioController extends Controller
     }
 
     public function descargarCV(Request $request){
-        
+        $perfil = $this->obtenerPerfil();
+
+        $documento = $perfil->documentos()->where('es_cv', 1)->firstOrFail();
+
+        return Storage::disk('public')->download($documento->ruta_archivo, 'CV_Javier_Vargas.pdf');
     }
 
     public function verBlog(Request $request){

@@ -1,0 +1,30 @@
+.sidebar {
+    margin: 0;
+    padding: var(--space-4);
+    height: 100vh;
+    display: flex;
+    background-color: var(--bg-card);
+    flex-direction: column;
+    list-style: none;
+    position: sticky;
+    top: 0;
+}
+
+.sidebar__logo {
+    padding: var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar__logo--text {
+    font-family: var(--font-code);
+    font-weight: var(--font-weight-bold);
+}
+
+.sidebar__item {
+    display: inline;
+    padding: var(--space-3) var(--space-2);
+}
+
+.sidebar__link {}

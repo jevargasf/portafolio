@@ -1,0 +1,33 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+
+@import "bootstrap/scss/grid";
+
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
+
+@import "abstracts/variables";
+@import "mixins/functions";
+@import "base/reset";
+@import "base/typography";
+@import "layout/header";
+@import "layout/grid";
+@import "layout/nav";
+@import "layout/footer";
+@import "layout/sidebar";
+@import "components/buttons";
+@import "components/cards";
+@import "components/forms";
+@import "components/badges";
+@import "components/icons";
+@import "components/alerts";
+
+@import "pages/index";
+@import "pages/main-panel";
+@import "pages/panel";
+@import "pages/profile";
+@import "pages/login";
+@import "pages/panel/proyectos/form-proyecto";

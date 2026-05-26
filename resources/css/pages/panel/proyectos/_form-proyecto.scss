@@ -1,0 +1,14 @@
+.list__technologies {
+    list-style: none;
+    overflow-y: scroll;
+    max-height: 150px;
+}
+
+.list__technologies li {
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+}
+
+.dragging {
+    font-style: italic;
+}

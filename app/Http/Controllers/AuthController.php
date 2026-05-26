@@ -5,11 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\HistorialAcceso;
+use App\Models\Usuario;
 
 class AuthController extends Controller
 {
     public function formLogin(Request $request){
-        return view('auth.login');
+        $emailDueño = config('app.portfolio_owner', env('PORTFOLIO_OWNER_EMAIL'));
+
+        $usuario = Usuario::where('correo', $emailDueño)->first();
+
+        if (!$usuario || !$usuario->perfil) {
+            abort(404, 'Perfil del dueño no configurado');
+        }
+
+        $perfil = $usuario->perfil->load('proyectos');
+
+        return view('auth.login', compact('perfil'));
     }
 
     public function login(Request $request){

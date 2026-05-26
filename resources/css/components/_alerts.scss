@@ -1,0 +1,50 @@
+#proximamenteAlert {
+    width: 40%;
+    max-width: 500px;
+    background-color: var(--bg-card);
+    text-align: center;
+    border: var(--border-width-lg) solid var(--border-strong);
+    padding: var(--space-5);
+
+    svg {
+        width: var(--space-16);
+        display: block;
+        margin: 0 auto;
+        color: var(--info);
+    }
+
+    h4 {
+        font-family: var(--font-code);
+        font-weight: var(--font-weight-bold);
+        font-size: var(--space-6);
+        margin: var(--space-3) 0 var(--space-6);
+    }
+
+    p {
+        font-size: var(--space-4);
+    }
+
+    @media (max-width: $bp-md) {
+        width: 75%;
+    }
+}
+
+#proximamenteAlert::backdrop {
+    background-color: color-mix(in srgb, var(--bg-light) 88%, transparent);
+    backdrop-filter: blur(4px) grayscale(50%) contrast(120%);
+}
+
+#proximamenteAlert[open] {
+    animation: entradaEnPantalla var(--duration-base) var(--ease-in) forwards;
+}
+
+@keyframes entradaEnPantalla {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+
+    }
+}

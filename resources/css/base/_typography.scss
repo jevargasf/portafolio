@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900');
+
+@font-face {
+    font-family: 'Commit Mono';
+    src: url('../../../public/fonts/CommitMonoV143/CommitMono-400-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Commit Mono';
+    src: url('../../../public/fonts/CommitMonoV143/CommitMono-400-Italic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Commit Mono';
+    src: url('../../../public/fonts/CommitMonoV143/CommitMono-700-Regular.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Commit Mono';
+    src: url('../../../public/fonts/CommitMonoV143/CommitMono-700-Italic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+}
+
+p {
+    font-size: var(--font-size-base);
+    color: var(--text-main);
+}
+
+a {
+    color: var(--primary);
+
+    &:hover {
+        color: var(--primary-hover);
+    }
+}
+
+.section__title {
+    font-size: var(--font-size-3xl);
+}

@@ -1,0 +1,59 @@
+// -------- BOTONES --------
+
+.btn__brand--primary {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    background-color: var(--primary);
+    color: var(--text-light);
+    padding: var(--space-3) var(--space-6);
+    border: var(--border-width-base) solid var(--primary);
+    transition: all var(--duration-fast) var(--ease-out);
+
+}
+
+
+
+.btn__brand--primary:hover {
+    background-color: var(--primary-hover);
+    color: var(--text-light);
+    border: var(--border-width-base) solid var(--primary-hover);
+}
+
+.btn__brand--primary:active {
+    background-color: var(--primary-active);
+    color: var(--bg-hover);
+    border: var(--border-width-base) solid var(--primary-active);
+}
+
+.btn__brand--primary:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.btn__brand--outline {
+    padding: var(--space-3) var(--space-4);
+    border: var(--border-width-base) solid var(--border-strong);
+    transition: all var(--duration-fast) var(--ease-out);
+
+}
+
+.btn__brand--outline:hover {
+    background-color: var(--bg-card);
+    color: var(--primary-hover);
+}
+
+.btn__brand--outline:active {
+    background-color: var(--bg-hover);
+    color: var(--primary-active);
+
+}
+
+.btn__brand--ghost {}
+
+.btn__brand--ghost:hover {}
+
+.btn__brand--ghost:active {}
+
+.btn--lg {}
+
+.btn--block {}

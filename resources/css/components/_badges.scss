@@ -1,0 +1,11 @@
+.badge__brand {
+    width: fit-content;
+    font-family: var(--font-code);
+    font-size: var(--font-size-xs);
+    // color: var(--text-light);
+
+    background-color: var(--bg-card);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--border-radius-full);
+    border: var(--border-width-base) solid var(--border-subtle);
+}
