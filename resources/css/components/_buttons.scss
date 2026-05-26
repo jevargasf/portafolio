@@ -8,6 +8,7 @@
     padding: var(--space-3) var(--space-6);
     border: var(--border-width-base) solid var(--primary);
     transition: all var(--duration-fast) var(--ease-out);
+
 }
 
 
@@ -22,6 +23,11 @@
     background-color: var(--primary-active);
     color: var(--bg-hover);
     border: var(--border-width-base) solid var(--primary-active);
+}
+
+.btn__brand--primary:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 .btn__brand--outline {

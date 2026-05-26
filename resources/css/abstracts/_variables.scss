@@ -185,10 +185,13 @@
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     // arranque ultra agresivo y frenado dramático (brutalista)
     --ease-snappy: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    // DIMENSIONES DE COMPONENTES
+    --nav-height: 70px;
 }
 
 // BREAKPOINTS
-$bp-sm: 576x;
+$bp-sm: 576px;
 $bp-md: 768px;
 $bp-lg: 992px;
 $bp-xl: 1200px;
