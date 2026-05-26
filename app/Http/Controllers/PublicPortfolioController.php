@@ -19,8 +19,14 @@ class PublicPortfolioController extends Controller
             abort(404, 'Perfil del dueño no configurado');
         }
 
-        $perfil = $usuario->perfil->load('proyectos');
+        $perfil = $usuario->perfil->load([
+            'proyectos.tecnologias' => fn($q) => $q->orderByPivot('prioridad')
+        ]);
 
+        $perfil->proyectos->each(function ($proyecto) {
+            $proyecto->setRelation('tecnologias',
+            $proyecto->tecnologias->take(3));
+        });
         return view('public.index', compact('perfil'));
     }
 
