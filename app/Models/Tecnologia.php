@@ -15,16 +15,18 @@ class Tecnologia extends Model
 
     protected $fillable = [
         'nombre',
+        'ruta_icono',
+        'tipo',
         'estado',
     ];
 
     public function proyectos()
     {
         return $this->belongsToMany(
-            Proyecto::class,           // Modelo relacionado
-            'proyectos_tecnologias',   // Nombre de la tabla pivote en tu BBDD
-            'tecnologia_id',           // FK de este modelo en la pivote
-            'proyecto_id'              // FK del otro modelo en la pivote
-        );
+            Proyecto::class,          
+            'proyectos_tecnologias',  
+            'tecnologia_id',        
+            'proyecto_id'          
+        )->withPivot('prioridad');
     }
 }

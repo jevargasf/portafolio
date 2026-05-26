@@ -49,7 +49,7 @@ class Proyecto extends Model
             'proyectos_tecnologias', 
             'proyecto_id', 
             'tecnologia_id'
-        );
+        )->withPivot('prioridad');
     }
 
     public function documentos()
