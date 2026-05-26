@@ -1,21 +1,22 @@
-<x-layouts.app>
+<x-layouts.main-panel>
 
-    <h2 class="text-center mt-3">Iniciar Sesión</h2>
-    <div class="card p-4 mx-auto my-5 text-center" id="formLogin">
+    <h2 class="section__title panel__title">Iniciar Sesión</h2>
+    <div class="card form__login">
         <form action="{{ route('login') }}" method="POST">
             @csrf
 
-            <div class="mb-3">
-                <label for="correo" class="form-label">Correo electrónico</label>
-                <input type="email" name="correo" class="form-control" id="correo" placeholder="correo@ejemplo.com">
+            <div class="form__group">
+                <label for="correo" class="form__label">Correo electrónico</label>
+                <input type="email" name="correo" class="form__input" id="correo" placeholder="correo@ejemplo.com">
             </div>
 
-            <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" name="password" class="form-control" id="password">
+            <div class="form__group">
+                <label for="password" class="form__label">Contraseña</label>
+                <input type="password" name="password" class="form__input" id="password">
             </div>
-
-            <button class="btn btn-primary-custom" type="submit">Entrar</button>
+            <div class="button__container">
+                <button class="btn__brand--primary" type="submit">Entrar</button>
+            </div>
         </form>
     </div>
-</x-layouts.app>
+</x-layouts.main-panel>

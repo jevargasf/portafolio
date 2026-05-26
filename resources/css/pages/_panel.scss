@@ -1,0 +1,18 @@
+.panel__layout {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+}
+
+.panel__layout--sidebar {
+    margin: 0;
+    padding: 0;
+}
+
+
+.panel__layout--content {
+    margin: 0;
+    padding: 0 var(--space-4);
+}

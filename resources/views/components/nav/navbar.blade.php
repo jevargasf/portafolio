@@ -10,19 +10,19 @@
         <div class="nav__collapse" id="nav">
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a class="nav__link nav__link--active" href="{{ route('public.inicio') }}">Inicio</a>
+                    <a class="nav__link nav__link--active" href="{{ route('public.inicio') }}">inicio</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="{{ route('public.proyectos') }}">Proyectos</a>
+                    <a class="nav__link" href="{{ route('public.proyectos') }}">proyectos</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="{{ route('public.perfil') }}">Sobre Mí</a>
+                    <a class="nav__link" href="{{ route('public.perfil') }}">sobre mí</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="{{ route('public.blog') }}">Blog</a>
+                    <a class="nav__link" href="{{ route('public.blog') }}">blog</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="#">Contacto</a>
+                    <a class="nav__link" href="#">contacto</a>
                 </li>
                 @auth
                     <li class="nav__item">
@@ -34,7 +34,7 @@
 
                         <a class="nav__link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <x-icons.logout class="nav__icon"/>
-                            Salir
+                            salir
                         </a>
                     </li>
                 @else

@@ -1,6 +1,11 @@
 .nav {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
     padding: var(--space-1);
-    // background-color: var(--bg-primary);
+    background-color: color-mix(in srgb, var(--bg-primary) 88%, transparent);
+    backdrop-filter: blur(4px) grayscale(50%) contrast(120%);
+    -webkit-backdrop-filter: blur(4px) grayscale(50%) contrast(120%);
     border-bottom: var(--border-width-base) solid var(--border-strong);
 
     .container-fluid {

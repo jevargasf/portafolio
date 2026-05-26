@@ -17,8 +17,16 @@
 @import "layout/grid";
 @import "layout/nav";
 @import "layout/footer";
+@import "layout/sidebar";
 @import "components/buttons";
 @import "components/cards";
 @import "components/forms";
 @import "components/badges";
 @import "components/icons";
+
+@import "pages/index";
+@import "pages/main-panel";
+@import "pages/panel";
+@import "pages/profile";
+@import "pages/login";
+@import "pages/panel/proyectos/form-proyecto";
