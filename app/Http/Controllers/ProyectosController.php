@@ -80,8 +80,8 @@ class ProyectosController extends Controller
                 $nombreOriginal = $file->getClientOriginalName();
                 $extension = $file->getClientOriginalExtension();
 
-                // $hashArchivo = hash_file('sha256', $file->getRealPath());
-                $hashArchivo = 'hash_de_prueba_123';
+                $hashArchivo = hash_file('sha256', $file->getRealPath());
+                
                 $rutaGuardada = $file->store('proyectos', 'public');
 
                 DocumentoProyecto::create([
@@ -181,8 +181,8 @@ class ProyectosController extends Controller
 
                     $nombreOriginal = $file->getClientOriginalName();
                     $extension      = $file->getClientOriginalExtension();
-                    // $hashArchivo    = hash_file('sha256', $file->getRealPath());
-                    $hashArchivo = 'hash_de_prueba_456';
+                    $hashArchivo    = hash_file('sha256', $file->getRealPath());
+
                     $rutaGuardada = $file->store('proyectos', 'public');
 
                     $portadaAnterior = DocumentoProyecto::where('proyecto_id', $proyecto->id)
