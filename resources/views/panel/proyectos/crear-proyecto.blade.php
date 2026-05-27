@@ -54,27 +54,29 @@
                     <textarea name="solucion" class="form__input" id="solucion" rows="4" placeholder="¿Cómo lo lograste y qué impacto tuvo?">{{ old('solucion') }}</textarea>
                 </div>
             </div>
-            <div class="form__row">
-                <label class="form__label">Tecnologías Utilizadas</label>
-                <div class="form__group--checkboxes">
+            <div class="form__row" style="--form-grid-cols: 2fr 1fr;">
+                <div>
+                    <label class="form__label">Tecnologías Utilizadas</label>
+                    <div class="form__group--checkboxes" id="containerCheckboxes">
 
-                    @if(isset($tecnologias) && count($tecnologias) > 0)
-                        @foreach($tecnologias as $tecnologia)
-                            <div class="form__checkbox">
-                                <input class="form__check--input" type="checkbox" value="{{ $tecnologia->id }}" id="tec_{{ $tecnologia->id }}" 
-                                {{ in_array($tecnologia->id, $idsSeleccionados) ? 'checked' : '' }}>
-                                <label class="form__check--label" for="tec_{{ $tecnologia->id }}">
-                                    {{ $tecnologia->nombre }}
-                                </label>
-                            
-                            </div>
-                        @endforeach
-                    @else
-                        <div class="text-muted small">No hay tecnologías registradas.</div>
-                    @endif
+                        @if(isset($tecnologias) && count($tecnologias) > 0)
+                            @foreach($tecnologias as $tecnologia)
+                                <div class="form__checkbox">
+                                    <input class="form__check--input" type="checkbox" value="{{ $tecnologia->id }}" id="tec_{{ $tecnologia->id }}" 
+                                    {{ in_array($tecnologia->id, $idsSeleccionados) ? 'checked' : '' }}>
+                                    <label class="form__check--label" for="tec_{{ $tecnologia->id }}">
+                                        {{ $tecnologia->nombre }}
+                                    </label>
+                                
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="text-muted small">No hay tecnologías registradas.</div>
+                        @endif
+                    </div>
                 </div>
-                    <div id="containerChecked"></div>
-                    <input type="hidden" name="tecnologias_ordenadas" id="tecnologiasOrdenadas">
+                <div id="containerChecked"></div>
+                <input type="hidden" name="tecnologias_ordenadas" id="tecnologiasOrdenadas">
             </div>
 
             <div class="form__row">
@@ -109,6 +111,8 @@
     @push('scripts')    
         <script>
             window.oldTecnologias = {!! old('tecnologias_ordenadas', 'null') !!};
+            window.tecnologias = @json($tecnologias);
+
         </script>
 
         <script src="{{ asset('js/portafolio/proyectos/crear.js') }}"></script>
