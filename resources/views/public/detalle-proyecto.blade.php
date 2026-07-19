@@ -1,6 +1,6 @@
 <x-layouts.app :perfil=$perfil >
-    <div class="return-container">
-        <a class="return-btn" href="{{ route('public.inicio') }}">Volver</a>
+    <div class="back-link">
+        <a class="back-link__btn" href="{{ route('public.inicio') }}">Volver</a>
     </div>
 
     <!-- HEADER DEL PROYECTO CON -->
