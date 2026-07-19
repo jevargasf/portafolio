@@ -31,12 +31,12 @@
 
                 <!-- contenedor botones -->
                 <div class="hero__buttons">
-                    <a href="#proyectos" class="btn__brand--primary">
+                    <a href="#proyectos" class="btn-brand--primary">
                         <span>VER PROYECTOS</span>
                         <!-- AQUÍ IBA UN ÍCONO DE FLECHA -->
                     </a>
 
-                    <a href="{{ route('public.descargar-cv')}}" class="btn__brand--outline">
+                    <a href="{{ route('public.descargar-cv')}}" class="btn-brand--outline">
                         DESCARGAR CV
                     </a>
                 </div>
@@ -141,7 +141,7 @@
             Próximamente: Fichas de detalle proyecto, información profesional y formulario de contacto.
         </p>
         <form method="dialog">
-            <button class="btn__brand--primary">Aceptar</button>
+            <button class="btn-brand--primary">Aceptar</button>
         </form>
     </dialog>    
 </section>

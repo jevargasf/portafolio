@@ -124,9 +124,11 @@ class PublicPortfolioController extends Controller
     }
 
     public function detalleProyecto(Proyecto $proyecto){
-        $proyecto->load('tecnologias', 'documentos');
+        $perfil = $this->obtenerPerfil();
 
-        return view('public.detalle-proyecto', compact('proyecto'));
+        $proyecto->load('tecnologias', 'documentos');
+        
+        return view('public.detalle-proyecto', compact('proyecto', 'perfil'));
     }
 
     public function descargarCV(Request $request){

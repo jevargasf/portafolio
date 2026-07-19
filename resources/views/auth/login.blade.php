@@ -15,7 +15,7 @@
                 <input type="password" name="password" class="form__input" id="password">
             </div>
             <div class="button__container">
-                <button class="btn__brand--primary" type="submit">Entrar</button>
+                <button class="btn-brand--primary" type="submit">Entrar</button>
             </div>
         </form>
     </div>

@@ -127,8 +127,8 @@
             </div>
 
             <div class="form__row">
-                <button class="btn__brand--primary" type="submit">Actualizar Proyecto</button>
-                <a href="{{ route('panel.proyectos.listar') }}" class="btn__brand--outline">Cancelar</a>
+                <button class="btn-brand--primary" type="submit">Actualizar Proyecto</button>
+                <a href="{{ route('panel.proyectos.listar') }}" class="btn-brand--outline">Cancelar</a>
             </div>
         </form>
     </div>
