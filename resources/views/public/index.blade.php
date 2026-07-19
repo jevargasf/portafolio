@@ -76,7 +76,7 @@
                 <div class="card">
                     <div class="project-card__btn">
                         <a href="{{ route('public.detalle-proyecto', $proyecto) }}">
-                        <div class="project-card__header">
+                        <div class="card__header">
                             <span class="project-card__type">
                                 WEB
                             </span>
@@ -98,14 +98,14 @@
                                             class="project-card__image" 
                                             alt="{{ $proyecto->nombre }}">
                                 @else
-                                    <div class="project-card__image--no-image">
+                                    <div class="project-card__no-image">
                                         [NO_IMAGE_DATA]
                                     </div>
                                 @endif
                             
                         </div>
 
-                        <div class="project-card__body">
+                        <div class="card__body">
                             <h3 class="project-card__title">
                                 {{ $proyecto->nombre }}
                             </h3>
