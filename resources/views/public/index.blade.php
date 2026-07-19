@@ -59,11 +59,11 @@
     </header>
 
 <!-- PROYECTOS -->
-<section id="proyectos" class="projects__section">
+<section id="proyectos" class="projects-section">
     <div class="section__wrapper">
 
-        <div class="projects__header">
-            <h2 class="section__title projects__title">
+        <div class="projects-section__header">
+            <h2 class="section__title projects-section__title">
                 Mis Proyectos
             </h2>
             <span class="badge__brand">
@@ -71,59 +71,57 @@
             </span>
         </div>
 
-        <div class="projects__wrapper">
+        <div class="project-cards__wrapper">
             @foreach($perfil->proyectos as $proyecto)
                 <div class="card">
-                
-                    <div class="card__header">
-                        <span class="project__type">
-                            WEB
-                        </span>
-                        <div class="project__status">
-                            <span class="project__status--value {{ $proyecto->estado ? 'status-prod' : 'status-dev' }}">
-                                {{ $proyecto->estado ? '● EN PRODUCCIÓN' : '○ EN DESARROLLO' }}
+                    <div class="project-card__btn">
+                        <a href="{{ route('public.detalle-proyecto', $proyecto) }}">
+                        <div class="project-card__header">
+                            <span class="project-card__type">
+                                WEB
                             </span>
-                        </div>
-
-                    </div>
-
-                    <div class="card__image--wrapper">
-                        @php
-                            $portada = $proyecto->documentos->where('es_portada', 1)->first();
-                            $imgProyecto = $portada ? $portada->url_publica : 'https://dummyimage.com/600x400/dee2e6/6c757d.jpg&text=Proyecto';
-                        @endphp
-                            @if($imgProyecto)
-                                <img src="{{ $imgProyecto }}" 
-                                        class="card__image" 
-                                        alt="{{ $proyecto->nombre }}">
-                            @else
-                                <div class="card__image--no-image">
-                                    [NO_IMAGE_DATA]
-                                </div>
-                            @endif
-                        
-                    </div>
-
-                    <div class="card__body">
-                        <h3 class="project__title">
-                            {{ $proyecto->nombre }}
-                        </h3>
-
-                        <p class="project__description">
-                            {{ $proyecto->descripcion }}
-                        </p>
-
-                        <div class="project__stack">
-                            @foreach($proyecto->tecnologias as $tecnologia)
-                            <div class="badge__brand stack__value">{{ $tecnologia->nombre }}</div>
-                            @endforeach
+                            <div class="project-card__status">
+                                <span class="project-card__status-value {{ $proyecto->estado ? 'status-prod' : 'status-dev' }}">
+                                    {{ $proyecto->estado ? '● EN PRODUCCIÓN' : '○ EN DESARROLLO' }}
+                                </span>
+                            </div>
 
                         </div>
 
-                        <div class="project__btn">
-                            <a href="{{ route('public.detalle-proyecto', $proyecto) }}">
-                            </a>
+                        <div class="project-card__image-wrapper">
+                            @php
+                                $portada = $proyecto->documentos->where('es_portada', 1)->first();
+                                $imgProyecto = $portada ? $portada->url_publica : 'https://dummyimage.com/600x400/dee2e6/6c757d.jpg&text=Proyecto';
+                            @endphp
+                                @if($imgProyecto)
+                                    <img src="{{ $imgProyecto }}" 
+                                            class="project-card__image" 
+                                            alt="{{ $proyecto->nombre }}">
+                                @else
+                                    <div class="project-card__image--no-image">
+                                        [NO_IMAGE_DATA]
+                                    </div>
+                                @endif
+                            
                         </div>
+
+                        <div class="project-card__body">
+                            <h3 class="project-card__title">
+                                {{ $proyecto->nombre }}
+                            </h3>
+
+                            <p class="project-card__description">
+                                {{ $proyecto->descripcion }}
+                            </p>
+
+                            <div class="project-card__stack">
+                                @foreach($proyecto->tecnologias as $tecnologia)
+                                <div class="badge__brand stack__value">{{ $tecnologia->nombre }}</div>
+                                @endforeach
+
+                            </div>
+                        </div>
+                        </a>
                     </div>
                 </div>
             @endforeach
