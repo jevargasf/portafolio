@@ -14,6 +14,16 @@
             <!-- IZQUIERDA ABAJO: TRAYECTORIA LABORAL (LÍNEA DE TIEMPO) -->
             <section class="profile__trajectory">
                 <h2>Trayectoria Profesional</h2>
+                <div class="trajectory-container">
+                    @foreach($timeline as $hito)
+                    <span class="trajectory__milestone">
+                        {{ $hito['titulo'] }}
+                    </span>
+                    @if(!$loop->last)
+                    <div class="trajectory__line"></div>
+                    @endif
+                    @endforeach
+                </div>
             </section>
         </main>
 

@@ -66,7 +66,7 @@ class PublicPortfolioController extends Controller
                 'fecha' => $item->fecha_inicio, // Usamos Carbon para ordenar
                 'fecha_fin' => $item->fecha_fin,
                 'titulo' => $item->cargo,
-                'subtitulo' => $item->empresa,
+                'subtitulo' => $item->organizacion,
                 'descripcion' => $item->descripcion,
                 'tipo' => 'WORK', // Para el ícono y color
                 'es_hito' => true // Esto decide si va grande o pequeño
@@ -77,8 +77,8 @@ class PublicPortfolioController extends Controller
         $timeline = $timeline->merge($educacion->map(function($item) {
             return [
                 'fecha' => $item->fecha_inicio,
-                'fecha_fin' => $item->fecha_fin,
-                'titulo' => $item->titulo,
+                'fecha_fin' => $item->fecha_obtencion,
+                'titulo' => $item->nombre_titulo,
                 'subtitulo' => $item->institucion,
                 'descripcion' => $item->descripcion, // Tesis, logros
                 'tipo' => 'ACADEMIC',
@@ -101,7 +101,7 @@ class PublicPortfolioController extends Controller
 
         // 3. Ordenar cronológicamente descendente (Lo más nuevo primero)
         $timeline = $timeline->sortByDesc('fecha');
-
+        // dd($timeline);
         $tecnologiasAgrupadas = Tecnologia::where('estado', 1)->get(['nombre', 'tipo'])->groupBy('tipo');
         return view('public.perfil', compact('perfil', 'timeline', 'tecnologiasAgrupadas'));
     }

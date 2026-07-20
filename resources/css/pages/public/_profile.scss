@@ -55,3 +55,22 @@
 .json-nested-2 {
     color: var(--json-nested-2);
 }
+
+.trajectory-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.trajectory__milestone {
+    font-family: var(--font-code);
+
+}
+
+.trajectory__line {
+    width: var(--dimension-6);
+    height: var(--dimension-3);
+    border-left: var(--border-width-base) solid var(--text-main);
+    transform: translateX(50%);
+}
