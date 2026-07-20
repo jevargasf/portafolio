@@ -1,0 +1,25 @@
+.profile {
+    display: flex;
+    margin: 0 var(--space-16);
+}
+
+.profile__main {
+    flex-basis: 0;
+    flex-grow: 3;
+}
+
+.profile__aside {
+    flex-basis: 0;
+    flex-grow: 2;
+}
+
+.profile__json-technologies {
+    font-family: var(--font-code);
+    padding: var(--space-6);
+    margin: 0 auto;
+    background-color: var(--json-bg);
+    color: var(--json-key);
+    width: var(--dimension-16);
+    max-height: var(--dimension-30);
+    overflow-y: scroll;
+}

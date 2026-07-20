@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\PerfilProfesional;
 use App\Models\Proyecto;
+use App\Models\Tecnologia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -101,7 +102,8 @@ class PublicPortfolioController extends Controller
         // 3. Ordenar cronológicamente descendente (Lo más nuevo primero)
         $timeline = $timeline->sortByDesc('fecha');
 
-        return view('public.perfil', compact('perfil', 'timeline'));
+        $tecnologiasAgrupadas = Tecnologia::where('estado', 1)->get(['nombre', 'tipo'])->groupBy('tipo');
+        return view('public.perfil', compact('perfil', 'timeline', 'tecnologiasAgrupadas'));
     }
 
     public function verProyectos(Request $request)

@@ -1,13 +1,13 @@
-// @import "bootstrap/scss/functions";
-// @import "bootstrap/scss/variables";
-// @import "bootstrap/scss/variables-dark";
-// @import "bootstrap/scss/maps";
-// @import "bootstrap/scss/mixins";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
 
-// @import "bootstrap/scss/grid";
+@import "bootstrap/scss/grid";
 
-// @import "bootstrap/scss/utilities";
-// @import "bootstrap/scss/utilities/api";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
 
 @import "abstracts/variables";
 @import "mixins/functions";
@@ -25,10 +25,11 @@
 @import "components/icons";
 @import "components/alerts";
 
-@import "pages/index";
-@import "pages/detalle-proyecto";
+@import "pages/public/index";
+@import "pages/public/detalle-proyecto";
+@import "pages/public/profile";
+@import "pages/public/login";
 @import "pages/panel/main-panel";
 @import "pages/panel/panel";
-@import "pages/profile";
-@import "pages/login";
+@import "pages/panel/profile";
 @import "pages/panel/proyectos/form-proyecto";
