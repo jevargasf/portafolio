@@ -23,3 +23,35 @@
     max-height: var(--dimension-30);
     overflow-y: scroll;
 }
+
+.json-punctuation {
+    color: var(--json-punctuation);
+}
+
+.json-key {
+    color: var(--json-key);
+}
+
+.json-string {
+    color: var(--json-string);
+}
+
+.json-number {
+    color: var(--json-number);
+}
+
+.json-boolean {
+    color: var(--json-boolean);
+}
+
+.json-global {
+    color: var(--json-global);
+}
+
+.json-nested-1 {
+    color: var(--json-nested-1);
+}
+
+.json-nested-2 {
+    color: var(--json-nested-2);
+}
