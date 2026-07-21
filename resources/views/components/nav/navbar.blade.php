@@ -10,13 +10,17 @@
         <div class="nav__collapse" id="nav">
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a class="nav__link nav__link--active" href="{{ route('public.inicio') }}">inicio</a>
+                    <a @class(['nav__link',
+                    'nav__link--active' => request()->routeIs('public.inicio')
+                    ]) href="{{ route('public.inicio') }}">inicio</a>
                 </li>
-                <li class="nav__item">
+                <!-- <li class="nav__item">
                     <a class="nav__link nav__link--disabled" href="{{ route('public.proyectos') }}">proyectos</a>
-                </li>
+                </li> -->
                 <li class="nav__item">
-                    <a class="nav__link nav__link--disabled" href="{{ route('public.perfil') }}">sobre mí</a>
+                    <a @class(['nav__link',
+                    'nav__link--active' => request()->routeIs('public.perfil')
+                    ]) href="{{ route('public.perfil') }}">sobre mí</a>
                 </li>
                 <!-- <li class="nav__item">
                     <a class="nav__link" href="{{ route('public.blog') }}">blog</a>
