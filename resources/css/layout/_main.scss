@@ -9,3 +9,11 @@
         flex-direction: column;
     }
 }
+
+.wrapper {
+    margin: 0 var(--space-16);
+
+    @media (max-width: $bp-lg) {
+        margin: 0 var(--space-8);
+    }
+}

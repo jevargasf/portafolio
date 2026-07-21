@@ -1,6 +1,11 @@
 .profile {
     display: flex;
-    margin: 0 var(--space-16);
+    justify-content: center;
+    padding-bottom: var(--space-8);
+
+    @media(max-width: $bp-lg) {
+        flex-direction: column;
+    }
 }
 
 .profile__main {

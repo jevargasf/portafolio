@@ -9,7 +9,7 @@
 </head>
 <body class="layout">
     <x-nav.navbar/>
-    <div class="layout__main">
+    <div class="layout__main wrapper">
         {{ $slot }}
     </div>
     <x-nav.footer :perfil=$perfil />
