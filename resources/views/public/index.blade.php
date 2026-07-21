@@ -156,9 +156,4 @@
         </form>
     </dialog>    
 </section>
-
-
-    @push('scripts')
-        <script src="{{ asset('js/public/index.js') }}"></script>
-    @endpush
 </x-layouts.app>
