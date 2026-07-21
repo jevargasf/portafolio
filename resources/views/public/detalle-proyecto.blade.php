@@ -1,7 +1,5 @@
 <x-layouts.app :perfil=$perfil >
-    <div class="back-link">
-        <a class="back-link__btn" href="{{ route('public.inicio') }}">Volver</a>
-    </div>
+    <x-nav.back/>
 
     <!-- HEADER DEL PROYECTO CON -->
     <header class="project__header">
