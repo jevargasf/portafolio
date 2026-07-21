@@ -38,7 +38,8 @@ class ProyectosController extends Controller
             'horas_trabajo'     => 'nullable|integer|min:0',
             'url_repositorio'   => 'nullable|url|max:255',
             'url_produccion'    => 'nullable|url|max:255',
-            'estado'            => 'required|integer|in:0,1',
+            'estado'            => 'required|integer|in:0,1,2,3',
+            'tipo'              => 'required|integer|in:1,2,3',
             'imagen_portada'    => 'nullable|image|max:4096', 
             'tecnologias_ordenadas'       => 'nullable|array',
             'tecnologias_ordenadas.*'     => 'exists:tecnologias,id',
@@ -70,6 +71,7 @@ class ProyectosController extends Controller
                 'url_repositorio'   => $validated['url_repositorio'],
                 'url_produccion'    => $validated['url_produccion'],
                 'estado'            => $validated['estado'],
+                'tipo'            => $validated['tipo'],
                 'slug'            => $validated['slug']
             ]);
 
@@ -145,7 +147,8 @@ class ProyectosController extends Controller
             'horas_trabajo'     => 'nullable|integer|min:0',
             'url_repositorio'   => 'nullable|url|max:255',
             'url_produccion'    => 'nullable|url|max:255',
-            'estado'            => 'required|integer|in:0,1',
+            'estado'            => 'required|integer|in:0,1,2,3',
+            'tipo'              => 'required|integer|in:1,2,3',
             'imagen_portada'    => 'nullable|image|max:4096',
             'tecnologias_validadas'       => 'nullable|array',
             'tecnologias_validadas.*'     => 'exists:tecnologias,id',
@@ -173,6 +176,7 @@ class ProyectosController extends Controller
                     'url_repositorio'   => $validated['url_repositorio'],
                     'url_produccion'    => $validated['url_produccion'],
                     'estado'            => $validated['estado'],
+                    'tipo'              => $validated['tipo'],
                     'slug'              => $validated['slug']
                 ]);
 

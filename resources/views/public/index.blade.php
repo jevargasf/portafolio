@@ -82,6 +82,10 @@
                                 WEB
                                 @elseif($proyecto->tipo === 2)
                                 IA/ML
+                                @elseif($proyecto->tipo === 3)
+                                Otro
+                                @elseif($proyecto->tipo === 4)
+                                N/A
                                 @else
                                 @endif
                             </span>
@@ -91,8 +95,10 @@
                                     ● EN PRODUCCIÓN
                                     @elseif($proyecto->estado === 2)
                                     ● MVP
-                                    @else
+                                    @elseif($proyecto->estado === 2)
                                     ○ EN DESARROLLO
+                                    @else
+                                    N/A
                                     @endif    
                                 </span>
                             </div>
@@ -144,16 +150,6 @@
                 [ CARGAR__MÁS... ]
             </a>
         </div> -->
-    </div>    
-    <dialog id="proximamenteAlert">
-        <x-icons.info-circled/>
-        <h4>Portafolio en Desarrollo</h4>
-        <p>
-            Próximamente: Fichas de detalle proyecto, información profesional y formulario de contacto.
-        </p>
-        <form method="dialog">
-            <button class="btn-brand--primary">Aceptar</button>
-        </form>
-    </dialog>    
+    </div>     
 </section>
 </x-layouts.app>

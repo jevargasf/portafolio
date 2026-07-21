@@ -48,9 +48,13 @@
                 <span class="project-meta__label">Tipo:</span>
                 <span class="project-meta__value">
                     @if($proyecto->tipo === 1)
-                    Aplicación Web
+                    WEB
                     @elseif($proyecto->tipo === 2)
-                    IA/Machine Learning
+                    IA/ML
+                    @elseif($proyecto->tipo === 3)
+                    Otro
+                    @elseif($proyecto->tipo === 4)
+                    N/A
                     @else
                     @endif
                 </span>
@@ -59,12 +63,14 @@
                 <span class="project-meta__label">Estado:</span>
                 <span class="project-meta__value">
                     @if($proyecto->estado === 1)
-                    En Producción
+                    ● EN PRODUCCIÓN
                     @elseif($proyecto->estado === 2)
-                    Mínimo Producto Viable
+                    ● MVP
+                    @elseif($proyecto->estado === 2)
+                    ○ EN DESARROLLO
                     @else
-                    En Desarrollo
-                    @endif    
+                    N/A
+                    @endif   
                 </span>
             </div>
             <div class="project-content__field">

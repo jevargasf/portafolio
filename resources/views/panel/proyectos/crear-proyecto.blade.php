@@ -93,12 +93,22 @@
                     <input type="url" name="url_produccion" class="form__input" placeholder="https://..." value="{{ old('url_produccion') }}">
                 </div>
             </div>
-
+            <div class="form__row">
+                <label for="tipo" class="form__label">Tipo de Proyecto</label>
+                <select name="tipo" id="tipo" class="form__select">
+                    <option value="1" {{ old('tipo') == '1' ? 'selected' : '' }}>Aplicación Web</option>
+                    <option value="2" {{ old('tipo') == '2' ? 'selected' : '' }}>IA/Machine Learning</option>
+                    <option value="3" {{ old('tipo') == '3' ? 'selected' : '' }}>Otro</option>
+                    <option value="0" {{ old('tipo') == '0' ? 'selected' : '' }}>Ninguno</option>
+                </select>
+            </div>
             <div class="form__row">
                 <label for="estado" class="form__label">Visibilidad</label>
                 <select name="estado" id="estado" class="form__select">
-                    <option value="1" {{ old('estado') == '1' ? 'selected' : '' }}>Visible</option>
-                    <option value="0" {{ old('estado') == '0' ? 'selected' : '' }}>Borrador</option>
+                    <option value="1" {{ old('estado') == '1' ? 'selected' : '' }}>En Producción</option>
+                    <option value="2" {{ old('estado') == '2' ? 'selected' : '' }}>Mínimo Producto Viable</option>
+                    <option value="3" {{ old('estado') == '3' ? 'selected' : '' }}>En Desarrollo</option>
+                    <option value="0" {{ old('estado') == '0' ? 'selected' : '' }}>Borrador (No Visible Públicamente)</option>
                 </select>
             </div>
 
