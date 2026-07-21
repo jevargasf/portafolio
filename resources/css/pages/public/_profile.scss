@@ -31,9 +31,14 @@
     margin: 0 auto;
     background-color: var(--json-bg);
     color: var(--json-key);
-    width: var(--dimension-24);
-    overflow-y: scroll;
+    width: 100%;
+    max-width: var(--dimension-24);
+    overflow: auto;
     box-shadow: var(--shadow-hard-light);
+
+    @media (max-width: $bp-sm) {
+        padding: var(--space-4);
+    }
 }
 
 .json-punctuation {

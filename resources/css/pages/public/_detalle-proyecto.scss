@@ -1,5 +1,9 @@
 .project__header {
     margin: var(--space-6) var(--space-16);
+
+    @media(max-width: $bp-md) {
+        margin: 0;
+    }
 }
 
 .project__image {
@@ -15,6 +19,11 @@
     margin: var(--space-6) var(--space-16);
     display: flex;
     gap: var(--space-6);
+
+    @media(max-width: $bp-md) {
+        flex-direction: column;
+        margin: 0;
+    }
 }
 
 .project-content__wrapper {
@@ -32,6 +41,7 @@
     background-color: var(--neutral-50);
     border: var(--border-width-base) solid var(--border-strong);
     box-shadow: var(--shadow-hard-base);
+    margin-bottom: var(--space-6);
 }
 
 .project-content__field {

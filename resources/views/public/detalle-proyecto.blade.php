@@ -63,11 +63,11 @@
                 <span class="project-meta__label">Estado:</span>
                 <span class="project-meta__value">
                     @if($proyecto->estado === 1)
-                    ● EN PRODUCCIÓN
+                    En Producción
                     @elseif($proyecto->estado === 2)
-                    ● MVP
+                    Mínimo Producto Viable
                     @elseif($proyecto->estado === 2)
-                    ○ EN DESARROLLO
+                    En Desarrollo
                     @else
                     N/A
                     @endif   
