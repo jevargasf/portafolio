@@ -1,15 +1,13 @@
 <x-layouts.app :perfil=$perfil>
     <x-nav.back/>
-    <!-- DOS COLUMNAS 60-40 -->
+
     <div class="profile">
         <main class="profile__main">
-            <!-- IZQUIERDA: PERFIL PROFESIONAL -->
             <section class="profile__about">
                 <h2>Perfil Profesional</h2>
                 <p>{{ $perfil->biografia }}</p>
             </section>
 
-            <!-- IZQUIERDA ABAJO: TRAYECTORIA LABORAL (LÍNEA DE TIEMPO) -->
             <section class="profile__trajectory">
                 <h2>Trayectoria Profesional</h2>
                 <div class="trajectory-container">
@@ -42,7 +40,6 @@
         </main>
 
         <aside class="profile__aside">
-            <!-- DERECHA: STACK ORDENADO EN UN JSON POR TIPO -->
             <section class="profile__technologies">
                 <h3>Tecnologías, Herramientas y Habilidades</h3>
                 <div class="profile__json-technologies">
