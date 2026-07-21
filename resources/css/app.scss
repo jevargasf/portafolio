@@ -13,6 +13,7 @@
 @import "mixins/functions";
 @import "base/reset";
 @import "base/typography";
+@import "layout/main";
 @import "layout/header";
 @import "layout/grid";
 @import "layout/nav";
@@ -28,6 +29,7 @@
 @import "pages/public/index";
 @import "pages/public/detalle-proyecto";
 @import "pages/public/profile";
+@import "pages/public/contacto";
 @import "pages/public/login";
 @import "pages/panel/main-panel";
 @import "pages/panel/panel";

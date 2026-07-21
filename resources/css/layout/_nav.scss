@@ -115,6 +115,10 @@
 
 .back-link {
     margin: var(--space-6) var(--space-16);
+
+    @media (max-width: $bp-sm) {
+        margin: var(--space-4) var(--space-12);
+    }
 }
 
 .back-link__btn {

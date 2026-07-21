@@ -7,12 +7,11 @@
     <title>{{ $title ?? 'Portafolio Javier Vargas' }}</title>
     @vite(['resources/css/app.scss'])
 </head>
-<body>
+<body class="layout">
     <x-nav.navbar/>
-    <main>
+    <div class="layout__main">
         {{ $slot }}
-    </main>
-
+    </div>
     <x-nav.footer :perfil=$perfil />
     @stack('scripts')
 </body>

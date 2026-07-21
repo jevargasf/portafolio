@@ -9,7 +9,7 @@
     padding: var(--space-3) var(--space-6);
     border: var(--border-width-base) solid var(--primary);
     transition: all var(--duration-fast) var(--ease-out);
-
+    cursor: pointer;
 }
 
 
@@ -36,7 +36,7 @@
     padding: var(--space-3) var(--space-4);
     border: var(--border-width-base) solid var(--border-strong);
     transition: all var(--duration-fast) var(--ease-out);
-
+    cursor: pointer;
 }
 
 .btn-brand--outline:hover {

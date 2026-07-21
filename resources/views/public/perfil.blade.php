@@ -29,7 +29,7 @@
                             {{ $hito['titulo'] }}
                         </span>
                         <span class="milestone__description--cert">
-                            {{ $hito['subtitulo'] }}
+                            {{ $hito['fecha'] ? $hito['fecha']->format('m/Y') : '' }} - {{ $hito['fecha_fin'] ? $hito['fecha_fin']->format('m/Y') : 'Actualidad' }} - {{ $hito['subtitulo'] }}
                         </span>
                     </div>
                     @endif
