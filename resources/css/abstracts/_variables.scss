@@ -72,6 +72,7 @@
     --border-subtle: var(--neutral-200);
     --border-strong: var(--neutral-300);
     --shadow-color: var(--neutral-900);
+    --shadow-color-soft: var(--neutral-400);
 
     // SISTEMA ESPACIAL (BASE 4px)
     --space-1: 0.25rem;
@@ -186,6 +187,7 @@
     --shadow-hard-sm: 2px 2px 0px var(--shadow-color);
     // para tarjetas en estado de reposo
     --shadow-hard-base: 4px 4px 0px var(--shadow-color);
+    --shadow-hard-light: 8px 8px 0px var(--shadow-color-soft);
     //  para el estado :hover de tarjetas
     --shadow-hard-lg: 8px 8px 0px var(--shadow-color);
 

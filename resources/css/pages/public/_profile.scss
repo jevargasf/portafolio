@@ -27,8 +27,8 @@
     background-color: var(--json-bg);
     color: var(--json-key);
     width: var(--dimension-24);
-    // max-height: var(--dimension-30);
     overflow-y: scroll;
+    box-shadow: var(--shadow-hard-light);
 }
 
 .json-punctuation {
