@@ -45,8 +45,8 @@
         <!-- COLUMNA 2: METADATA (FICHA TÉCNICA) -->
         <aside class="project-content__meta project-meta">
             <div class="project-content__field">
-                <span>Tipo:</span>
-                <span>
+                <span class="project-meta__label">Tipo:</span>
+                <span class="project-meta__value">
                     @if($proyecto->tipo === 1)
                     Aplicación Web
                     @elseif($proyecto->tipo === 2)
@@ -56,8 +56,8 @@
                 </span>
             </div>
             <div class="project-content__field">
-                <span>Estado:</span>
-                <span>
+                <span class="project-meta__label">Estado:</span>
+                <span class="project-meta__value">
                     @if($proyecto->estado === 1)
                     En Producción
                     @elseif($proyecto->estado === 2)
@@ -68,12 +68,12 @@
                 </span>
             </div>
             <div class="project-content__field">
-                <span>Fecha despliegue:</span>
-                <span>{{ $proyecto->fecha_realizacion->format('d/m/Y') }}</span>
+                <span class="project-meta__label">Fecha despliegue:</span>
+                <span class="project-meta__value">{{ $proyecto->fecha_realizacion->format('d/m/Y') }}</span>
             </div>
         <!-- STACK (BADGES) -->
          <div class="project-content__stack">
-            <span>Tecnologías:</span>
+            <span class="project-meta__label">Tecnologías:</span>
             @foreach($proyecto->tecnologias as $tecnologia)
             <div class="badge__brand stack__value">{{ $tecnologia->nombre }}</div>
             @endforeach

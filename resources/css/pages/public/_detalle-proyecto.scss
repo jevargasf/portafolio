@@ -5,6 +5,8 @@
 .project__image {
     width: 100%;
     overflow: hidden;
+    border: var(--border-width-base) solid var(--border-strong);
+    box-shadow: var(--shadow-hard-base);
 }
 
 .project-content {
@@ -24,12 +26,19 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-    padding: var(--space-4) 0;
+    padding: var(--space-6);
+    background-color: var(--neutral-50);
+    border: var(--border-width-base) solid var(--border-strong);
+    box-shadow: var(--shadow-hard-base);
 }
 
 .project-content__field {
     display: flex;
     gap: var(--space-6);
+}
+
+.project-meta__label {
+    font-weight: var(--font-weight-bold);
 }
 
 .project-content__stack {
@@ -40,4 +49,11 @@
     span {
         flex-basis: 100%;
     }
+}
+
+.project-content__links {
+    margin: var(--space-6) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
 }
