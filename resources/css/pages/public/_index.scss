@@ -142,9 +142,9 @@
 
 .project-card__image {
     object-fit: cover;
-    max-width: fit-content;
     display: block;
     width: 100%;
+    aspect-ratio: 16/9;
 }
 
 .project-card__status-value,

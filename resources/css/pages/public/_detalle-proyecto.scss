@@ -7,6 +7,8 @@
     overflow: hidden;
     border: var(--border-width-base) solid var(--border-strong);
     box-shadow: var(--shadow-hard-base);
+    object-fit: cover;
+    aspect-ratio: 16/9;
 }
 
 .project-content {
