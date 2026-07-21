@@ -142,7 +142,9 @@ class PublicPortfolioController extends Controller
         return Storage::disk('public')->download($documento->ruta_archivo, 'CV_Javier_Vargas.pdf');
     }
 
-    public function verBlog(Request $request){
+    public function contacto(Request $request){
+        $perfil = $this->obtenerPerfil();
         
+        return view('public.contacto', compact('perfil'));    
     }
 }

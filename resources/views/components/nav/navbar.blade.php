@@ -22,11 +22,10 @@
                     'nav__link--active' => request()->routeIs('public.perfil')
                     ]) href="{{ route('public.perfil') }}">sobre mí</a>
                 </li>
-                <!-- <li class="nav__item">
-                    <a class="nav__link" href="{{ route('public.blog') }}">blog</a>
-                </li> -->
                 <li class="nav__item">
-                    <a class="nav__link nav__link--disabled" href="#">contacto</a>
+                    <a @class(['nav__link',
+                    'nav__link--active' => request()->routeIs('public.contacto')
+                    ]) href="{{ route('public.contacto') }}">contacto</a>
                 </li>
                 @auth
                     <li class="nav__item">
