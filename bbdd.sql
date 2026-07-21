@@ -150,6 +150,7 @@ CREATE TABLE IF NOT EXISTS `proyectos` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `perfil_id` INT NOT NULL,
   `nombre` VARCHAR(200) NOT NULL,
+  `tipo` INT DEFAULT 1,
   `descripcion` TEXT,
   `desafio` TEXT,
   `solucion` TEXT,
@@ -320,92 +321,8 @@ ADD COLUMN updated_at TIMESTAMP NULL DEFAULT NULL;
 
 
 -- -------------------------------------------
--- II. INSERTS
--- -------------------------------------------
-INSERT INTO `tecnologias` (`nombre`, `ruta_icono`, `tipo`, `estado`) VALUES
--- ==========================================
--- 1. TECNOLOGÍAS DEL PROCESO
--- ==========================================
-
--- A. Diseño (11)
-('Draw.io', 'drawio', 11, 1),
-('Adobe Illustrator', 'illustrator', 11, 1),
-
--- B. Desarrollo (12)
-('VS Code', 'vscode', 12, 1),
-('Git', 'git', 12, 1),
-('ESLint', 'eslint', 12, 1),
-('Prettier', 'prettier', 12, 1),
-('Sass', 'sass', 12, 1),
-('Vite', 'vite', 12, 1),
-('Composer', 'composer', 12, 1),
-('npm', 'npm', 12, 1),
-('pip', 'pip', 12, 1),
-
--- C. Pruebas (13)
-('PHPUnit', 'phpunit', 13, 1),
-('Pest', 'pest', 13, 1),
-('Jest', 'jest', 13, 1),
-('Vitest', 'vitest', 13, 1),
-('Playwright', 'playwright', 13, 1),
-('Cypress', 'cypress', 13, 1),
-
--- D. Producción (14)
-('GitHub Actions', 'github-actions', 14, 1),
-('Docker', 'docker', 14, 1),
-('Nginx', 'nginx', 14, 1),
-('Apache', 'apache', 14, 1),
-('AWS', 'aws', 14, 1),
-('Azure', 'azure', 14, 1),
-('Cloudflare', 'cloudflare', 14, 1),
-('Linux', 'linux', 14, 1),
-('Raspberry Pi', 'raspberrypi', 14, 1),
-
-
--- ==========================================
--- 2. TECNOLOGÍAS DEL PROYECTO
--- ==========================================
-
--- A. Presentación (21)
-('HTML5', 'html5', 21, 1),
-('CSS3', 'css3', 21, 1),
-('JavaScript', 'javascript', 21, 1),
-('Blade Templates', 'blade', 21, 1),
-('React', 'react', 21, 1),
-
--- B. Aplicación (22)
-('PHP', 'php', 22, 1),
-('Laravel', 'laravel', 22, 1),
-('Node.js', 'nodejs', 22, 1),
-('Express', 'express', 22, 1),
-('Django', 'django', 22, 1),
-('Python', 'python', 22, 1),
-('Java', 'java', 22, 1),
-('SpringBoot', 'springboot', 22, 1),
-
--- C. Persistencia (23)
-('MySQL', 'mysql', 23, 1),
-('PostgreSQL', 'postgresql', 23, 1),
-('SQLite', 'sqlite', 23, 1),
-('MongoDB', 'mongodb', 23, 1),
-('Eloquent', 'eloquent', 23, 1),
-
--- D. Integración (24)
-('WebPay', 'webpay', 24, 1),
-('Mailgun', 'mailgun', 24, 1),
-('Mailman', 'mailman', 24, 1),
-('Auth0', 'auth0', 24, 1),
-('WebSocket', 'websocket', 24, 1),
-('JSON Web Token', 'jwt', 24, 1);
-
-
--- -------------------------------------------
 -- 10. ALTERS
 -- -------------------------------------------
 alter table perfil_profesional add column `index_bio` varchar(255) default null;
 alter table perfil_profesional add column `index_especialidad` varchar(255) default null;
 alter table perfil_profesional add column `biografia_enfoque` varchar(255) default null;
-
-
--- AÚN NO EJECUTADOS
-alter table proyectos add column tipo int default 1;

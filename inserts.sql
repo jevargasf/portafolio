@@ -35,7 +35,7 @@ VALUES
     (
         1, 
         'Hacking Ético en Aplicativos Web', 
-        'OTEC Sustantiva, Talento Digital', 
+        'OTEC Sustantiva (Talento Digital)', 
         208, 
         'Especialización en seguridad informática defensiva y ofensiva enfocada en la detección y mitigación de vulnerabilidades críticas en entornos web corporativos.', 
         '2025-01-01', '2025-04-30', NULL, 1
@@ -43,7 +43,7 @@ VALUES
     (
         1, 
         'Desarrollador Web Full Stack Python', 
-        'OTEC Praxis, Talento Digital', 
+        'OTEC Praxis (Talento Digital)', 
         428, 
         'Programa intensivo de formación técnica cubriendo el ciclo completo de desarrollo de software web con énfasis en arquitectura backend utilizando Python y Django.', 
         '2024-01-01', '2024-08-31', NULL, 1
@@ -51,7 +51,7 @@ VALUES
     (
         1, 
         'Desarrollador Web Full Stack JavaScript', 
-        'OTEC Sustantiva, Talento Digital', 
+        'OTEC Sustantiva (Talento Digital)', 
         472, 
         'Especialización en la construcción de interfaces interactivas asíncronas y lógica de servidores utilizando JavaScript, herramientas modernas y bases de datos relacionales.', 
         '2023-03-01', '2023-11-30', NULL, 1
@@ -152,7 +152,7 @@ INSERT INTO `experiencias_laborales`
 VALUES 
     (
         1, 
-        'Keyframe | Independiente', 
+        'Keyframe (Independiente)', 
         'Desarrollador Full Stack', 
         '<ul>
             <li>Diseñé y desarrollé desde cero un CMS (Content Management System) personalizado bajo arquitectura MVC utilizando Laravel 10 y PHP 8.2 para la digitalización del portafolio y servicios de una empresa de animación.</li>
@@ -167,7 +167,7 @@ VALUES
     ),
     (
         1, 
-        'OTEC Sustantiva - Online', 
+        'OTEC Sustantiva (Online)', 
         'Ayudante Bootcamp Full Stack Java', 
         '<ul>
             <li>Apoyo técnico, administrativo y acompañamiento en sala al relator del curso Bootcamp Full Stack Java de Talento Digital.</li>
@@ -179,7 +179,7 @@ VALUES
     ),
     (
         1, 
-        'Ilustre Municipalidad de Rancagua - Rancagua', 
+        'Ilustre Municipalidad de Rancagua (Rancagua, Chile)', 
         'Desarrollador Full Stack', 
         '<ul>
             <li>Diseñé y desarrollé soluciones tecnológicas a medida para la modernización y transformación digital de procesos operativos en el sector público.</li>
@@ -194,7 +194,7 @@ VALUES
     ),
     (
         1, 
-        'Proyecto de Innovación INACAP | Rancagua, Chile', 
+        'Fondo Acelera INACAP (Rancagua, Chile)', 
         'Desarrollador Python / Investigador I+D (MVP Estimafrut)', 
         '<ul>
             <li>Lideré la investigación técnica y el desarrollo del Producto Mínimo Viable (MVP) "Estimafrut" financiado con fondos institucionales, orientado a la modernización tecnológica del sector agroindustrial (AgriTech).</li>
@@ -207,7 +207,7 @@ VALUES
     ),
     (
         1, 
-        'Creactiva Animaciones | Independiente', 
+        'Creactiva Animaciones (Independiente)', 
         'Desarrollador Full Stack', 
         '<ul>
             <li>Desarrollé e implementé desde cero una aplicación web e-commerce responsiva utilizando Python (Django) para la digitalización de procesos de venta y capacitación técnica.</li>
@@ -237,19 +237,20 @@ SET FOREIGN_KEY_CHECKS = 1;
 -- PROYECTO 1: KEYFRAME CMS
 -- --------------------------------------------------------------
 INSERT INTO `proyectos` 
-    (`perfil_id`, `nombre`, `descripcion`, `desafio`, `solucion`, `horas_trabajo`, `url_repositorio`, `url_produccion`, `fecha_realizacion`, `slug`, `estado`) 
+    (`perfil_id`, `nombre`, `descripcion`, `desafio`, `solucion`, `horas_trabajo`, `url_repositorio`, `url_produccion`, `fecha_realizacion`, `slug`, `estado`, `tipo`) 
 VALUES 
     (
         1, 
         'Keyframe CMS', 
         'Sistema de gestión de contenidos personalizado diseñado bajo arquitectura MVC para la digitalización integral del portafolio y servicios de una empresa de animación.',
         'Proteger un panel de administración expuesto a internet contra ataques automatizados de bots, escaneos de fuerza bruta y vulnerabilidades comunes en el manejo de datos, optimizando al mismo tiempo la velocidad de entrega del pipeline de desarrollo.',
-        'Desarrollo del motor CMS utilizando Laravel 10 y PHP 8.2. Se implementó lógica de autenticación single-tenant reforzada con ofuscación dinámica de rutas de acceso (Security through Obscurity). En el servidor (cPanel), se aplicaron procesos de Hardening mediante la restricción estricta de permisos de directorios y bloqueo de descargas directas de recursos. A nivel de código, se sanitizaron todas las transacciones para anular vectores de inyección SQL y restringir la ejecución de reverse shells. El ciclo de desarrollo y debugging complejo fue acelerado estratégicamente mediante Prompt Chaining e ingeniería de contexto (archivos Handoff) con agentes LLM (Gemini 3.1), construyendo un frontend interactivo asíncrono con Vanilla JS, SCSS y Vite que integra pasarelas de pago como PayPal y Patreon.',
+        'Desarrollo del motor CMS utilizando Laravel 10 y PHP. Se implementó lógica de autenticación single-tenant reforzada con ofuscación dinámica de rutas de acceso (Security through Obscurity). En el servidor (cPanel), se aplicaron procesos de Hardening mediante la restricción estricta de permisos de directorios y bloqueo de descargas directas de recursos. A nivel de código, se sanitizaron todas las transacciones para anular vectores de inyección SQL y restringir la ejecución de reverse shells. El ciclo de desarrollo y debugging complejo fue acelerado estratégicamente mediante Prompt Chaining e ingeniería de contexto (archivos Handoff) con agentes LLM (Gemini 3.1), construyendo un frontend interactivo asíncrono con Vanilla JS, SCSS y Vite que integra pasarelas de pago como PayPal y Patreon.',
         120, 
         null, 
         'https://www.keyframe.cl/', 
         '2026-03-01', 
         'keyframe-cms', 
+        1,
         1
     );
 
@@ -266,7 +267,7 @@ WHERE nombre IN ('PHP', 'Laravel 10', 'MySQL', 'JavaScript (Vanilla)', 'CSS3 / S
 -- PROYECTO 2: ESTIMAFRUT (MVP AGRITECH)
 -- --------------------------------------------------------------
 INSERT INTO `proyectos` 
-    (`perfil_id`, `nombre`, `descripcion`, `desafio`, `solucion`, `horas_trabajo`, `url_repositorio`, `url_produccion`, `fecha_realizacion`, `slug`, `estado`) 
+    (`perfil_id`, `nombre`, `descripcion`, `desafio`, `solucion`, `horas_trabajo`, `url_repositorio`, `url_produccion`, `fecha_realizacion`, `slug`, `estado`, `tipo`) 
 VALUES 
     (
         1, 
@@ -275,11 +276,12 @@ VALUES
         'Construir un modelo de reconocimiento visual de alta fidelidad capaz de identificar con precisión estructuras complejas en huertos frutales (dardos de cerezo), superando el ruido visual en terreno y las variaciones extremas de iluminación ambiental.',
         'Diseño y entrenamiento de un modelo de visión computacional estado del arte utilizando YOLOv8 (Ultralytics) y Python. Se construyó el ciclo de ingeniería de datos desde cero, abarcando la recopilación, limpieza y curación de un dataset fotográfico propietario. Para acelerar el pipeline de entrenamiento sin comprometer la máquina local, se aprovisionaron y configuraron instancias de alto cómputo en la nube usando Google Cloud Platform (GCP) junto a Jupyter Notebooks. Adicionalmente, se programaron scripts con OpenCV para la manipulación de imágenes y se redactaron protocolos estrictos de captura fotográfica masiva para controlar el enfoque y la exposición lumínica en terreno, mitigando drásticamente la tasa de falsos positivos.',
         90, 
-        'https://github.com/jevargasf/estimafrut-mvp', 
+        NULL, 
         NULL, 
         '2025-05-01', 
         'estimafrut-agritech', 
-        1
+        1,
+        2
     );
 
 SET @proyecto_estimafrut = LAST_INSERT_ID();
@@ -301,68 +303,11 @@ TRUNCATE TABLE `proyectos`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- --------------------------------------------------------------
--- PROYECTO 1: KEYFRAME CMS
--- --------------------------------------------------------------
-INSERT INTO `proyectos` 
-    (`perfil_id`, `nombre`, `descripcion`, `desafio`, `solucion`, `horas_trabajo`, `url_repositorio`, `url_produccion`, `fecha_realizacion`, `slug`, `estado`) 
-VALUES 
-    (
-        1, 
-        'Keyframe CMS', 
-        'Sistema de gestión de contenidos personalizado diseñado bajo arquitectura MVC para la digitalización integral del portafolio y servicios de una empresa de animación.',
-        'Proteger un panel de administración expuesto a internet contra ataques automatizados de bots, escaneos de fuerza bruta y vulnerabilidades comunes en el manejo de datos, optimizando al mismo tiempo la velocidad de entrega del pipeline de desarrollo.',
-        'Desarrollo del motor CMS utilizando Laravel 10 y PHP 8.2. Se implementó lógica de autenticación single-tenant reforzada con ofuscación dinámica de rutas de acceso (Security through Obscurity). En el servidor (cPanel), se aplicaron procesos de Hardening mediante la restricción estricta de permisos de directorios y bloqueo de descargas directas de recursos. A nivel de código, se sanitizaron todas las transacciones para anular vectores de inyección SQL y restringir la ejecución de reverse shells. El ciclo de desarrollo y debugging complejo fue acelerado estratégicamente mediante Prompt Chaining e ingeniería de contexto (archivos Handoff) con agentes LLM (Gemini 3.1), construyendo un frontend interactivo asíncrono con Vanilla JS, SCSS y Vite que integra pasarelas de pago como PayPal y Patreon.',
-        120, 
-        'https://github.com/jevargasf/keyframe-cms', 
-        'https://www.javiervargas.cl/keyframe', 
-        '2026-03-01', 
-        'keyframe-cms', 
-        1
-    );
-
--- Capturamos el ID del proyecto recién insertado
-SET @proyecto_keyframe = LAST_INSERT_ID();
-
--- Asociamos tecnologías al Proyecto 1 (Basado en nombres exactos del catálogo Fase 3)
-INSERT INTO `proyectos_tecnologias` (`proyecto_id`, `tecnologia_id`, `prioridad`, `estado`)
-SELECT @proyecto_keyframe, id, 1, 1 FROM `tecnologias` 
-WHERE nombre IN ('PHP', 'Laravel 10', 'MySQL', 'JavaScript (Vanilla)', 'CSS3 / SaSS', 'Vite (Asset Bundler)', 'Git', 'cPanel', 'Nginx', 'Securización de Infraestructura', 'Prevención Inyección SQL', 'Ofuscación de Rutas', 'AI-Assisted Development (Gemini)', 'Context Engineering (Handoff)', 'Prompt Chaining');
-
-
--- --------------------------------------------------------------
--- PROYECTO 2: ESTIMAFRUT (MVP AGRITECH)
--- --------------------------------------------------------------
-INSERT INTO `proyectos` 
-    (`perfil_id`, `nombre`, `descripcion`, `desafio`, `solucion`, `horas_trabajo`, `url_repositorio`, `url_produccion`, `fecha_realizacion`, `slug`, `estado`) 
-VALUES 
-    (
-        1, 
-        'Estimafrut - MVP Visión Computacional', 
-        'Producto Mínimo Viable (MVP) enfocado en I+D agroindustrial para la modernización y automatización de procesos agrícolas mediante inteligencia artificial.',
-        'Construir un modelo de reconocimiento visual de alta fidelidad capaz de identificar con precisión estructuras complejas en huertos frutales (dardos de cerezo), superando el ruido visual en terreno y las variaciones extremas de iluminación ambiental.',
-        'Diseño y entrenamiento de un modelo de visión computacional estado del arte utilizando YOLOv8 (Ultralytics) y Python. Se construyó el ciclo de ingeniería de datos desde cero, abarcando la recopilación, limpieza y curación de un dataset fotográfico propietario. Para acelerar el pipeline de entrenamiento sin comprometer la máquina local, se aprovisionaron y configuraron instancias de alto cómputo en la nube usando Google Cloud Platform (GCP) junto a Jupyter Notebooks. Adicionalmente, se programaron scripts con OpenCV para la manipulación de imágenes y se redactaron protocolos estrictos de captura fotográfica masiva para controlar el enfoque y la exposición lumínica en terreno, mitigando drásticamente la tasa de falsos positivos.',
-        90, 
-        'https://github.com/jevargasf/estimafrut-mvp', 
-        NULL, 
-        '2025-05-01', 
-        'estimafrut-agritech', 
-        1
-    );
-
-SET @proyecto_estimafrut = LAST_INSERT_ID();
-
--- Asociamos tecnologías al Proyecto 2
-INSERT INTO `proyectos_tecnologias` (`proyecto_id`, `tecnologia_id`, `prioridad`, `estado`)
-SELECT @proyecto_estimafrut, id, 1, 1 FROM `tecnologias` 
-WHERE nombre IN ('Python', 'Google Cloud Platform (GCP)', 'Visión Computacional (YOLOv8)', 'OpenCV', 'Entrenamiento de Modelos ML', 'Jupyter Notebooks', 'Git');
-
-
--- --------------------------------------------------------------
 -- PROYECTO 3: CREACTIVA E-COMMERCE
 -- --------------------------------------------------------------
 
 INSERT INTO `proyectos` 
-    (`perfil_id`, `nombre`, `descripcion`, `desafio`, `solucion`, `horas_trabajo`, `url_repositorio`, `url_produccion`, `fecha_realizacion`, `slug`, `estado`) 
+    (`perfil_id`, `nombre`, `descripcion`, `desafio`, `solucion`, `horas_trabajo`, `url_repositorio`, `url_produccion`, `fecha_realizacion`, `slug`, `estado`, `tipo`) 
 VALUES 
     (
         1, 
@@ -375,6 +320,7 @@ VALUES
         'https://www.creactivaanimaciones.cl', 
         '2024-07-01', 
         'creactiva-ecommerce', 
+        1,
         1
     );
 
