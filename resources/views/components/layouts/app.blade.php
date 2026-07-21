@@ -13,6 +13,7 @@
         {{ $slot }}
     </div>
     <x-nav.footer :perfil=$perfil />
+    <script src="{{ asset('js/public/nav.js') }}"></script>
     @stack('scripts')
 </body>
 </html>

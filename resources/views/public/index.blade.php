@@ -159,7 +159,6 @@
 
 
     @push('scripts')
-        <script src="{{ asset('js/public/nav.js') }}"></script>
         <script src="{{ asset('js/public/index.js') }}"></script>
     @endpush
 </x-layouts.app>
