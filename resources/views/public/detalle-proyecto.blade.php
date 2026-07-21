@@ -44,7 +44,30 @@
         </div>
         <!-- COLUMNA 2: METADATA (FICHA TÉCNICA) -->
         <aside class="project-content__meta project-meta">
-            <div class="project-content__dates">
+            <div class="project-content__field">
+                <span>Tipo:</span>
+                <span>
+                    @if($proyecto->tipo === 1)
+                    Aplicación Web
+                    @elseif($proyecto->tipo === 2)
+                    IA/Machine Learning
+                    @else
+                    @endif
+                </span>
+            </div>
+            <div class="project-content__field">
+                <span>Estado:</span>
+                <span>
+                    @if($proyecto->estado === 1)
+                    En Producción
+                    @elseif($proyecto->estado === 2)
+                    Mínimo Producto Viable
+                    @else
+                    En Desarrollo
+                    @endif    
+                </span>
+            </div>
+            <div class="project-content__field">
                 <span>Fecha despliegue:</span>
                 <span>{{ $proyecto->fecha_realizacion->format('d/m/Y') }}</span>
             </div>

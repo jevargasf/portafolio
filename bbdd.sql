@@ -405,3 +405,7 @@ INSERT INTO `tecnologias` (`nombre`, `ruta_icono`, `tipo`, `estado`) VALUES
 alter table perfil_profesional add column `index_bio` varchar(255) default null;
 alter table perfil_profesional add column `index_especialidad` varchar(255) default null;
 alter table perfil_profesional add column `biografia_enfoque` varchar(255) default null;
+
+
+-- AÚN NO EJECUTADOS
+alter table proyectos add column tipo int default 1;

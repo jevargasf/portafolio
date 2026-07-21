@@ -23,12 +23,14 @@ class Proyecto extends Model
         'fecha_realizacion', 
         'slug',
         'estado',
+        'tipo'
     ];
 
     protected $casts = [
         'fecha_realizacion' => 'date',
         'estado' => 'integer',
         'horas_trabajo' => 'integer',
+        'tipo' => 'integer'
     ];
 
     // CONSTANTES DE ESTADO

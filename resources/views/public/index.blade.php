@@ -78,11 +78,22 @@
                         <a href="{{ route('public.detalle-proyecto', $proyecto) }}">
                         <div class="card__header">
                             <span class="project-card__type">
+                                @if($proyecto->tipo === 1)
                                 WEB
+                                @elseif($proyecto->tipo === 2)
+                                IA/ML
+                                @else
+                                @endif
                             </span>
                             <div class="project-card__status">
                                 <span class="project-card__status-value {{ $proyecto->estado ? 'status-prod' : 'status-dev' }}">
-                                    {{ $proyecto->estado ? '● EN PRODUCCIÓN' : '○ EN DESARROLLO' }}
+                                    @if($proyecto->estado === 1)
+                                    ● EN PRODUCCIÓN
+                                    @elseif($proyecto->estado === 2)
+                                    ● MVP
+                                    @else
+                                    ○ EN DESARROLLO
+                                    @endif    
                                 </span>
                             </div>
 
