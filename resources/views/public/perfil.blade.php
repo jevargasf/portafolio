@@ -1,7 +1,5 @@
 <x-layouts.app :perfil=$perfil>
-    <div class="back-link">
-        <a class="back-link__btn" href="{{ route('public.inicio') }}">Volver</a>
-    </div>
+    <x-nav.back/>
     <!-- DOS COLUMNAS 60-40 -->
     <div class="profile">
         <main class="profile__main">
@@ -16,9 +14,25 @@
                 <h2>Trayectoria Profesional</h2>
                 <div class="trajectory-container">
                     @foreach($timeline as $hito)
-                    <span class="trajectory__milestone">
-                        {{ $hito['titulo'] }}
-                    </span>
+                    @if($hito['es_hito'] === true)
+                    <div class="trajectory__milestone">
+                        <span class="milestone__title">
+                            {{ $hito['titulo'] }}
+                        </span>
+                        <span class="milestone__description">
+                            {{ $hito['fecha'] ? $hito['fecha']->format('m/Y') : '' }} - {{ $hito['fecha_fin'] ? $hito['fecha_fin']->format('m/Y') : 'Actualidad' }} - {{ $hito['subtitulo'] }}
+                        </span>
+                    </div>
+                    @else
+                    <div class="trajectory__milestone--cert">
+                        <span class="milestone__title--cert">
+                            {{ $hito['titulo'] }}
+                        </span>
+                        <span class="milestone__description--cert">
+                            {{ $hito['subtitulo'] }}
+                        </span>
+                    </div>
+                    @endif
                     @if(!$loop->last)
                     <div class="trajectory__line"></div>
                     @endif
@@ -35,32 +49,32 @@
 <pre>
 <span class="json-global">{</span>    
 @foreach($tecnologiasAgrupadas as $key => $grupo)
-  @if($key === 11)
-"Diseño"<span class="json-punctuation">:</span><span class="json-nested-1"> [</span> 
+  @if($key === 21)
+"Frontend"<span class="json-punctuation">:</span><span class="json-nested-1"> [</span> 
         @foreach($grupo as $tecnologia)<span class="json-string">"{{ $tecnologia->nombre
 }}"</span>@if(!$loop->last)<span class="json-punctuation">,</span>@endif
 
         @endforeach<span class="json-nested-1">]</span><span class="json-punctuation">,</span>
-@elseif($key === 12)"Código"<span class="json-punctuation">:</span><span class="json-nested-1"> [</span>
+@elseif($key === 22)"Backend"<span class="json-punctuation">:</span><span class="json-nested-1"> [</span>
     @foreach($grupo as $tecnologia)
     <span class="json-string">"{{ $tecnologia->nombre
 }}"</span>@if(!$loop->last)<span class="json-punctuation">,</span>@endif
 
     @endforeach
 <span class="json-nested-1">]</span><span class="json-punctuation">,</span>
-@elseif($key === 13)"Testing"<span class="json-punctuation">:</span><span class="json-nested-1"> [</span>
+@elseif($key === 23)"Bases_de_datos"<span class="json-punctuation">:</span><span class="json-nested-1"> [</span>
     @foreach($grupo as $tecnologia)
     <span class="json-string">"{{ $tecnologia->nombre }}"</span>@if(!$loop->last)<span class="json-punctuation">,</span>@endif
     
     @endforeach
     <span class="json-nested-1">]</span><span class="json-punctuation">,</span>
-@elseif($key === 14)"Despliegue"<span class="json-punctuation">:</span><span class="json-nested-1"> [</span>
+@elseif($key === 14)"Infraestructura_OS"<span class="json-punctuation">:</span><span class="json-nested-1"> [</span>
     @foreach($grupo as $tecnologia)
     <span class="json-string">"{{ $tecnologia->nombre }}"</span>@if(!$loop->last)<span class="json-punctuation">,</span>@endif
     
     @endforeach
     <span class="json-nested-1">]</span><span class="json-punctuation">,</span>
-@elseif($key === 21)"Front-End"<span class="json-punctuation">:</span><span class="json-nested-1"> [</span>
+@elseif($key === 31)"Seguridad_web"<span class="json-punctuation">:</span><span class="json-nested-1"> [</span>
     @foreach($grupo as $tecnologia)
     <span class="json-string">"{{ $tecnologia->nombre }}"</span>@if(!$loop->last)<span class="json-punctuation">,</span>@endif
     
@@ -72,18 +86,12 @@
     
     @endforeach
     <span class="json-nested-1">]</span><span class="json-punctuation">,</span>
-@elseif($key === 23)"Base de Datos"<span class="json-punctuation">:</span><span class="json-nested-1"> [</span>
+@elseif($key === 41)"IA_Datos"<span class="json-punctuation">:</span><span class="json-nested-1"> [</span>
     @foreach($grupo as $tecnologia)
     <span class="json-string">"{{ $tecnologia->nombre }}"</span>@if(!$loop->last)<span class="json-punctuation">,</span>@endif
     
     @endforeach
-    <span class="json-nested-1">]</span><span class="json-punctuation">,</span>
-@elseif($key === 24)"APIs"<span class="json-punctuation">:</span><span class="json-nested-1"> [</span>
-    @foreach($grupo as $tecnologia)
-    <span class="json-string">"{{ $tecnologia->nombre }}"</span>@if(!$loop->last)<span class="json-punctuation">,</span>@endif
-    
-    @endforeach
-        <span class="json-nested-1">]</span>
+    <span class="json-nested-1">]
     @endif
 @endforeach<span class="json-global">}</span>
 </pre>

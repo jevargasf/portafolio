@@ -9,6 +9,7 @@ use App\Models\Proyecto;
 use App\Models\Tecnologia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class PublicPortfolioController extends Controller
 {
@@ -64,7 +65,7 @@ class PublicPortfolioController extends Controller
         $timeline = $timeline->merge($experiencias->map(function($item) {
             return [
                 'fecha' => $item->fecha_inicio, // Usamos Carbon para ordenar
-                'fecha_fin' => $item->fecha_fin,
+                'fecha_fin' => $item->fecha_fin ?? Carbon::now(),
                 'titulo' => $item->cargo,
                 'subtitulo' => $item->organizacion,
                 'descripcion' => $item->descripcion,
@@ -89,19 +90,19 @@ class PublicPortfolioController extends Controller
         // Mapear Certificaciones (Aquí está el truco)
         $timeline = $timeline->merge($certificaciones->map(function($item) {
             return [
-                'fecha' => $item->fecha_obtencion,
-                'fecha_fin' => null, // Las certs son puntuales
+                'fecha' => $item->fecha_inicio,
+                'fecha_fin' => $item->fecha_fin, 
                 'titulo' => $item->nombre,
-                'subtitulo' => $item->plataforma, // Udemy, Coursera, AWS
-                'descripcion' => null, // Generalmente no necesitamos descripción larga
+                'subtitulo' => $item->organizacion,
+                'descripcion' => $item->descripcion, 
                 'tipo' => 'CERT',
                 'es_hito' => false // <--- ESTO ES CLAVE. No es un hito mayor.
             ];
         }));
 
         // 3. Ordenar cronológicamente descendente (Lo más nuevo primero)
-        $timeline = $timeline->sortByDesc('fecha');
-        // dd($timeline);
+        $timeline = $timeline->sortByDesc('fecha_fin');
+        //dd($timeline);
         $tecnologiasAgrupadas = Tecnologia::where('estado', 1)->get(['nombre', 'tipo'])->groupBy('tipo');
         return view('public.perfil', compact('perfil', 'timeline', 'tecnologiasAgrupadas'));
     }
