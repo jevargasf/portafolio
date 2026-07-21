@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900');
-
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/variables-dark";
@@ -12,95 +10,7 @@
 @import "bootstrap/scss/utilities/api";
 
 // FUENTES
-@font-face {
-    font-family: 'Commit Mono';
-    src: url('../fonts/CommitMonoV143/CommitMono-400-Regular.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
 
-@font-face {
-    font-family: 'Commit Mono';
-    src: url('../fonts/CommitMonoV143/CommitMono-400-Italic.otf') format('opentype');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Commit Mono';
-    src: url('../fonts/CommitMonoV143/CommitMono-700-Regular.otf') format('opentype');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Commit Mono';
-    src: url('../fonts/CommitMonoV143/CommitMono-700-Italic.otf') format('opentype');
-    font-weight: 700;
-    font-style: italic;
-    font-display: swap;
-}
-
-
-:root {
-    --font-code: 'Commit Mono', monospace;
-    --font-body: 'Inter', sans-serif;
-
-    --primary: #0F4C5C;
-    /* Tu color Petrol */
-    --primary-hover: #09313b;
-    /* Versión oscura para interacciones */
-    --primary-light: #E7F1F3;
-    /* Versión muy clara para fondos/badges */
-
-    /* FALTA COLOR SECUNDARIO */
-    --secondary: #D65108;
-
-    /* === 2. FONDOS (Backgrounds) === */
-    --bg-body: #f8f9fa;
-    /* Fondo general de la página */
-    --bg-card: #ffffff;
-    /* Fondo de tarjetas (para que destaquen sobre el body) */
-    --bg-secondary: #E9EEF0;
-    /* Fondo de secciones alternas o inputs deshabilitados */
-    --bg-hover: #b34306;
-
-    /* === 3. TIPOGRAFÍA (Typography) === */
-    --text-main: #16282d;
-    /* Títulos y párrafos principales */
-    --text-muted: #6C757D;
-    /* Metadatos, fechas, placeholders */
-    --text-light: #F8F9FA;
-    /* Texto sobre fondos oscuros */
-    --text-dark: #041014;
-    /* === 4. BORDES Y LÍNEAS (Borders) === */
-    --border-strong: #0a1c20;
-    /* Tus bordes estilo "Wireframe" externos */
-    --border-subtle: #C9D6DA;
-    /* Líneas divisorias internas suaves */
-
-    /* === 5. ESTADOS FUNCIONALES (Feedback) === */
-    --success: #10B981;
-    /* Éxito, Completado, Online */
-    --danger: #EF4444;
-    /* Error, Eliminar, Offline */
-    --warning: #F59E0B;
-    /* Alerta, En Progreso, Pendiente */
-    --info: #0EA5E9;
-    /* Información, Ayuda */
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-body);
-    background-color: #f8f9fa;
-    color: var(--text-main);
-    /* font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11'; */
-}
 
 /* ELEMENTOS ESTRUCTURALES */
 h1,
