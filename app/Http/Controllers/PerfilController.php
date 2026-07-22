@@ -29,7 +29,7 @@ public function editarPerfil(Request $request){
             'biografia'         => 'nullable|string',
             'biografia_enfoque' => 'nullable|string|max:200',
             'esta_disponible'   => 'nullable', // Viene como "1" o null (checkbox)
-            'index_bio'         => 'nullable|string|max:200',
+            'index_bio'         => 'nullable|string|max:255',
             'index_especialidad'=> 'nullable|string|max:200',
             
             // Archivos
