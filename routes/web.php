@@ -147,7 +147,7 @@ Route::name('public.')->group(function(){
     Route::get('/', [PublicPortfolioController::class, 'index'])->name('inicio');
     Route::get('/sobre-mi', [PublicPortfolioController::class, 'verPerfil'])->name('perfil');
     Route::get('/proyectos', [PublicPortfolioController::class, 'verProyectos'])->name('proyectos');
-    Route::get('/{proyecto:slug}', [PublicPortfolioController::class, 'detalleProyecto'])->name('detalle-proyecto');
     Route::get('/descargar-cv', [PublicPortfolioController::class, 'descargarCV'])->name('descargar-cv');
     Route::get('/contacto', [PublicPortfolioController::class, 'contacto'])->name('contacto');
+    Route::get('/{proyecto:slug}', [PublicPortfolioController::class, 'detalleProyecto'])->name('detalle-proyecto');
 });
