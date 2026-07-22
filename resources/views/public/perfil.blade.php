@@ -5,7 +5,7 @@
         <main class="profile__main">
             <section class="profile__about">
                 <h2>Perfil Profesional</h2>
-                <p>{{ $perfil->biografia }}</p>
+                <p>{{!! nl2br(e($perfil->biografia)) !!}}</p>
             </section>
 
             <section class="profile__trajectory">
