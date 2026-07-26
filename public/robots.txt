@@ -35,4 +35,4 @@ User-agent: *
 Disallow:
 
 # Topología
-Sitemap: https://lohumanoquemequeda.blog/sitemap.xml
+Sitemap: https://javiervargas.cl/sitemap.xml
